@@ -1764,8 +1764,6 @@ df <- subdim_values %>%
                values_to = "Valor") %>%
   mutate(Valor= round(Valor,2))
 
-
-
 # Convertir "Ola" y "Valor" a numéricos
 df$Ola <- as.numeric(df$Ola)
 df$Valor <- as.numeric(gsub(",", ".", df$Valor))
@@ -1813,8 +1811,8 @@ for(pais in unique(df$País)){
 updatemenus <- list(
     list(
         active = 0,
-        x = 1,
-        y = -0.3,
+        x = 0.25,
+        y = 0.99,
         buttons = lapply(unique(df$Variable), function(variable) {
             list(
                 method = 'restyle',
@@ -1841,8 +1839,6 @@ p <- p %>% layout(
 
 # Mostrar el gráfico
 p
-
-
 
 ```
 
