@@ -1,0 +1,26 @@
+library(dplyr)
+library(plotly)
+
+# Creamos un dataframe de ejemplo
+set.seed(123)
+df <- data.frame(
+  Grupo = rep(c("A", "B", "C"), each = 100),
+  x = rep(1:100, 3),
+  y = rnorm(300)
+)
+p <- plot_ly()
+
+for (grupo in unique(df$Grupo)) {
+  p <- add_trace(
+    p,
+    data = df %>% filter(Grupo == grupo),
+    x = ~x,
+    y = ~y,
+    name = grupo,
+    type = 'scatter',
+    mode = 'lines',
+    visible = ifelse(grupo == 'A', TRUE, 'legendonly')
+  )
+}
+
+p

@@ -1,0 +1,278 @@
+---
+title: "Comparativa datos Pre-2021 y 2021."
+format: html
+editor: visual
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r, include=FALSE}
+pacman::p_load(tidyverse,sjlabelled,countrycode,haven,questionr,wbstats,zoo,sjPlot,sjmisc,dplyr,summarytools)
+```
+
+
+You can add options to executable code like this
+
+
+```{r, include=FALSE}
+#| echo: false
+#| warning: false
+load(file = "../input/data/original/GrandMerge.RData") 
+load(file="../input/data/original/LAPOP_2004-2008.RData") # datos0418
+vars<- c("wave", "year","pais", "it1", "prot3", "aoj12", "b2","b3", "b4","b10a", "b12", "b20", "b20a","b21","b21a",
+         "n9","n11","n15","ros4", "ing4","eff1", "pn4", "exc7","pol1", "vb2", "pr4")
+
+dta <- list.files(path = "../input/data/original/lapop-faltantes/", pattern = ".dta")
+dta <- paste0(file = "../input/data/original/lapop-faltantes/",dta)
+
+merge_faltante <- lapply(dta, function(archivo){
+  print(archivo)
+  df <- read_dta(archivo)
+  df <- df %>% select_if(names(df) %in% vars) %>%
+    mutate(
+    wave = substr(archivo,nchar(archivo)-7,nchar(archivo)-4)
+  ) 
+  return(df)
+})
+
+rm(dta)
+merge_faltante <- bind_rows(merge_faltante)
+
+```
+
+```{r, include=FALSE}
+#| echo: false
+#| warning: false
+datos0418 <-  datos0418  %>%  
+                        select(wave, year, pais, idnum, upm, 
+                              strata, wt, weight1500, estratopri,
+                              estratosec, ur, tamano, prov, cluster,
+                              it1, prot3, aoj12, b2, b3, b4,
+                              b10a, b12, b20, b20a, b21, b21a,
+                              n9, n11, n15, ros4, ing4,
+                              eff1, pn4, exc7, pol1, vb2) # Selección variables de interes
+
+datos1618 <-  datos0418  %>% filter(wave==2016 | wave==2018)
+
+
+datos1618$pr4 <- NA # Crear variable pr4 para juntar las bases
+datos1618$wave <- as.numeric(datos1618$wave)
+
+
+# names(datos) # para saber el orden de las variables
+ 
+datos$wave <- NA
+
+datosselc <-  datos  %>% select(wave, year, pais, idnum, upm, strata, wt, weight1500, estratopri,
+                         estratosec, ur, tamano, prov, cluster,
+                         it1, prot3, aoj12, b2, b3, b4,
+                         b10a, b12, b20, b20a, b21, b21a,
+                         n9, n11, n15, ros4, ing4,
+                         eff1, pn4, exc7, pol1, vb2, pr4) # wave
+
+# Evaluar la relación entre olas y agnos
+
+# table(datosselc$year) 
+# table(datos0418$wave)
+# table(data2021$wave)
+
+# Los casos se ordenan de tal modo wave(olas): 
+# 2004(2014), 2006(2006 y 2007),  2008(2008 y 2009), 2010(2010), 2012(2012), 2014(2014), 2016(16,17), 2018(18,19)
+
+datosselc$wave <- ifelse(datosselc$year==2006 | datosselc$year==2007, 2006, NA)
+datosselc$wave <- ifelse(datosselc$year==2004 , 2004, datosselc$wave)
+datosselc$wave <- ifelse(datosselc$year==2008 | datosselc$year==2009, 2008, datosselc$wave)
+datosselc$wave <- ifelse(datosselc$year==2010, 2010, datosselc$wave)
+datosselc$wave <- ifelse(datosselc$year==2012, 2012, datosselc$wave)
+datosselc$wave <- ifelse(datosselc$year==2014, 2014, datosselc$wave)
+
+datosselc <- remove_all_labels(datosselc) # Las etiquetas no son compatibles
+merge_faltante <- mutate_all(merge_faltante, as.numeric)
+merge_faltante$year <- merge_faltante$wave
+
+# data2021 <- mutate_all(data2021, as.numeric)
+# data2021$year <- data2021$wave
+
+# Merge 2004-2014 + 2018 +faltantes varias del grand merge + 2021
+datos <- bind_rows(datosselc,datos1618,merge_faltante) # logra una base longitudinal con la pr4 incluida. 
+datos <- copy_labels(datos, datos0418)
+
+rm(datos0418,datos1618,datosselc,merge_faltante)
+
+
+```
+
+```{r Carga 2021, include=FALSE}
+#| echo: false
+#| warning: false
+dta<- list.files(path = "../input/data/original/LAPOP2021/", pattern = ".dta")
+dta <- paste0(file = "../input/data/original/LAPOP2021/",dta)
+
+data2021 <- lapply(dta, function(archivo){
+  print(archivo)
+  df <- read_dta(archivo)
+  # df <- df %>% select_if(names(df) %in% vars)
+  # df <- df %>% select_if(colnames(df) %in% colnames(datos))
+  return(df)
+})
+
+data2021 <- bind_rows(data2021)
+
+data2021 <- mutate_all(data2021, as.numeric)
+data2021$year <- data2021$wave
+
+rm(dta)
+
+merge <- bind_rows(datos,data2021)
+test <- bind_rows(data2021)
+test_na <- test[!is.na(test$b12),]
+library(sjmisc)
+# frq(merge$pais,show.na=TRUE)
+# > setdiff(colnames(data2021),colnames(data2021a))
+# [1] "idnum"      "estratopri" "strata"     "upm"        "wt"         "weight1500"
+```
+
+```{r}
+#| echo: false
+#| warning: false
+library(ggplot2)
+frq(merge$pais,show.na=TRUE)
+review <- data.frame()
+for( i in colnames(merge)){
+  tabla_frecuencia <- merge %>%  
+  count(pais,wave, is.na(!!sym(i))) %>%
+    setNames(c("pais","wave","is_na","n"))%>%
+  complete(pais, wave, is_na, fill = list(n = 0)) %>%
+  group_by(pais,wave) %>% mutate(percent= n/sum(n), var=as.character(i))
+  tabla_frecuencia$percent[is.na(tabla_frecuencia$percent)]<-0
+  
+  
+  tabla_frecuencia <- tabla_frecuencia[tabla_frecuencia[, 3] == FALSE, c(1, 2, 4,5,6)]
+  tabla_frecuencia$pais <- as_label(tabla_frecuencia$pais)
+  review<-rbind(review,tabla_frecuencia)
+  # sjlabelled::get_label(tabla_frecuencia$pais)
+  # print(tabla_frecuencia)
+  
+  
+  plot<-ggplot(tabla_frecuencia, aes(x = wave, y = percent, color=pais,group=pais)) +
+  geom_point() +
+  geom_line() +
+  # geom_smooth(method = "lm", se = TRUE)+
+  # theme_minimal()+
+  ggtitle(paste0(' % Casos válidos. Var: ', as.character(get_label(merge)[i])))+
+  labs(
+    x = "Ola",
+    y = "Frecuencia relativa",
+    #color = "Tasa homofilia",
+    subtitle = "Frecuencia relativa de casos.",
+    caption = paste("Datos LAPOP."))+
+  theme(legend.position='bottom',
+        #text=element_text(family=font_ggplot),
+        plot.title = element_text(face="bold"),
+        legend.title = element_text(
+                                    #size=size_title_legend,
+                                    face = "bold"
+        ), 
+        #legend.text = element_text(size=size_text_legend),
+        #legend.key.width = unit(size_key_legend, 'cm'),
+  ) + coord_cartesian(ylim = c(0, NA))
+  
+ print(plot)
+}
+```
+
+```{r}
+#| echo: false
+#| warning: false
+# unique(review$pais)
+
+columnas<-names(get_label(lapop_ind_2004to2021))
+etiquetas <- as.character(get_label(lapop_ind_2004to2021))
+revision<-data.frame(columnas,etiquetas)
+
+
+review_summary <- review %>% group_by(var,wave) %>%
+  summarise(presencia = sum(percent>0)/25)
+
+plot<-ggplot(review_summary, aes(x = wave, y = presencia, color=var,group=var)) +
+  geom_point() +
+  geom_line() +
+  # geom_smooth(method = "lm", se = TRUE)+
+  # theme_minimal()+
+  ggtitle(paste0('Proporción paises con dato para: ', as.character(get_label(merge)[i])))+
+  labs(
+    x = "Ola",
+    y = "Frecuencia relativa",
+    #color = "Tasa homofilia",
+    subtitle = "Frecuencia relativa de casos",
+    caption = paste("Datos LAPOP."))+
+  theme(legend.position='bottom',
+        #text=element_text(family=font_ggplot),
+        plot.title = element_text(face="bold"),
+        legend.title = element_text(
+                                    #size=size_title_legend,
+                                    face = "bold"
+        ), 
+        #legend.text = element_text(size=size_text_legend),
+        #legend.key.width = unit(size_key_legend, 'cm'),
+  ) + coord_cartesian(ylim = c(0, NA))
+
+library(plotly)
+ggplotly(plot)
+
+```
+
+
+# Review 2021
+
+
+```{r}
+#| echo: false
+#| warning: false
+review <- data.frame()
+for( i in colnames(data2021)){
+  tabla_frecuencia <- data2021 %>%  
+  count(pais, is.na(!!sym(i))) %>%
+    setNames(c("pais","is_na","n"))%>%
+  complete(pais, is_na, fill = list(n = 0)) %>%
+  group_by(pais) %>% mutate(percent= n/sum(n), var=as.character(i))
+  tabla_frecuencia$percent[is.na(tabla_frecuencia$percent)]<-0
+  
+  
+  tabla_frecuencia <- tabla_frecuencia[tabla_frecuencia[, 2] == FALSE, c(1, 3, 4,5)]
+  tabla_frecuencia$pais <- as_label(tabla_frecuencia$pais)
+  review<-rbind(review,tabla_frecuencia)
+  # sjlabelled::get_label(tabla_frecuencia$pais)
+  # print(tabla_frecuencia)
+  
+  
+  plot<-ggplot(tabla_frecuencia, aes(x=1, y = percent,
+                                     # color=as.factor(pais),
+                                     group=pais
+                                     )) +
+  geom_point(alpha=0.2) +
+  # geom_line() +
+  # geom_smooth(method = "lm", se = TRUE)+
+  # theme_minimal()+
+  ggtitle(paste0(' % Casos válidos. Var: ', as.character(get_label(merge)[i])))+
+  labs(
+    x = "Ola",
+    y = "Frecuencia relativa",
+    #color = "Tasa homofilia",
+    subtitle = "Frecuencia relativa de casos.",
+    caption = paste("Datos LAPOP."))+
+  theme(legend.position='bottom',
+        #text=element_text(family=font_ggplot),
+        plot.title = element_text(face="bold"),
+        legend.title = element_text(
+                                    #size=size_title_legend,
+                                    face = "bold"
+        ), 
+        #legend.text = element_text(size=size_text_legend),
+        #legend.key.width = unit(size_key_legend, 'cm'),
+  ) + coord_cartesian(ylim = c(0, NA))
+  
+ print(plot)
+}
+```
+
