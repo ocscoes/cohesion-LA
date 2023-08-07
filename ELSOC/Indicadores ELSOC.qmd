@@ -124,7 +124,7 @@ options(OutDec=",")
 ```
 
 ```{r Carga de datos}
-load("ELSOC_Long.RData")
+load("data/ELSOC_Long.RData")
 elsoc <- elsoc_long_2016_2022 ; #rm(elsoc_long_2016_2022)
 #frq(elsoc$ola)
 
