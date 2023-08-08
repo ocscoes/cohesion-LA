@@ -20,29 +20,27 @@ Existen tres carpetas en el repositorio:
     disponibilidad de datos a lo largo de los años en esta
     encuesta, reflejando el problema de ausencia de las
     variables de interés en la última versión de la
-    encuesta.\
-
-    Acceso al análisis:\
+    encuesta. [Link acceso al
+    análisis](https://ocscoes.github.io/cohesion-LA/IndicesLAPOP/Indices.html).\
 
 2.  ELSOC: contiene el trabajo relacionado a la construcción
     de índices a nivel chileno con los datos de ELSOC. El
     archivo \`Indicadores ELSOC.qmd\` contiene la sintaxis
-    de análisis de los datos.
-
-    \
-    Acceso al análisis:
+    de análisis de los datos. [Link de acceso al
+    análisis](https://ocscoes.github.io/cohesion-LA/ELSOC/IndicadoresELSOC.html).
 
 3.  Web: Contiene el trabajo relacionado a la actualización
     de los datos LAPOP dentro de la plataforma shiny
     incrustada en la web del Observatorio.
 
-Arbol del directorio:
+**Arbol del directorio:**
 
+```         
 .
 ├── ELSOC
 │   ├── data
 │   └── tmp
-├── Índices LAPOP
+├── IndicesLAPOP
 │   ├── Análisis Pre 2021 LAPOP
 │   │   └── Analisispre2021_files
 │   │       ├── figure-html
@@ -56,6 +54,7 @@ Arbol del directorio:
 │   │   ├── WVS
 │   │   └── lapop-faltantes
 │   └── tmp
+├── ́IndicesLAPOP
 └── Web
     ├── OCSVIS-LA
     │   ├── app
@@ -302,3 +301,5 @@ Arbol del directorio:
                     ├── css
                     ├── img
                     └── js
+                    
+```
