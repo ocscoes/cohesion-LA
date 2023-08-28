@@ -20,37 +20,27 @@ function(input, output, session) {
     # Variable seleccionada (inicialmente "Orgullo nacional")
     selected_variable <- reactiveVal("Orgullo nacional")
     
-    # Observar los botones de acción y actualizar la variable seleccionada
-    observeEvent(input$btn_var1, {
-        selected_variable("Orgullo nacional")
+    # Mapa entre IDs de botones y variables correspondientes
+    button_var_map <- list(
+        btn_var1 = "Orgullo nacional",
+        btn_var2 = "Satisfacción residencial",
+        btn_var3 = "Confianza interpersonal",
+        btn_var4 = "Comportamiento prosocial",
+        btn_var5 = "Confianza en instituciones",
+        btn_var6 = "Actitud hacia la democracia",
+        btn_var7 = "Participación cívica",
+        btn_var8 = "Interés político",
+        btn_var9 = "Justicia distributiva",
+        btn_var10 = "Surgir en la vida"
+    )
+    
+    # Creación programática de observadores para botones
+    lapply(names(button_var_map), function(btn_id) {
+        observeEvent(input[[btn_id]], {
+            selected_variable(button_var_map[[btn_id]])
+        })
     })
-    observeEvent(input$btn_var2, {
-        selected_variable("Satisfacción residencial")
-    })
-    observeEvent(input$btn_var3, {
-        selected_variable("Confianza interpersonal")
-    })
-    observeEvent(input$btn_var4, {
-        selected_variable("Comportamiento prosocial")
-    })
-    observeEvent(input$btn_var5, {
-        selected_variable("Confianza en instituciones")
-    })
-    observeEvent(input$btn_var6, {
-        selected_variable("Actitud hacia la democracia")
-    })
-    observeEvent(input$btn_var7, {
-        selected_variable("Participación cívica")
-    })
-    observeEvent(input$btn_var8, {
-        selected_variable("Interés político")
-    })
-    observeEvent(input$btn_var9, {
-        selected_variable("Justicia distributiva")
-    })
-    observeEvent(input$btn_var10, {
-        selected_variable("Surgir en la vida")
-    })
+    
     
     observe({
         data_year <- world_data %>% filter(Ola == input$Ola)
@@ -67,7 +57,7 @@ function(input, output, session) {
             # Añadir un mensaje modal
             showModal(modalDialog(
                 title = "Atención",
-                "No hay datos disponibles para la combinación de año y variable seleccionada. Por favor, intente con otra selección.",
+                "No hay datos disponibles para la combinación de año y variable seleccionada. Por favor, intente con otro año.",
                 easyClose = TRUE
             ))
             return()
@@ -90,8 +80,8 @@ function(input, output, session) {
             addTiles() %>%
             addPolygons(stroke = FALSE, fillOpacity = 0.5,
                         color = ~pal(data_year[[variable]]),
-                        label = ~paste0("País: ", País, "<br>",
-                                        variable, ": ", round(data_year[[variable]], 1))) %>%
+                        label = ~paste0(País, ": ", round(data_year[[variable]], 1)),
+                        labelOptions = labelOptions(textsize = "17px")) %>%
             addLegend(pal = pal, values = data_year[[variable]], title = variable) %>%
             setView(lng = -78.4678, lat = -1.8312, zoom = 3)
     })
