@@ -1565,6 +1565,8 @@ for(i in unique(prom$pais)){
 
 A partir del análisis sobre disponibilidad, para la estimación de subdimensiones se define un estándar del 60% de los datos disponibles para considerarse válido. Las subdimensiones resultantes (país-ola) con una proporción menor son recodificados como casos perdidos (NAs). A continuación se presenta la visualizaciones de los resultados:
 
+::: panel-tabset
+
 ### Longitudinal
 
 ```{r,out.height='750px',eval=FALSE}
@@ -1790,6 +1792,8 @@ p
 ### Bivariada
 
 <iframe src="https://jandimter.shinyapps.io/Bivariado-LA/" style="border: none; width: 881px; height: 800px"></iframe>
+
+:::
 
 ## Anexo
 ### Revisión disponibilidad LAPOP
