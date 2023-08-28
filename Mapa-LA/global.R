@@ -9,3 +9,4 @@ load(file = "data/world_data.rdata")
 
 unique_years <- unique(world_data$Ola)
 step_size <- unique(diff(unique_years))
+

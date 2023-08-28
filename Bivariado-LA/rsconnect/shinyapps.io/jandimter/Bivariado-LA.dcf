@@ -1,0 +1,12 @@
+name: Bivariado-LA
+title: Bivariado-LA
+username: jandimter
+account: jandimter
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 9697166
+bundleId: 7617406
+url: https://jandimter.shinyapps.io/Bivariado-LA/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE

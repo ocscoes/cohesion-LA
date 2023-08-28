@@ -1670,7 +1670,7 @@ p
 
 ```
 
-```{r,out.height='650px'}
+```{r Preparación shinys}
  #Se cuenta la proporción de indicadores disponibles por país y año.
 calidad_year <- datos %>%
   group_by(pais,wave)%>%
@@ -1719,7 +1719,11 @@ df <- subdim_values %>%
 # Convertir "Ola" y "Valor" a numéricos
 df$Ola <- as.numeric(df$Ola)
 df$Valor <- as.numeric(gsub(",", ".", df$Valor))
+save(df,file = "data/base_shiny.rdata")
+```
 
+
+```{r,out.height='650px'}
 p <- plot_ly()
 
 # Agregar trazas iniciales (usando la primera variable como predeterminada)
@@ -1777,111 +1781,13 @@ p
 
 ```
 
-## Visualización en mapa
+### Visualización en mapa
 
 <iframe src="https://jandimter.shinyapps.io/Subdimensiones-Cohesion-LA/" style="border: none; width: 881px; height: 800px"></iframe>
 
+### Visualización Bivariada
 
-```{r test bivariado, eval=FALSE}
-# Inicialización del gráfico
-p <- plot_ly()
-
-# Valores predeterminados para la inicialización
-x_default <- unique(df$Variable)[3]
-y_default <- unique(df$Variable)[3]
-year_default <- min(df$Ola)
-
-# Añadir trazas basadas en valores predeterminados
-# Añadir trazas basadas en valores predeterminados
-for(pais in unique(df$País)){
-  temp_df <- df %>% filter(País == pais, Ola == year_default)
-  p <- add_trace(
-    p,
-    x = temp_df[[x_default]],
-    y = temp_df[[y_default]],
-    name = pais,
-    type = 'scatter',
-    mode = 'markers',   # Cambio aquí: de 'lines' a 'markers'
-    marker = list(color = sample(colors(), 1)),
-    hovertemplate = paste("País: ", pais,
-                          "<br>Año: ", year_default, 
-                          "<br>", x_default, ": %{x}",
-                          "<br>", y_default, ": %{y}<extra></extra>")
-  )
-}
-
-
-# Crear menús desplegables
-# Menú desplegable para el eje X
-buttons_x <- lapply(unique(df$Variable), function(variable) {
-  y_values <- unlist(lapply(unique(df$País), function(pais) {
-    df %>% filter(País == pais, Ola == year_default) %>% `[[`(y_default)
-  }))
-  
-  list(
-    method = 'restyle',
-    args = list('x', df %>% filter(Ola == year_default) %>% `[[`(variable),
-                'y', y_values),
-    label = variable
-  )
-})
-
-# Menú desplegable para el eje Y
-buttons_y <- lapply(unique(df$Variable), function(variable) {
-  x_values <- unlist(lapply(unique(df$País), function(pais) {
-    df %>% filter(País == pais, Ola == year_default) %>% `[[`(x_default)
-  }))
-  
-  list(
-    method = 'restyle',
-    args = list('x', x_values,
-                'y', df %>% filter(Ola == year_default) %>% `[[`(variable)),
-    label = variable
-  )
-})
-
-
-
-# 3. Menú desplegable para el año
-buttons_year <- lapply(unique(df$Ola), function(year) {
-  list(
-    method = 'restyle',
-    args = list('x', df %>% filter(Ola == year) %>% `[[`(x_default),
-                'y', df %>% filter(Ola == year) %>% `[[`(y_default)),
-    label = as.character(year)
-  )
-})
-
-# Ajustar el diseño del gráfico
-p <- p %>% layout(
-  title = "Valores por País",
-  updatemenus = list(
-    list(
-      type = 'dropdown',
-      x = 0.1,
-      y = 1.1,
-      buttons = buttons_x
-    ),
-    list(
-      type = 'dropdown',
-      x = 0.4,
-      y = 1.1,
-      buttons = buttons_y
-    ),
-    list(
-      type = 'dropdown',
-      x = 0.7,
-      y = 1.1,
-      buttons = buttons_year
-    )
-  )
-)
-
-# Mostrar el gráfico
-p
-
-```
-
+<iframe src="https://jandimter.shinyapps.io/Bivariado-LA/" style="border: none; width: 881px; height: 800px"></iframe>
 
 ## Anexo
 ### Revisión disponibilidad LAPOP

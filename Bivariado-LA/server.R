@@ -44,24 +44,32 @@ function(input, output, session) {
             x_vals <- temp_df %>% filter(País == pais, Variable == x_var) %>% pull(Valor)
             y_vals <- temp_df %>% filter(País == pais, Variable == y_var) %>% pull(Valor)
             
-            p <- add_trace(
+            image_url <- paste0("png/", pais, ".png")
+            
+            p <- add_markers(
                 p,
                 x = x_vals,
                 y = y_vals,
                 name = pais,
-                type = 'scatter',
-                mode = 'markers',
-                marker = list(size = 12, color = sample(colors(), 1)),
+                marker = list(
+                    symbol = image_url,
+                    sizemode = "diameter",
+                    size = 12  # Tamaño de la imagen
+                ),
                 hovertemplate = paste("País: ", pais,
                                       "<br>", x_var, ": %{x}",
                                       "<br>", y_var, ": %{y}<extra></extra>")
             )
         }
         
+        x_range <- range_values %>% filter(Variable == x_var) %>% select(min_val, max_val) %>% as.numeric()
+        y_range <- range_values %>% filter(Variable == y_var) %>% select(min_val, max_val) %>% as.numeric()
+        
         p <- p %>% layout(
             title = paste(""),
             xaxis = list(
                 title = x_var,
+                range = x_range,  # Fijar el rango del eje x
                 titlefont = list(
                     family = "Arial, sans-serif",
                     size = 18,
@@ -69,7 +77,8 @@ function(input, output, session) {
                 )
             ),
             yaxis = list(
-                title = paste0(y_var),
+                title = y_var,
+                range = y_range,  # Fijar el rango del eje y
                 titlefont = list(
                     family = "Arial, sans-serif",
                     size = 18,
