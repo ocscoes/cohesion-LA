@@ -1,10 +1,6 @@
-library(shiny)
-library(leaflet)
-library(tidyverse)
-
 fluidPage(
     tags$style("
-        .main-container { display: flex; justify-content: center; align-items: flex-start; }
+        .main-container { display: flex; justify-content: center; align-items: flex-start; min-width: 800px;}
         .container-fluid { max-width: 1200px;}
         .map-container { width: 66%; }
         .controls-container { width: 34%; text-align: right; padding-top: 20px; align-items: center; height: 800px; padding-top: 0%;}
@@ -22,7 +18,7 @@ fluidPage(
         div(class = "controls-container",
         
             div(class = "slider-wrapper",
-                div(class = "slider-title", "AÑO:"),
+                div(class = "slider-title", "AÑO: "),
                 sliderInput("Ola", "", min = min(unique_years), max = max(unique_years), value = min(unique_years), step = step_size, sep = "")
             ),    
             

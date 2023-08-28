@@ -1,21 +1,3 @@
-#
-# This is the server logic of a Shiny web application. You can run the
-# application by clicking 'Run App' above.
-#
-# Find out more about building applications with Shiny here:
-#
-#    http://shiny.rstudio.com/
-#
-
-library(shiny)
-library(tidyverse)
-library(sf)
-
-load(file = "data/world_data.rdata")
-
-unique_years <- unique(world_data$Ola)
-step_size <- unique(diff(unique_years))
-
 function(input, output, session) {
     # Variable seleccionada (inicialmente "Orgullo nacional")
     selected_variable <- reactiveVal("Orgullo nacional")
@@ -81,7 +63,10 @@ function(input, output, session) {
             addPolygons(stroke = FALSE, fillOpacity = 0.5,
                         color = ~pal(data_year[[variable]]),
                         label = ~paste0(País, ": ", round(data_year[[variable]], 1)),
-                        labelOptions = labelOptions(textsize = "17px")) %>%
+                        labelOptions = labelOptions(textsize = "17px",
+                                                    style = list(
+                                                        "font-weight" = "500"
+                                                        ))) %>%
             addLegend(pal = pal, values = data_year[[variable]], title = variable) %>%
             setView(lng = -78.4678, lat = -1.8312, zoom = 3)
     })

@@ -1565,7 +1565,8 @@ for(i in unique(prom$pais)){
 
 A partir del análisis sobre disponibilidad, para la estimación de subdimensiones se define un estándar del 60% de los datos disponibles para considerarse válido. Las subdimensiones resultantes (país-ola) con una proporción menor son recodificados como casos perdidos (NAs). A continuación se presenta la visualización del resultado:
 
-```{r,out.height='750px'}
+```{r,out.height='750px',eval=FALSE}
+# Versión no longitudinal
 
 # Se cuenta la proporción de indicadores disponibles por país y año.
 calidad_year <- datos %>%
@@ -1669,7 +1670,7 @@ p
 
 ```
 
-```{r}
+```{r,out.height='650px'}
  #Se cuenta la proporción de indicadores disponibles por país y año.
 calidad_year <- datos %>%
   group_by(pais,wave)%>%
@@ -1776,96 +1777,10 @@ p
 
 ```
 
-```{r Shiny mapa}
-# Asegúrate de que 'subdim_values' esté definido de acuerdo con tus datos
-subdim_values$iso3 <- countrycode(subdim_values$País, 'country.name', 'iso3c')
-world_data <- ne_countries(scale = "medium", returnclass = "sf")
-world_data <- st_transform(world_data, crs = 4326)
-names(world_data)[names(world_data) == "iso_a3"] <- "iso3"
-world_data <- world_data %>% select(iso3, geometry)
-# Asegúrate de que esta fusión funcione según tu estructura de datos
-world_data <- merge(world_data, subdim_values, by = "iso3")
-save(world_data,file = "data/world_data.rdata")
+## Visualización en mapa
 
+<iframe src="https://jandimter.shinyapps.io/Subdimensiones-Cohesion-LA/" style="border: none; width: 881px; height: 800px"></iframe>
 
-unique_years <- unique(world_data$Ola)
-step_size <- unique(diff(unique_years))
-
-ui <- fluidPage(
-  tags$style(".row {margin-right: 30%; margin-left: 30%;}"),
-  fluidRow(
-    column(6, style = "text-align: center;",
-           sliderInput("Ola", "Año:", min = min(unique_years), max = max(unique_years), value = min(unique_years), step = step_size)
-    ),
-    column(6, style = "text-align: center;",
-           actionButton("btn_var1", label = HTML('<img src="Orgullo nacional.svg" alt="Orgullo nacional" width="30">'), value = "Orgullo nacional"),
-           actionButton("btn_var2", label = HTML('<img src="Satisfacción residencial.svg" alt="Satisfacción residencial" width="30">'), value = "Satisfacción residencial")
-    )
-  ),
-  div(style = "display: flex; justify-content: center;",
-      leafletOutput("map", height = "800px", width = "66%")
-  )
-)
-
-server <- function(input, output, session) {
-  # Variable seleccionada (inicialmente "Orgullo nacional")
-  selected_variable <- reactiveVal("Orgullo nacional")
-  
-  # Observar los botones de acción y actualizar la variable seleccionada
-  observeEvent(input$btn_var1, {
-    selected_variable("Orgullo nacional")
-  })
-  observeEvent(input$btn_var2, {
-    selected_variable("Satisfacción residencial")
-  })
-  
-  observe({
-    data_year <- world_data %>% filter(Ola == input$Ola)
-    variable <- selected_variable()
-    
-    # Verifica si hay datos para la combinación seleccionada de año y variable
-    if (all(is.na(data_year[[variable]]))) {
-      leafletProxy("map") %>%
-        clearShapes() %>%
-        clearControls() %>%
-        addTiles() %>%
-        setView(lng = -78.4678, lat = -1.8312, zoom = 3)
-      return()
-    }
-    
-    bins <- c(floor(min(world_data[[variable]], na.rm = TRUE)),
-              quantile(world_data[[variable]], probs = seq(0.2, 1, by = 0.2), na.rm = TRUE))
-    bins <- unique(round(bins, 1))
-    if (length(bins) < 2) {
-      bins <- seq(floor(min(world_data[[variable]], na.rm = TRUE)),
-                  ceiling(max(world_data[[variable]], na.rm = TRUE)),
-                  length.out = 5)
-    }
-    
-    pal <- colorBin(colorRampPalette(c("#E84E4E", "#EEE95F", "#37DF79"))(n = length(bins) - 1), world_data[[variable]], bins = bins)
-    
-    leafletProxy("map", data = data_year) %>%
-      clearShapes() %>%
-      clearControls() %>%
-      addTiles() %>%
-      addPolygons(stroke = FALSE, fillOpacity = 0.5,
-                  color = ~pal(data_year[[variable]]),
-                  label = ~paste0("País: ", País, "<br>",
-                                  variable, ": ", round(data_year[[variable]], 1))) %>%
-      addLegend(pal = pal, values = data_year[[variable]], title = variable) %>%
-      setView(lng = -78.4678, lat = -1.8312, zoom = 3)
-  })
-  
-  output$map <- renderLeaflet({
-    leaflet(world_data) %>%
-      addTiles() %>%
-      setView(lng = -78.4678, lat = -1.8312, zoom = 3)
-  })
-}
-
-shinyApp(ui, server)
-
-```
 
 ```{r test bivariado, eval=FALSE}
 # Inicialización del gráfico
