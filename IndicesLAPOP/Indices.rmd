@@ -6,7 +6,7 @@ format:
   html:
     #embed-resources: true
     page-layout: full
-    toc: true
+    toc: false
     toc-depth: 3
     number-sections: true
     number-depth: 2
@@ -35,16 +35,32 @@ utilizarán datos provenientes de las encuestas LAPOP,
 Latinbarómetro y de la Encuesta Mundial de Valores (WVS). A
 continuación se describen los datos.
 
+<iframe src="https://jandimter.shinyapps.io/Cohesion3/" style="border: none; width: 1135px; height: 800px">
+
+</iframe>
+
 # Datos
-A continuación se presentan los datos utilizados para la construcción de los índices. Se tomaron tres fuentes:
 
-1. Las encuestas LAPOP.
-2. Las encuestas Latinobarómetro.
-3. Las encuestas del World Value Survey.
+A continuación se presentan los datos utilizados para la
+construcción de los índices. Se tomaron tres fuentes:
 
-Los datos provenientes de LAPOP corresponden al mayor volumen da datos usados. Se tomó este estudio como la base para el resto de datos. En lo práctico, esto significó delimitar los países utilizados a aquellos contenidos por este estudio. Además, tomar como referencia sus olas (cada dos años) para la periodización de la información.
+1.  Las encuestas LAPOP.
+2.  Las encuestas Latinobarómetro.
+3.  Las encuestas del World Value Survey.
 
-En la manipulación de datos, se reescalaron todas las variables utilizadas estableciendo una escala general de 0 a 10, teniendo los valores mayores una representación de respuestas favorables a la cohesión social. En la descripción de datos se presentan las variables previamente reescaladas.
+Los datos provenientes de LAPOP corresponden al mayor
+volumen da datos usados. Se tomó este estudio como la base
+para el resto de datos. En lo práctico, esto significó
+delimitar los países utilizados a aquellos contenidos por
+este estudio. Además, tomar como referencia sus olas (cada
+dos años) para la periodización de la información.
+
+En la manipulación de datos, se reescalaron todas las
+variables utilizadas estableciendo una escala general de 0 a
+10, teniendo los valores mayores una representación de
+respuestas favorables a la cohesión social. En la
+descripción de datos se presentan las variables previamente
+reescaladas.
 
 ## LAPOP
 
@@ -87,6 +103,7 @@ desarrollo y debates políticos en la región.
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE,message=FALSE)
 ```
+
 ```{r Carga de librerías, include=FALSE}
 
 # Carga de librerías
@@ -102,6 +119,7 @@ st_options(lang='es')
 options(OutDec=",")
 
 ```
+
 ```{r Funciones, include=FALSE}
 
 # 1. Función de estandarización de las escalas.
@@ -285,7 +303,7 @@ write_rds(prom_wave,"data/Lapop_data_proms.RDS")
 LAPOP <- read_rds("data/Lapop_data_proms.RDS") # Promedios por ola-país
 ```
 
-### Paises por cada ola
+### Países por cada ola
 
 La encuesta LAPOP investiga América Latina y el Caribe,
 recopilando datos sobre actitudes y opiniones de los
@@ -303,6 +321,7 @@ calidad de vida en América Latina y el Caribe.
 A continuación se presentan los países incluidos por olas:
 
 <!-- Creación de tabla con países disponibles por año -->
+
 ```{r}
 
 # Se crea tabla, se excluyen países con 0 caso y se da formato.
@@ -334,10 +353,9 @@ rm(col,tabla)
 
 ### Variables de interés LAPOP
 
-Se han seleccionado variables que resultan
-acordes al objetivo de este trabajo. A partir de
-esta revisión se determinará si son aptas para su
-utilización.
+Se han seleccionado variables que resultan acordes al
+objetivo de este trabajo. A partir de esta revisión se
+determinará si son aptas para su utilización.
 
 ```{r Descriptivos LAPOP, results='asis'}
 # Tabla hecha con summarytools:dfSummary()
@@ -364,6 +382,7 @@ LAPOP <- LAPOP[order(LAPOP$pais),] %>%
         select(-c(year,b43,vicbar1,vicbar3,vicbar7,jamb18a,b23,b39n,nicfear,
                   movus1))
 ```
+
 A partir de la revisión anterior se ha determinado la
 exclusión de las variables:
 
@@ -387,7 +406,9 @@ exclusión de las variables:
 -   Movilidad económica (movus1) presente en solo el
     **0.5%** de los países-años.
 
-**Debido a la baja presencia de las variables de interés en los datos del 2021 se trabajará tomando como límite la ola 2018.**
+**Debido a la baja presencia de las variables de interés en
+los datos del 2021 se trabajará tomando como límite la ola
+2018.**
 
 ### Imputación LAPOP
 
@@ -401,7 +422,6 @@ posteriores. A continuación se presenta el resultado de la
 imputación en las primeras filas.
 
 ::: panel-tabset
-
 #### Antes
 
 ```{r}
@@ -521,7 +541,6 @@ bg(i = ~ is.na(sd6new2) ,j=~ sd6new2, bg = "#E73C6D") %>%
   color(i = c(1,9),j=~ pol1, color='white')
 
 ```
-
 :::
 
 De este modo, las únicas variables que mantendrían casos
@@ -574,7 +593,6 @@ de los países estudiados en cada iteración.
 rm(list=setdiff(ls(),c("LAPOP","prop_casos_perdidos",
                "standarize_data","impute_data","mean_na")))
 ```
-
 
 ```{r Variables Latinobarómetro a utilizar, warning=FALSE, message=FALSE, include = FALSE,eval=FALSE}
 # Justicia en distribución
@@ -682,6 +700,7 @@ variables <- rbind(apoyodemocracia,convencerpoliticamenre,escala_hijos,
                    redistribucion)
 
 ```
+
 ```{r Carga de datos Latinobarómetro, warning=FALSE,message=FALSE, include = FALSE,eval=FALSE}
 # Carga de archivos
 dta <- list.files(path = "data/Latinobarometro/", pattern = ".sav")
@@ -750,6 +769,7 @@ exclude_cols = c("wave", "pais")
 prom_wave_latin <- standarize_data(merge, exclude_cols)
 prom_wave_latin <- prom_wave_latin %>% group_by(wave,pais) %>% summarise_if(is.numeric, mean, na.rm = TRUE) %>% ungroup()
 ```
+
 ```{r,eval=FALSE}
 # Completar casos faltantes para estandarizar dataset final (se llenan con NAs).
 lapop_latin <- sort(as.vector(unique(c(unique(LAPOP$pais),unique(merge$pais)))))
@@ -799,8 +819,8 @@ tabla %>%
   bold(i = 26)
 ```
 
-
-Se incorpora en tabla países presentes en LAPOP como referencia.
+Se incorpora en tabla países presentes en LAPOP como
+referencia.
 
 ```{r,results='asis'}
 print(dfSummary(merge,
@@ -849,7 +869,6 @@ print(dfSummary(prom_wave_latin %>% select(dif_padres,dif_hijos),
                 silent= TRUE,  split.by = NULL))
 ```
 
-
 ### Imputación Latinbarómetro
 
 Se replica la estrategia de imputación implementada en los
@@ -858,7 +877,6 @@ un máximo de 3 olas en el pasado, y en segunda instancia
 hasta 3 olas en el futuro.
 
 ::: panel-tabset
-
 #### Antes
 
 ```{r}
@@ -940,7 +958,6 @@ prom_wave_latin[order(prom_wave_latin$pais),] %>%
   bg(i = c(6:7,14:15) ,j=~ justiciaingresoriqueza, bg = "#66B16A") %>%
     color(i = c(6:7,14:15),j=~ justiciaingresoriqueza, color='white')
 ```
-
 :::
 
 De este modo, las variables consideradas quedan sin casos
@@ -1005,7 +1022,7 @@ respuestas <- to_label(data)
 data$COW_NUM<-respuestas$COW_NUM
 ```
 
-``` {r Se inviert escala}
+```{r Se inviert escala}
 data <- data %>%
   setNames(c("pais","year","igualdadingresos","orgullonacional","seguridadbarrio"))
 
@@ -1110,6 +1127,7 @@ hasta 3 olas en el futuro.
 
 ::: panel-tabset
 #### Antes
+
 ```{r}
 # Chequeo NAs WVS
 prom_wave_wvs <- prom_wave_wvs %>%
@@ -1135,6 +1153,7 @@ prom_wave_wvs[order(prom_wave_wvs$pais),] %>%
   bg(i = ~ is.na(orgullonacional) ,j=~ orgullonacional, bg = "#E73C6D") %>%
    color(i = ~ is.na(orgullonacional),j=~ orgullonacional, color='white')
 ```
+
 ```{r Imputación WVS}
 numeric_vars <- names(prom_wave_wvs)[sapply(prom_wave_wvs, is.numeric)]
 numeric_vars <- setdiff(numeric_vars, "wave")
@@ -1143,7 +1162,9 @@ for(var in numeric_vars){
   prom_wave_wvs <- impute_data(prom_wave_wvs, var)
 }
 ```
+
 #### Después
+
 ```{r}
 # Tabla post-imputación de datos WVS
 prom_wave_wvs[order(prom_wave_wvs$pais),] %>%
@@ -1241,7 +1262,6 @@ resultados.
 ## Correlación indicadores por subdimensión
 
 ::: panel-tabset
-
 ### Orgullo Nacional
 
 ```{r Correlación Subdimensión Orgullo Nacional, warning=FALSE}
@@ -1303,7 +1323,6 @@ chart.Correlation(datos %>% select(justiciaingresoriqueza, igualdadingresos) %>%
 chart.Correlation(datos %>% select(dif_hijos, dif_padres) %>%
                     setNames(c("Diferencia riqueza hijos", "Diferencia riqueza padres")))
 ```
-
 :::
 
 ## Calidad subdimensiones
@@ -1311,10 +1330,14 @@ chart.Correlation(datos %>% select(dif_hijos, dif_padres) %>%
 ### Cantidad indicadores disponibles por dimensión
 
 ::: panel-tabset
-
 #### Disponibilidad datos
 
-En la tabla, los valores representan la cantidad de indicadores disponibles. Es relevante tomar en consideración los valores máximos. Ej. Para `Orgullo nacional` el 50,5% de los casos (país-ola) tienen un solo indicador para la construcción de la subdimensión. El 49,5% restante de los casos tiene el la totalidad de indicadores necesarios (2).
+En la tabla, los valores representan la cantidad de
+indicadores disponibles. Es relevante tomar en consideración
+los valores máximos. Ej. Para `Orgullo nacional` el 50,5% de
+los casos (país-ola) tienen un solo indicador para la
+construcción de la subdimensión. El 49,5% restante de los
+casos tiene el la totalidad de indicadores necesarios (2).
 
 ```{r Calidad subdimensiones por año}
 
@@ -1556,17 +1579,21 @@ for(i in unique(prom$pais)){
   color(i = ~ `Surgir en la vida` < 50, j = 7, color='white')
 
 ```
-
 :::
 
 # Índices
 
 ## Subdimensiones
 
-A partir del análisis sobre disponibilidad, para la estimación de subdimensiones se define un estándar del 60% de los datos disponibles para considerarse válido. Las subdimensiones resultantes (país-ola) con una proporción menor son recodificados como casos perdidos (NAs). A continuación se presenta la visualizaciones de los resultados:
+A partir del análisis sobre disponibilidad, para la
+estimación de subdimensiones se define un estándar del 60%
+de los datos disponibles para considerarse válido. Las
+subdimensiones resultantes (país-ola) con una proporción
+menor son recodificados como casos perdidos (NAs). A
+continuación se presenta la visualizaciones de los
+resultados:
 
 ::: panel-tabset
-
 ### Longitudinal
 
 ```{r,out.height='750px',eval=FALSE}
@@ -1726,7 +1753,6 @@ df$Valor <- as.numeric(gsub(",", ".", df$Valor))
 save(df,file = "data/base_shiny.rdata")
 ```
 
-
 ```{r,out.height='650px'}
 p <- plot_ly()
 
@@ -1787,15 +1813,19 @@ p
 
 ### Mapa
 
-<iframe src="https://jandimter.shinyapps.io/Subdimensiones-Cohesion-LA/" style="border: none; width: 881px; height: 800px"></iframe>
+<iframe src="https://jandimter.shinyapps.io/Subdimensiones-Cohesion-LA/" style="border: none; width: 881px; height: 800px">
+
+</iframe>
 
 ### Bivariada
 
-<iframe src="https://jandimter.shinyapps.io/Bivariado-LA/" style="border: none; width: 881px; height: 800px"></iframe>
+<iframe src="https://jandimter.shinyapps.io/Bivariado-LA/" style="border: none; width: 881px; height: 800px">
 
+</iframe>
 :::
 
 ## Anexo
+
 ### Revisión disponibilidad LAPOP
 
 ```{r Crea review, eval=FALSE}
@@ -1825,6 +1855,7 @@ review_summary <- review %>% group_by(label,wave) %>%
 write_rds(review,"data/review_lapop.RDS")
 write_rds(review_summary,"data/review_summary_lapop.RDS")
 ```
+
 ```{r LAPOP: Disponibilidad de indicadores por año}
 review <- readRDS("data/review_lapop.rds") #País-Ola-Variable-Valido?
 review_summary <- readRDS("data/review_summary_lapop.rds") # Variable-Ola-Percent-Freq
@@ -1850,6 +1881,7 @@ plot <- ggplot(review_summary,
 ggplotly(plot)
 rm("plot", "review_summary")
 ```
+
 ```{r Proporción de variables disponibles por país y ola, message=FALSE}
 review <- readRDS("data/review_lapop.rds") #País-Ola-Variable-Valido?
 review <- review %>% group_by(pais,wave) %>%
@@ -1876,6 +1908,7 @@ plot<-ggplot(review, aes(x = wave, y = presencia, color=pais,group=pais)) +
 ggplotly(plot)
 rm(plot,review)
 ```
+
 ### Valores por dimensión
 
 ```{r,out.height='750px'}

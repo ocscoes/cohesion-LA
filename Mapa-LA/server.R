@@ -76,4 +76,5 @@ function(input, output, session) {
             addTiles() %>%
             setView(lng = -78.4678, lat = -1.8312, zoom = 3)
     })
+
 }

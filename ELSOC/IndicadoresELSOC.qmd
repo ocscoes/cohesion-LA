@@ -132,99 +132,87 @@ elsoc$ola<-to_label(elsoc$ola)
 elsoc <- elsoc %>% select(ola,fact_exp01,
 
 # Confianza en instituciones y satisfacción con la democracia.
-c05_01, #confianza gobierno
-c05_02,
-c05_03,
-c05_04,
-c05_05,
-c05_06,
-c05_07,
-c05_08,
-c01,
+c05_01, # Grado de confianza en el gobierno
+c05_02, # Grado de confianza en los partidos políticos
+c05_03, # Grado de confianza en Carabineros
+c05_04, # Grado de confianza en los sindicatos
+c05_05, # Grado de confianza en el Poder Judicial
+c05_06, # Grado de confianza en las empresas privadas
+c05_07, # Grado de confianza en el congreso nacional
+c05_08, # Grado de confianza en el Presidente de la república
+c01, # Satisfacción con la democracia
+
 # Participación política.
-c08_01,
-c08_02,
-c08_03,
-c08_04,
-c13,
-c14_01,
-c14_02,
+c08_01, # Frecuencia con que se ha firmado una carta o petición apoyando una causa
+c08_02, # Frecuencia con que se ha asistido a marcha o manifestación paciífica
+c08_03, # Frecuencia con que se ha participado en huelgas
+c08_04, # Frecuencia con que se ha usado redes sociales para opinar en temas públicos
+c13, # Interés en política
+c14_01, # Frecuencia con que se habla de política con familiares o amigos
+c14_02, # Frecuencia con que se informa sobre política en medios de comunicación
 
 # Percepción de justicia.
-c18_09,
-c18_10,
-d05_01,
-d05_02,
-d05_03,
-d05_04,
+# 1- Totalmente en desacuerdo // 5 - Totalmente de acuerdo
+c18_09, # Grado de acuerdo: Las personas son recompensadas por sus esfuerzos
+c18_10, # Grado de acuerdo: Las personas son recompensadas por su inteligencia
+# 1- Nada de importante // 5 - Muy importante
+d05_01, # Grado de importancia: Provenir de una familia adinerada.
+d05_02, # Grado de importancia: tener un buen nivel de educación.
+d05_03, # Grado de importancia: Tener ambición.
+d05_04, # Grado de importancia: El trabajo duro.
 
 # Sentido de pertenencia.
-c32_02,
-c32_01,
+c32_02, # Grado de acuerdo: Me identifico con Chile
+c32_01, # Grado de acuerdo: Me siento orgulloso de ser chileno.
 
 #Calidad de la vida en el vecindario.
-t01,
-t02_01,
-t02_02,
-t02_03,
-t02_04,
-t03_01,
-t03_02,
-t03_03,
-t03_04,
-t03_02,
-t03_03,
-t03_04,
-t06_01,
-t06_02,
-t06_03,
-t06_04,
-t06_05,
-t06_06,
-t06_07,
-t06_08,
-t07_01,
-t07_02,
+t01, # Cuento confía usted en sus vecinos.
+t02_01, # Grado de acuerdo: Este es el barrio ideal para mí.
+t02_02, # Grado de acuerdo: Me siento integrado en este barrio.
+t02_03, # Grado de acuerdo: Me identifico con la gente de este barrio.
+t02_04, # Grado de acuerdo: Este barrio es parte de mí.
+t03_01, # Grado de acuerdo: en este barrio es fácil hacer amigos.
+t03_02, # Grado de acuerdo: en este barrio la gente es sociable.
+t03_03, # Grado de acuerdo: en este barrio la gente es cordial.
+t03_04, # Grado de acuerdo: en este barrio la gente es colaboradora.
+# 1- Totalmente insatisfecho // 5- Totalmente satisfecho
+t06_01, # Grado de satisfacción: Seguridad del barrio.
+t06_02, # Grado de satisfacción: Conectividad.
+t06_03, # Grado de satisfacción: Áreas verdes y de recreación disponibles.
+t06_04, # Grado de satisfacción: Limpieza y belleza del barrio.
+t06_05, # Grado de satisfacción: Proximidad al lugar de actividad principal.
+t06_06, # Grado de satisfacción: Proximidad a colegios de buena calidad.
+t06_07, # Grado de satisfacción: Proximidad a áreas de comercio.
+t06_08, # Grado de satisfacción: Proximidad con familiares y/o amigos cercanos.
+t07_01, # Grado de satisfacción: Tamaño de la vivienda.
+t07_02, # Grado de satisfacción: Calidad de la vivienda.
 
 # Redes sociales.
-c02,
-c03,
-c04,
-c07_01,
-c07_02,
-c07_03,
-c07_04,
-c07_05,
-c07_06,
-c07_07,
-c07_08)
+# 1- Casi siempre se puede confiar // 2- Casi siempre hay que tener cuidado en confiar
+c02, # Confianza Social Generalizada.
+c03, # Altruismo Social Generalizado 
+# 1- Mayoría trataría de aprovecharse // 2- Mayoría trataría de ser justa // 3 depende
+c04, # Mayoría de la gente trata de ser justa.
+# 1- Nunca // 3- Muchas veces
+c07_01, # Frecuencia: Visito la casa de vecino.
+c07_02, # Frecuencia: Asisto a reunión sobre temas de interés público/comunitario.
+c07_03, # Frecuencia: Amigos visitaron su casa.
+c07_04, # Frecuencia: Hizo un voluntariado.
+c07_05, # Frecuencia: Donó dinero a caridad.
+c07_06, # Frecuencia: Prestó 10.000 o mas.
+c07_07, # Frecuencia: Converso con persona en problemas o deprimida.
+c07_08)  # Frecuencia: Ayudo a alguien a conseguir trabajo.
+
+# Dar vuelta----
+# d05_01
+# Alterar orden----
+# c02,c03,c04
 
 #names(elsoc)
 #labels(elsoc)
 ```
 
-```{r, results='asis'}
-dfSummary(elsoc,
-                headings=FALSE,
-                method = 'render',
-                style = "grid",
-                plain.ascii = FALSE,
-                tmp.img.dir = 'tmp',
-                varnumbers = FALSE,
-                silent= TRUE,  split.by = NULL)
-```
-
-## Resultados
-
-Las dimensiones fueron elaboradas siguiendo la [Propuesta de
-medición de Cohesión Social con indicadores ELSOC
-(COES)](https://ocscoes.github.io/cohesion-elsoc/propuesta-de-medición-de-cohesión-social-con-indicadores-de-elsoc.html).
-Los datos son reescalados con límites 0 a 10 en todas las
-variables, teniendo por valores superiores aquellos que
-representan una mayor cohesión social. Los valores ausentes
-fueron imputados con el dato de la ola anterior.
-
-```{r,warning=FALSE,message=FALSE}
+```{r Formato datos,warning=FALSE,message=FALSE}
 
 # Calculamos la media ponderada
 #frq(elsoc)
@@ -252,7 +240,34 @@ columnas_para_reescalar <- setdiff(names(elsoc), c("ola","fact_exp01"))
 # Reescalamos las columnas numéricas al rango [0, 10], excepto 'd'
 elsoc <- elsoc %>%
   mutate_at(vars(columnas_para_reescalar), ~rescale(., to = c(0, 10)))
+```
 
+```{r, results='asis'}
+dfSummary(elsoc,
+                headings=FALSE,
+                method = 'render',
+                style = "grid",
+                plain.ascii = FALSE,
+                tmp.img.dir = 'tmp',
+                varnumbers = FALSE,
+                silent= TRUE,  split.by = NULL)
+```
+
+## Resultados
+
+Las dimensiones fueron elaboradas siguiendo la [Propuesta de
+medición de Cohesión Social con indicadores ELSOC
+(COES)](https://ocscoes.github.io/cohesion-elsoc/propuesta-de-medición-de-cohesión-social-con-indicadores-de-elsoc.html).
+Los datos son reescalados con límites 0 a 10 en todas las
+variables, teniendo por valores superiores aquellos que
+representan una mayor cohesión social. Los valores ausentes
+fueron imputados con el dato de la ola anterior.
+
+![](data/esquema_ELSOC.svg)
+
+
+
+```{r,warning=FALSE,message=FALSE}
 # Grado de importancia: Provenir de una familia adinerada (d05_01) <numeric> 
 # 
 # Confianza Social Generalizada (c02) <numeric> 
@@ -273,6 +288,7 @@ mean_na <- function(...) {
   return(mean_result)
 }
 
+# Se imputan valores faltantes con valores previos.
 elsoc_summary <- elsoc_summary %>%
   fill(everything())
 
