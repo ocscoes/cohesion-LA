@@ -56,7 +56,11 @@ Existen tres carpetas en el repositorio:
 │   ├── data
 │   ├── rsconnect
 │   └── www
-└── Web
-    ├── OCSVIS-LA
-    └── web-ocs-coes
+├── Web
+│   ├── OCSVIS-LA
+│   └── web-ocs-coes
+└── Dashboard
+    ├── app
+    ├── input
+    └── production
 ```
