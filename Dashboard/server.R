@@ -53,7 +53,10 @@ function(input, output){
     # Ajustar el layout para especificar los límites del eje x
     p <- p %>% layout(
       title = "Valores por Ola y País", 
-      xaxis = list(range = c(2003, max(df$Ola))),  # Establecer el rango del eje x
+      xaxis = list(range = c(2003, max(df$Ola)),
+                   rangeslider = list(           # Agregar el range slider
+                     visible = TRUE
+                   )),  # Establecer el rango del eje x
       updatemenus = list(list(
         type = 'dropdown',
         x = 0.25,
@@ -149,7 +152,7 @@ function(input, output){
   observe({
     x_var <- input$x_var
     y_var <- input$y_var
-    time_point <- input$Ola
+    time_point <- input$Ola_bi
     
     temp_df <- df %>% filter(Ola == time_point)
     
@@ -175,67 +178,105 @@ function(input, output){
     }
   })
   
+  
+  get_flag_emoji <- function(country_name) {
+    sanitized_country_name <- gsub(" ", "_", country_name)
+    
+    flag_emojis <- list(
+      Argentina          = "\U0001F1E6\U0001F1F7",
+      Belize             = "\U0001F1E7\U0001F1FF",
+      Bolivia            = "\U0001F1E7\U0001F1F4",
+      Brazil             = "\U0001F1E7\U0001F1F7",
+      Canada             = "\U0001F1E8\U0001F1E6",
+      Chile              = "\U0001F1E8\U0001F1F1",
+      Colombia           = "\U0001F1E8\U0001F1F4",
+      Costa_Rica         = "\U0001F1E8\U0001F1F7",
+      Dominican_Republic = "\U0001F1E9\U0001F1F4",
+      Ecuador            = "\U0001F1EA\U0001F1E8",
+      El_Salvador        = "\U0001F1F8\U0001F1FB",
+      Guatemala          = "\U0001F1EC\U0001F1F9",
+      Guyana             = "\U0001F1EC\U0001F1FE",
+      Haiti              = "\U0001F1ED\U0001F1F9",
+      Honduras           = "\U0001F1ED\U0001F1F3",
+      Jamaica            = "\U0001F1EF\U0001F1F2",
+      Mexico             = "\U0001F1F2\U0001F1FD",
+      Nicaragua          = "\U0001F1F3\U0001F1EE",
+      Panama             = "\U0001F1F5\U0001F1E6",
+      Paraguay           = "\U0001F1F5\U0001F1FE",
+      Peru               = "\U0001F1F5\U0001F1EA",
+      "Trinidad_&_Tobago" = "\U0001F1F9\U0001F1F9",
+      United_States      = "\U0001F1FA\U0001F1F8",
+      Uruguay            = "\U0001F1FA\U0001F1FE",
+      Venezuela          = "\U0001F1FB\U0001F1EA"
+    )
+    
+    return(flag_emojis[[sanitized_country_name]])
+  }
+  
+  
   output$plot <- renderPlotly({
     if (noDataMessage()) return(NULL)
     
     x_var <- input$x_var
     y_var <- input$y_var
-    time_point <- input$Ola
+    time_point <- input$Ola_bi
+    show_flags <- input$show_flags  # Aquí se añade el estado del checkbox
     
     temp_df <- df %>% filter(Ola == time_point)
     
     p <- plot_ly()
     for(pais in unique(temp_df$País)){
+      print(pais)
       x_vals <- temp_df %>% filter(País == pais, Variable == x_var) %>% pull(Valor)
       y_vals <- temp_df %>% filter(País == pais, Variable == y_var) %>% pull(Valor)
       
-      image_url <- paste0("png/", pais, ".png")
-      
-      p <- add_markers(
-        p,
-        x = x_vals,
-        y = y_vals,
-        name = pais,
-        marker = list(
-          symbol = image_url,
-          sizemode = "diameter",
-          size = 12  # Tamaño de la imagen
-        ),
-        hovertemplate = paste("País: ", pais,
-                              "<br>", x_var, ": %{x}",
-                              "<br>", y_var, ": %{y}<extra></extra>")
-      )
+      if (show_flags) {
+        # Aquí se añade la funcionalidad para mostrar las banderas como emojis
+        flag_emoji <- get_flag_emoji(gsub(" ", "_", pais))
+        p <- add_text(
+          p,
+          x = x_vals,
+          y = y_vals,
+          text = flag_emoji,
+          name = pais,
+          size = 8,
+          hovertemplate = paste("País: ", pais,
+                                "<br>", x_var, ": %{x}",
+                                "<br>", y_var, ": %{y}<extra></extra>")
+        )
+      } else {
+        # Aquí está tu código original para mostrar los marcadores
+        image_url <- paste0("png/", pais, ".png")
+        p <- add_markers(
+          p,
+          x = x_vals,
+          y = y_vals,
+          name = pais,
+          marker = list(
+            symbol = image_url,
+            sizemode = "diameter",
+            size = 12  # Tamaño de la imagen
+          ),
+          hovertemplate = paste("País: ", pais,
+                                "<br>", x_var, ": %{x}",
+                                "<br>", y_var, ": %{y}<extra></extra>")
+        )
+      }
     }
     
-    x_range <- range_values %>% filter(Variable == x_var) %>% select(min_val, max_val) %>% as.numeric()
-    y_range <- range_values %>% filter(Variable == y_var) %>% select(min_val, max_val) %>% as.numeric()
-    
+    # Adición de título y títulos de ejes
     p <- p %>% layout(
-      title = paste(""),
-      xaxis = list(
-        title = x_var,
-        range = x_range,  # Fijar el rango del eje x
-        titlefont = list(
-          family = "Arial, sans-serif",
-          size = 18,
-          color = "black"
-        )
-      ),
-      yaxis = list(
-        title = y_var,
-        range = y_range,  # Fijar el rango del eje y
-        titlefont = list(
-          family = "Arial, sans-serif",
-          size = 18,
-          color = "black"
-        )
-      ),
-      plot_bgcolor = '#ECF0F5',
-      paper_bgcolor = '#ECF0F5'
+      title = "Análisis bivariado para subdimensiones de cohesión social",
+      xaxis = list(title = x_var),
+      yaxis = list(title = y_var)
+      # plot_bgcolor = '#ECF0F5',  # Cambio de color de fondo
+      # paper_bgcolor= '#ECF0F5'  # Cambio de color de fondo
+      
     )
     
     return(p)
-  }) 
+  })
+  
 ### FIN Bivariado-----
   # Homepage del sitio web (archivo fuente en .rmd)------------------------------------------------------------
   output$home1 <- renderUI(includeHTML(path = "instrucciones.html"))

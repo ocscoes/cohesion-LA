@@ -1,10 +1,3 @@
-#------------------------------------------------------------------------------#
-# Proyect title: "Observatorio de Cohesion Social" 
-# Author(s): Julio Iturra Sanhueza & Juan Carlos Castillo
-# website: https://www.linkedin.com/in/jciturras/
-# e-mail: julioiturrasanhueza@gmail.com
-#------------------------------------------------------------------------------#
-
 # INTERFAZ OCS-COES -----------------------------
 
 # install.packages("shiny")
@@ -95,6 +88,12 @@ ui <- dashboardPage(
                                         )
                                        ),
   dashboardBody(
+    tags$style(".content-wrapper {
+               background-color: #FFFFFF !important;
+               padding-top: 2% !important;
+               padding-bottom: 2% !important;
+               }"),
+    
     setShadow(class = "box"),
     setShadow(class= "main-header"), 
     setShadow(class= "sidebar-collapse"),
@@ -201,9 +200,10 @@ ui <- dashboardPage(
             plotlyOutput("plot", height = "800px")
         ),
         div(class = "controls-container",
-            sliderInput("Ola", "", min = min(unique_years_bi), max = max(unique_years_bi), value = min(unique_years_bi), step = step_size_bi, sep = ""),
+            sliderInput("Ola_bi", "", min = min(unique_years_bi), max = max(unique_years_bi), value = min(unique_years_bi), step = step_size_bi, sep = ""),
             selectInput("x_var", "Variable para el eje X:", choices = unique(df$Variable), selected = "Actitud hacia la democracia"),
             selectInput("y_var", "Cariable para el eje Y:", choices = unique(df$Variable), selected = "Confianza interpersonal"),
+            checkboxInput("show_flags", "Banderas en lugar de puntos.", TRUE),
             hidden(div(id = "noDataDiv", style = "color: red;", "No hay datos disponibles para la variable en este año. Por favor, seleccione otro."))
         )
     )

@@ -20,7 +20,7 @@ knitr::include_graphics("www/images/ocs-negro.png")
 
 ### 1.  Elegir una de las pestañas disponibles para realizar el análisis:
 
-  -   **_Transversal_**: compara a los países en distintos indicadores usando todas las olas de la encuesta (es decir, es un promedio para cada país)
+  -   **_Mapa_**: visualiza en el mapa los promedios nacionales anuales para cada uno de los indicadores elaborados.
   -   **_Longitudinal_**: se compara a los países considerando los distintos momentos en el tiempo del indicador seleccionado.
   -   **_Bivariado_**: se asocian dos indicadores considerando todos los países en cada ola, pudiendo seleccionar uno o más puntos en el tiempo.
 
@@ -29,15 +29,8 @@ knitr::include_graphics("www/images/ocs-negro.png")
   a.  Seleccione el indicador
   b.  Seleccione el País
   c.  Seleccione la Ola o rango de tiempo: Cada una de las Olas representa el periodo en que se realizó el trabajo de campo.
-  d.  Presione el botón ![](www/images/graficar.png){width="12%"}
   e.  Si desea generar un nuevo gráfico, repite los pasos anteriores.
-  f.  Para **guardar** el resultado puedes hacer **click derecho** sobre el gráfico y seleccionar  _"Guardar imagen como"_.
 
-<br>
-<br>
-<br>
-<br>
-<br>
 <br>
 <br>
 <br>

@@ -1,9 +1,3 @@
-#------------------------------------------------------------------------------#
-# Proyect title: "Observatorio de Cohesion Social" 
-# Author(s): Julio Iturra Sanhueza & Juan Carlos Castillo
-# website: https://www.linkedin.com/in/jciturras/
-# e-mail: julioiturrasanhueza@gmail.com
-#------------------------------------------------------------------------------#
 rm(list=ls())
 
 load("data/lapop_ind_2004to2021.RData")              # transversal

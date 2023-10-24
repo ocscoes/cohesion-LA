@@ -21,32 +21,28 @@ execute:
   echo: false
   #cache: true
 comments:
-   hypothesis: true
+   hypothesis: false
 date: '2023-06-12'
 #date-format: short
 editor_options: 
   chunk_output_type: console
 ---
 
-El presente informe tiene por objetivo describir la
-construcción de índices de cohesión social para
-Latinoamérica en el periodo 2004-2021. Con este fin, se
-utilizarán datos provenientes de las encuestas LAPOP,
-Latinbarómetro y de la Encuesta Mundial de Valores (WVS). A
-continuación se describen los datos.
+<iframe src="https://jandimter.shinyapps.io/Cohesion3/" style="border: simple; width: 1135px; height: 850px"></iframe>
 
-<iframe src="https://jandimter.shinyapps.io/Cohesion3/" style="border: none; width: 1135px; height: 800px">
-
-</iframe>
+Este documento tiene por intención constituir un aporte en el análisis de cohesión social en América Latina. Para esto, se
+utilizarán datos para el periodo 2004-2021 provenientes de las encuestas [LAPOP]((https://www.vanderbilt.edu/lapop/)),
+[Latinobarómetro](https://www.latinobarometro.org/lat.jsp) y de la [Encuesta Mundial de Valores (WVS)](https://www.worldvaluessurvey.org/wvs.jsp). A
+continuación se describen los datos y su procesamiento.
 
 # Datos
 
 A continuación se presentan los datos utilizados para la
 construcción de los índices. Se tomaron tres fuentes:
 
-1.  Las encuestas LAPOP.
-2.  Las encuestas Latinobarómetro.
-3.  Las encuestas del World Value Survey.
+1.  Las encuestas [LAPOP](https://www.vanderbilt.edu/lapop/).
+2.  Las encuestas [Latinobarómetro.](https://www.latinobarometro.org/lat.jsp)
+3.  Las encuestas del [World Value Survey](https://www.worldvaluessurvey.org/wvs.jsp).
 
 Los datos provenientes de LAPOP corresponden al mayor
 volumen da datos usados. Se tomó este estudio como la base
@@ -64,7 +60,7 @@ reescaladas.
 
 ## LAPOP
 
-La encuesta LAPOP, que significa "Latin American Public
+La [encuesta LAPOP](https://www.vanderbilt.edu/lapop/), que significa "Latin American Public
 Opinion Project" (Proyecto de Opinión Pública
 Latinoamericana), es una iniciativa de investigación que
 tiene como objetivo medir y analizar las actitudes y
@@ -413,7 +409,7 @@ los datos del 2021 se trabajará tomando como límite la ola
 ### Imputación LAPOP
 
 Al revisar las primeras filas del dataset se constata la
-existencia de datos pedidos en las variables de interés.
+existencia de datos perdidos en las variables de interés.
 
 Ante esto, se realiza una estrategia de imputación que
 utilice las medias más cercanas en el tiempo. Se tiene por
@@ -568,7 +564,7 @@ saveRDS(LAPOP,"data/data_lapop.rds")
 
 ## Latinobarómetro
 
-Latinobarómetro es un estudio de opinión pública que se
+[Latinobarómetro](https://www.latinobarometro.org/lat.jsp) es un estudio de opinión pública que se
 lleva a cabo anualmente en América Latina desde 1995. Su
 objetivo principal es medir y analizar las actitudes,
 creencias y valores de los ciudadanos en la región.
@@ -581,12 +577,10 @@ temas, como la democracia, la economía, la política, la
 confianza en las instituciones, la religión, la identidad y
 otros asuntos sociales.
 
-### Paises por cada ola
+### Países por cada ola
 
-Las olas originales son recodificadas según años pares (por
-ej. 2017 pasa a incluirse a 2016) a modo de equiparar los
-periodos a los de la Encuesta LAPOP, que se por base. Así,
-se incluye en el análisis 8 olas que contienen la totalidad
+Las olas originales son recodificadas según años pares equiparándolas de la Encuesta LAPOP, utilizada como base. Así,
+se incluye en el análisis 8 olas de Latinobarómetro que contienen la totalidad
 de los países estudiados en cada iteración.
 
 ```{r Breve limpieza}
@@ -984,7 +978,7 @@ tabla_prop_perdidos
 
 ## World Values Survey
 
-La Encuesta Mundial de Valores (World Values Survey en
+La [Encuesta Mundial de Valores](https://www.worldvaluessurvey.org/wvs.jsp) (World Values Survey en
 inglés) es una investigación sociológica a gran escala que
 tiene como objetivo examinar los valores y creencias de las
 personas en diferentes países. Fue iniciada en 1981 por
@@ -1055,14 +1049,12 @@ prom_wave_wvs <- data %>%
   summarise_if(is.numeric, mean, na.rm = TRUE)
 ```
 
-### Paises por cada ola
+### Países por cada ola
 
 Los datos de la encuesta son recodificados en olas de dos
-años siguiendo el esquema LAPOP. Se recodifica el año de
-cada caso asignando a los valores impares una unidad menos
-(ej. 2017 pasa a 2016). Se hace una excepción con Uruguay
+años siguiendo el esquema LAPOP. Se hace una excepción con Uruguay
 2022, siendo reasignado como 2020. En sus registros formales
-el estudio agrupa olas que abarcan alrededor de 5 años por
+el WVS agrupa olas que abarcan un periodo de alrededor de 5 años por
 cada iteración.
 
 ```{r}
@@ -1256,6 +1248,8 @@ el cómputo del Índice de Cohesión General se calculó la
 media entre Índice de Cohesión Vertical y el Índice de
 Cohesión Horizontal. A continuación se presentan los
 resultados.
+
+Los items negros corresponden a dimensiones. Los de color verde a subdimensiones. Colores grises a indicadores. Para la construcción de esto últimos se utilizaron items de las encuestas revisadas anteriormente. En color azul items presentes en LAPOP, en color amarillo items de la World Value Survey y en color morado items de Latinobarómetro (LB). 
 
 ![](data/esquema.svg)
 
@@ -1589,244 +1583,13 @@ A partir del análisis sobre disponibilidad, para la
 estimación de subdimensiones se define un estándar del 60%
 de los datos disponibles para considerarse válido. Las
 subdimensiones resultantes (país-ola) con una proporción
-menor son recodificados como casos perdidos (NAs). A
-continuación se presenta la visualizaciones de los
-resultados:
+menor son recodificados como casos perdidos (NAs). Los resultados son presentados en el dashboard inserto al [inicio del documento](#title-block-header)
+
+# Anexo
 
 ::: panel-tabset
-### Longitudinal
 
-```{r,out.height='750px',eval=FALSE}
-# Versión no longitudinal
-
-# Se cuenta la proporción de indicadores disponibles por país y año.
-calidad_year <- datos %>%
-  group_by(pais,wave)%>%
-  summarise(sub_orgullonacional = sum(!is.na(c(b4,orgullonacional)))/2,                                            #2
-            sub_satisfaccionresidencial = sum(!is.na(c(aoj11, sd2new2, sd3new2,sd6new2,seguridadbarrio)))/5,       #5
-            sub_confianzainterpersonal = sum(!is.na(c(it1))),                                                    #1
-            sub_comportamientoprosocial = sum(!is.na(c(cp8))),                                                   #1
-            sub_confianzainstitutciones = sum(!is.na(c(b21a, b21, b18, b10a, b13)))/5,                             #5
-            sub_actitudhacialademocracia = sum(!is.na(c(pn4, b4, apoyodemocracia)))/3,                             #3
-            sub_participacioncivica = sum(!is.na(c(prot3, hablarpolitica, convencerpolitica, firmadopeticion)))/4, #4
-            sub_interespolitico = sum(!is.na(c(pol1, vb2)))/2,                                                     #2
-            sub_justiciadistributiva = sum(!is.na(c(justiciaingresoriqueza,igualdadingresos)))/2,                  #2
-            sub_surgirenlavida = sum(!is.na(c(dif_hijos,dif_padres)))/2                                            #2
-            )
-# Se limita el dataset a columnas representativas de subdimensiones.
-subdim_values <- prom %>% select(starts_with('sub'))
-
-# Cada caso con disponibilidad menor a 0.6 es recodificado como NA.
-for(i in 1:nrow(calidad_year)){
-  for(j in names(calidad_year)[3:12]){
-    if(calidad_year[i,j]<0.6){
-      subdim_values[i,j]<-NA
-    }
-  }
-}
-
-# Se asignan nombres adecuados para las columnas.
-subdim_values <- subdim_values %>% setNames(c("Ola","País",
-                                              "Orgullo nacional",
-                                              "Satisfacción residencial",
-                                              "Confianza interpersonal",
-                                              "Comportamiento prosocial",
-                                              "Confianza en instituciones",
-                                              "Actitud hacia la democracia",
-                                              "Participación cívica",
-                                              "Interés político",
-                                              "Justicia distributiva",
-                                              "Surgir en la vida"))
-
-df <- subdim_values %>%
-  pivot_longer(cols = `Orgullo nacional`:`Surgir en la vida`,
-               names_to = "Variable",
-               values_to = "Valor") %>%
-  mutate(Valor= round(Valor,2))
-
-# Convertir "Ola" y "Valor" a numéricos
-df$Ola <- as.numeric(df$Ola)
-df$Valor <- as.numeric(gsub(",", ".", df$Valor))
-
-p <- plot_ly()
-
-# Agregar trazas iniciales (usando la primera variable como predeterminada)
-variable_seleccionada <- unique(df$Variable)[3]
-for(pais in unique(df$País)){
-  temp_df <- df %>% filter(País == pais, Variable == variable_seleccionada)
-  p <- add_trace(
-    p,
-    x = temp_df$Ola,
-    y = temp_df$Valor,
-    name = pais,
-    type = 'scatter',
-    mode = 'lines',
-    line = list(color = sample(colors(), 1)),
-    hovertemplate = paste("País: ", pais, 
-                          #"<br>Variable: ", variable_seleccionada, 
-                          "<br>Ola: %{x}<br>Valor: %{y}<extra></extra>")
-  )
-}
-
-# Añadir menú desplegable
-buttons <- lapply(unique(df$Variable), function(variable) {
-  list(
-    method = 'restyle',
-    args = list(
-      'y', lapply(unique(df$País), function(pais) {
-        df %>% filter(País == pais, Variable == variable) %>% pull(Valor)
-      }),
-      'hovertemplate', paste("País: %{name}<br>Variable: ", variable, 
-                             "<br>Ola: %{x}<br>Valor: %{y}<extra></extra>")
-    ),
-    label = variable
-  )
-})
-
-# Ajustar el layout para especificar los límites del eje x
-p <- p %>% layout(
-  title = "Valores por Ola y País", 
-  xaxis = list(range = c(2003, max(df$Ola))),  # Establecer el rango del eje x
-  updatemenus = list(list(
-    type = 'dropdown',
-    x = 0.25,
-    y = 1.1,
-    buttons = buttons
-  ))
-)
-print("test")
-
-# Mostrar el gráfico
-p
-
-```
-
-```{r Preparación shinys}
- #Se cuenta la proporción de indicadores disponibles por país y año.
-calidad_year <- datos %>%
-  group_by(pais,wave)%>%
-  summarise(sub_orgullonacional = sum(!is.na(c(b4,orgullonacional)))/2,                                            #2
-            sub_satisfaccionresidencial = sum(!is.na(c(aoj11, sd2new2, sd3new2,sd6new2,seguridadbarrio)))/5,       #5
-            sub_confianzainterpersonal = sum(!is.na(c(it1))),                                                    #1
-            sub_comportamientoprosocial = sum(!is.na(c(cp8))),                                                   #1
-            sub_confianzainstitutciones = sum(!is.na(c(b21a, b21, b18, b10a, b13)))/5,                             #5
-            sub_actitudhacialademocracia = sum(!is.na(c(pn4, b4, apoyodemocracia)))/3,                             #3
-            sub_participacioncivica = sum(!is.na(c(prot3, hablarpolitica, convencerpolitica, firmadopeticion)))/4, #4
-            sub_interespolitico = sum(!is.na(c(pol1, vb2)))/2,                                                     #2
-            sub_justiciadistributiva = sum(!is.na(c(justiciaingresoriqueza,igualdadingresos)))/2,                  #2
-            sub_surgirenlavida = sum(!is.na(c(dif_hijos,dif_padres)))/2                                            #2
-            )
-# Se limita el dataset a columnas representativas de subdimensiones.
-subdim_values <- prom %>% select(starts_with('sub'))
-
-# Cada caso con disponibilidad menor a 0.6 es recodificado como NA.
-for(i in 1:nrow(calidad_year)){
-  for(j in names(calidad_year)[3:12]){
-    if(calidad_year[i,j]<0.6){
-      subdim_values[i,j]<-NA
-    }
-  }
-}
-
-# Se asignan nombres adecuados para las columnas.
-subdim_values <- subdim_values %>% setNames(c("Ola","País",
-                                              "Orgullo nacional",
-                                              "Satisfacción residencial",
-                                              "Confianza interpersonal",
-                                              "Comportamiento prosocial",
-                                              "Confianza en instituciones",
-                                              "Actitud hacia la democracia",
-                                              "Participación cívica",
-                                              "Interés político",
-                                              "Justicia distributiva",
-                                              "Surgir en la vida"))
-
-df <- subdim_values %>%
-  pivot_longer(cols = `Orgullo nacional`:`Surgir en la vida`,
-               names_to = "Variable",
-               values_to = "Valor") %>%
-  mutate(Valor= round(Valor,2))
-
-# Convertir "Ola" y "Valor" a numéricos
-df$Ola <- as.numeric(df$Ola)
-df$Valor <- as.numeric(gsub(",", ".", df$Valor))
-save(df,file = "data/base_shiny.rdata")
-```
-
-```{r,out.height='650px'}
-p <- plot_ly()
-
-# Agregar trazas iniciales (usando la primera variable como predeterminada)
-variable_seleccionada <- unique(df$Variable)[3]
-for(pais in unique(df$País)){
-  temp_df <- df %>% filter(País == pais, Variable == variable_seleccionada)
-  p <- add_trace(
-    p,
-    x = temp_df$Ola,
-    y = temp_df$Valor,
-    name = pais,
-    type = 'scatter',
-    mode = 'lines+markers', # Agregar líneas y marcadores
-    line = list(color = sample(colors(), 1)),
-    hovertemplate = paste("País: ", pais, 
-                          #"<br>Variable: ", variable_seleccionada, 
-                          "<br>Ola: %{x}<br>Valor: %{y}<extra></extra>")
-  )
-}
-
-# Añadir menú desplegable
-buttons <- lapply(unique(df$Variable), function(variable) {
-  list(
-    method = 'restyle',
-    args = list(
-      'y', lapply(unique(df$País), function(pais) {
-        df %>% filter(País == pais, Variable == variable) %>% pull(Valor)
-      }),
-      'hovertemplate', paste("País: %{name}<br>Variable: ", variable, 
-                             "<br>Ola: %{x}<br>Valor: %{y}<extra></extra>")
-    ),
-    label = variable
-  )
-})
-
-# Ajustar el layout para especificar los límites del eje x y agregar el range slider
-p <- p %>% layout(
-  title = "Valores por Ola y País", 
-  xaxis = list(
-    range = c(2003, max(df$Ola)), # Establecer el rango del eje x
-    rangeslider = list(           # Agregar el range slider
-      visible = TRUE
-    )
-  ),
-  updatemenus = list(list(
-    type = 'dropdown',
-    x = 0.25,
-    y = 1.1,
-    buttons = buttons
-  ))
-)
-
-# Mostrar el gráfico
-p
-
-```
-
-### Mapa
-
-<iframe src="https://jandimter.shinyapps.io/Subdimensiones-Cohesion-LA/" style="border: none; width: 881px; height: 800px">
-
-</iframe>
-
-### Bivariada
-
-<iframe src="https://jandimter.shinyapps.io/Bivariado-LA/" style="border: none; width: 881px; height: 800px">
-
-</iframe>
-:::
-
-## Anexo
-
-### Revisión disponibilidad LAPOP
+## Revisión disponibilidad LAPOP
 
 ```{r Crea review, eval=FALSE}
 # Habiendo identidicado las variables de interés se revisa su disponibilidad por
@@ -1909,7 +1672,7 @@ ggplotly(plot)
 rm(plot,review)
 ```
 
-### Valores por dimensión
+## Valores por dimensión
 
 ```{r,out.height='750px'}
 prom %>%
@@ -1919,7 +1682,7 @@ prom %>%
    autofit()
 ```
 
-### Visualización índices estimados
+## Visualización índices estimados
 
 ```{r Visualizacion vertical}
 plot<-ggplot(prom, aes(x = wave, y = cohesion_vertical, color=pais,group=pais)) +
@@ -1998,6 +1761,8 @@ plot<-ggplot(prom, aes(x = wave, y = cohesion_general, color=pais,group=pais)) +
   )
 ggplotly(plot)
 ```
+
+:::
 
 ```{css, echo=FALSE}
 .table {
