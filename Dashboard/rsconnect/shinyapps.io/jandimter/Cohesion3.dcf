@@ -5,7 +5,7 @@ account: jandimter
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 9999715
-bundleId: 7846640
+bundleId: 8062254
 url: https://jandimter.shinyapps.io/Cohesion3/
 version: 1
 asMultiple: FALSE

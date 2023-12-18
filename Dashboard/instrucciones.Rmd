@@ -20,9 +20,9 @@ knitr::include_graphics("www/images/ocs-negro.png")
 
 ### 1.  Elegir una de las pestañas disponibles para realizar el análisis:
 
-  -   **_Mapa_**: visualiza en el mapa los promedios nacionales anuales para cada uno de los indicadores elaborados.
-  -   **_Longitudinal_**: se compara a los países considerando los distintos momentos en el tiempo del indicador seleccionado.
-  -   **_Bivariado_**: se asocian dos indicadores considerando todos los países en cada ola, pudiendo seleccionar uno o más puntos en el tiempo.
+  -   **_Mapa_**: En esta sección se proyectan en el mapa de América latina los promedios de cada país para cada dimensión o subdimensión. Por defecto está seleccionado para el promedio histórico, pero es posible seleccionar un año de interés.
+  -   **_Longitudinal_**: En este apartado se compara a los países a través de un gráfico de líneas histórico. Debes seleccionar una dimensión o subdimensión a visualizar. Es posible seleccionar qué país o países se presentan.
+  -   **_Bivariado_**: Aquí se encuentran dos selectores entre los que encontrarás las dimensiones y subdimensiones además de algunas variables de caracterización de los países tales como su PIB o esperanza de vida.
 
 ### 2.  Seleccionar características del gráfico:
 

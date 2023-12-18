@@ -1,9 +1,9 @@
 rm(list=ls())
 
-load("data/lapop_ind_2004to2021.RData")              # transversal
-load("data/lapop_count_2004to2021.RData")             # longitudinal
-load("data/lapop_count_2004to2021_long-wave.RData")  # longitudinal para bivariado
-fraseo<- xlsx::read.xlsx(file = "data/fraseo_preguntas.xlsx",sheetIndex = 1,encoding = "UTF-8")
+# load("data/lapop_ind_2004to2021.RData")              # transversal
+# load("data/lapop_count_2004to2021.RData")             # longitudinal
+# load("data/lapop_count_2004to2021_long-wave.RData")  # longitudinal para bivariado
+# fraseo<- xlsx::read.xlsx(file = "data/fraseo_preguntas.xlsx",sheetIndex = 1,encoding = "UTF-8")
 
 
 # save(fraseo,file = "../input/data/original/fraseo_preguntas.Rdata")

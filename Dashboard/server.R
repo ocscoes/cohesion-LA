@@ -82,7 +82,9 @@ function(input, output){
     btn_var7 = "Participación cívica",
     btn_var8 = "Interés político",
     btn_var9 = "Justicia distributiva",
-    btn_var10 = "Surgir en la vida"
+    btn_var10 = "Surgir en la vida",
+    btn_var11 = "Cohesión horizontal",
+    btn_var12 = "Cohesión vertical"
   )
   
   # Creación programática de observadores para botones
@@ -239,21 +241,24 @@ function(input, output){
           y = y_vals,
           text = flag_emoji,
           name = pais,
-          size = 8,
+          size = 5,
           hovertemplate = paste("País: ", pais,
                                 "<br>", x_var, ": %{x}",
                                 "<br>", y_var, ": %{y}<extra></extra>")
         )
+        
+        p <- p %>% layout(
+          font = list(family = "Noto Color Emoji, Open Sans, verdana, arial, sans-serif"),
+          legend = list(font = list(family = "Noto Color Emoji, Open Sans, verdana, arial, sans-serif"))
+        )
       } else {
         # Aquí está tu código original para mostrar los marcadores
-        image_url <- paste0("png/", pais, ".png")
         p <- add_markers(
           p,
           x = x_vals,
           y = y_vals,
           name = pais,
           marker = list(
-            symbol = image_url,
             sizemode = "diameter",
             size = 12  # Tamaño de la imagen
           ),

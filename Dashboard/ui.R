@@ -98,7 +98,10 @@ ui <- dashboardPage(
     setShadow(class= "main-header"), 
     setShadow(class= "sidebar-collapse"),
     tags$head(
-      tags$link(rel = "stylesheet", type = "text/css", href = "css/custom-a.css")
+      tags$link(rel = "stylesheet", type = "text/css", href = "css/custom-a.css"),
+      tags$link(rel="preconnect", href="https://fonts.googleapis.com"),
+      tags$link(rel="preconnect", href="https://fonts.gstatic.com", crossorigin=TRUE),
+      tags$link(href="https://fonts.googleapis.com/css2?family=Noto+Color+Emoji&display=swap", rel="stylesheet")
       ),
     useShinyjs(),  # Inicialización de shinyjs
     extendShinyjs(text = jsToggleFS, functions = c("toggleFullScreen")),
@@ -119,8 +122,9 @@ ui <- dashboardPage(
                           #shiny-tab-mapa .slider-wrapper { display: flex; align-items: center; }
                           #shiny-tab-mapa .slider-title {width: 33%; font-size: 2em; color: #383838; font-weight: 500; letter-spacing: 2px;}
                           #shiny-tab-mapa .shiny-input-container:not(.shiny-input-container-inline) { width: 62%; max-width: 100%;}
-                          #shiny-tab-mapa .btn {font-weight: 300; border-radius: 17px; padding: 4px 0px; font-size: 16px; width: 40%; margin: 0px 0px 3% 5%;}"
-                         ),
+                          #shiny-tab-mapa .btn {font-weight: 300; border-radius: 17px; padding: 4px 0px; font-size: 16px; width: 40%; margin: 0px 0px 3% 5%;}
+                          #shiny-tab-mapa img {max-width: 44%!important;}
+                         "),
               div(class = "main-container",
               div(class = "map-container",
                   leafletOutput("map", height = "800px", width = "100%")),
@@ -151,7 +155,11 @@ ui <- dashboardPage(
               actionButton("btn_var9",
                            label = HTML('<img src="img/Justicia distributiva.svg" alt="Justicia distributiva" width="75"><span><br>Justicia<br>distributiva</span>')),
               actionButton("btn_var10",
-                           label = HTML('<img src="img/Surgir en la vida.svg" alt="Surgir en la vida" width="75"><span><br>Surgir en<br>la vida</span>'))
+                           label = HTML('<img src="img/Surgir en la vida.svg" alt="Surgir en la vida" width="75"><span><br>Surgir en<br>la vida</span>')),
+              actionButton("btn_var11",
+                           label = HTML('<img src="img/horizontal.svg" alt="Cohesión horizontal" width="75"><span><br>Cohesión<br>horizontal</span>')),
+              actionButton("btn_var12",
+                           label = HTML('<img src="img/Cohesión vertical.svg" alt="Cohesión vertical" width="75"><span><br>Cohesión<br>vertical</span>'))
         )
     ), # Fin mapa -----
       ),
@@ -193,6 +201,7 @@ ui <- dashboardPage(
         #shiny-tab-bivariado .slider-title {width: 33%; font-size: 2em; color: #383838; font-weight: 500; letter-spacing: 2px;}
         #shiny-tab-bivariado .shiny-input-container:not(.shiny-input-container-inline) { width: 62%; max-width: 100%;}
         #shiny-tab-bivariado .btn {font-weight: 300; border-radius: 17px; padding: 4px 0px; font-size: 16px; width: 40%; margin: 0px 0px 3% 5%;}
+        text {font-family: 'Noto Color Emoji', 'Open Sans', verdana, arial, sans-serif;}
     "),
     
     div(class = "main-container",
