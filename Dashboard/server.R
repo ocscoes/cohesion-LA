@@ -209,7 +209,8 @@ function(input, output){
       "Trinidad_&_Tobago" = "\U0001F1F9\U0001F1F9",
       United_States      = "\U0001F1FA\U0001F1F8",
       Uruguay            = "\U0001F1FA\U0001F1FE",
-      Venezuela          = "\U0001F1FB\U0001F1EA"
+      Venezuela          = "\U0001F1FB\U0001F1EA",
+      Promedio           = "\U0001f6a9"
     )
     
     return(flag_emojis[[sanitized_country_name]])

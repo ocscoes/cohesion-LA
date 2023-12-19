@@ -2378,6 +2378,7 @@ df <- merge(prom,
   select(-id,-country)
   
 
+
 # prom_wave_wvs <- prom_wave_wvs %>%
 #   mutate(pais = droplevels(pais)) %>%
 #   as_tibble()%>%
@@ -2402,7 +2403,14 @@ df <- df %>%
          ) %>% 
   pivot_longer(cols = 3:16,names_to = "Variable",values_to = "Valor", values_drop_na = FALSE)
 
-save(df,file = "data/base_shiny.rdata")
+df <- df %>% rbind(df %>%
+    group_by(Ola, Variable) %>%
+    summarise(Valor = mean(Valor, na.rm = TRUE)) %>%
+    mutate(País = "Promedio") %>%
+    ungroup() %>%
+    select(Ola, País, Variable, Valor))
+
+# save(df,file = "data/base_shiny.rdata")
 # load(file = "data/base_shiny.rdata")
 # Ola, País, Variable, Valor (incluye NA) # 2000 filas.
 
