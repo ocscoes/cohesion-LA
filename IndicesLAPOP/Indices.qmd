@@ -1530,7 +1530,7 @@ resultados.
 
 Los items negros corresponden a dimensiones. Los de color verde a subdimensiones. Colores grises a indicadores. Para la construcción de esto últimos se utilizaron items de las encuestas revisadas anteriormente. En color azul items presentes en LAPOP, en color amarillo items de la World Value Survey y en color morado items de Latinobarómetro (LB).
 
-![](data/esquema.svg)
+![](data/Esquema.svg)
 
 ## Correlación indicadores por subdimensión
 
