@@ -1,6 +1,6 @@
 ---
 title: 'Construcción índices de Cohesión Social para América Latina'
-subtitle: 'A partir de datos LAPOP, Latinbarómetro y WVS.'
+subtitle: 'A partir de datos de encuestas LAPOP, Latinobarómetro y del World Value Survey.'
 author: "Observatorio de Cohesión Social (OCS) - COES"
 format:
   html:
