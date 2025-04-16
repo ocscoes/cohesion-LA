@@ -223,8 +223,12 @@ merge_faltante <- lapply(dta, function(archivo){
 })
 rm(dta)
 merge_faltante <- bind_rows(merge_faltante)
+
 dta<- list.files(path = "data/LAPOP2021/", pattern = ".dta")
 dta <- paste0(file = "data/LAPOP2021/",dta)
+
+dta_2023<- list.files(path = "data/LAPOP2023/", pattern = ".dta")
+dta_2023 <- paste0(file = "data/LAPOP2023/", dta_2023)
 
 data2021 <- lapply(dta, function(archivo){
   print(archivo)
@@ -233,6 +237,14 @@ data2021 <- lapply(dta, function(archivo){
   return(df)
 })
 data2021 <- bind_rows(data2021) ; rm(dta)
+
+data2023 <- lapply(dta_2023, function(archivo){
+  print(archivo)
+  df <- read_dta(archivo)
+  df <- df %>% select_if(names(df) %in% vars)
+  return(df)
+})
+data2023 <- bind_rows(data2023) ; rm(dta_2023)
 
 datos0418 <- datos0418 %>% select_if(names(datos0418) %in% vars)
 datos1618 <-  datos0418  %>% filter(wave==2016 | wave==2018)
@@ -256,10 +268,15 @@ merge_faltante$year <- merge_faltante$wave
 data2021 <- mutate_all(data2021, as.numeric)
 data2021$year <- data2021$wave
 
+data2023 <- data2023 %>% 
+  mutate_all(as.numeric) %>%
+  mutate(wave= 2022)
+data2023$year <- data2023$wave
+
 # Merge 2004-2014 + 2018 + faltantes varias del grand merge + 2021
-datos <- bind_rows(datosselc,datos1618,merge_faltante,data2021) # logra una base longitudinal con la pr4 incluida. 
+datos <- bind_rows(datosselc,datos1618,merge_faltante,data2021, data2023) # logra una base longitudinal con la pr4 incluida. 
 datos <- copy_labels(datos, datos0418)
-rm(list = setdiff(ls(),c("datos","vars","vars_hor","vars_ver","mean_result")))
+# rm(list = setdiff(ls(),c("datos","vars","vars_hor","vars_ver","mean_result")))
 datos_label <- to_label(datos)
 datos$pais<-datos_label$pais
 
@@ -326,11 +343,11 @@ prom_wave$b39n <- set_label(prom_wave$b39n, "¿Hasta qué punto tiene usted conf
 prom_wave <- prom_wave %>% ungroup()
 
 # Se almacena la data.
-write_rds(prom_wave,"data/Lapop_data_proms.RDS")
+write_rds(prom_wave,"data/Lapop_data_proms_2023.RDS")
 ```
 
 ```{r Creación descriptivos LAPOP, results='asis'}
-LAPOP <- read_rds("data/Lapop_data_proms.RDS") # Promedios por ola-país
+LAPOP <- read_rds("data/Lapop_data_proms_2023.RDS") # Promedios por ola-país
 ```
 
 :::: {.columns}
@@ -418,11 +435,17 @@ print(dfSummary(LAPOP,
       silent = TRUE,
       footnote = NA)
 
+# Contar NA por año-pais
+LAPOP$na_count <- rowSums(is.na(LAPOP))
+
+# LAPOP %>% group_by(wave) %>% summarise(na= sum(na_count),
+#                                        n= n()*28) %>% mutate(p= na/n)
+
+
 LAPOP <- LAPOP[order(LAPOP$pais),] %>%
         filter(!pais %in% c("Suriname","Bahamas","Barbados","Grenada",
                             "Saint Lucia","Dominica","Saint Kitts and Nevis",
                             "Saint Vincent and the Grenadines")) %>%
-        filter(wave != 2021) %>%
         select(-c(b43,vicbar1,vicbar3,vicbar7,jamb18a,b23,b39n,nicfear,
                   movus1))
 ```
@@ -451,8 +474,7 @@ exclusión de las variables:
     **0.5%** de los países-años.
 
 **Debido a la baja presencia de las variables de interés en
-los datos del 2021 se trabajará tomando como límite la ola
-2018.**
+los datos del 2021, se excluyó esta ola del análisis**
 
 ### Imputación LAPOP
 
@@ -600,6 +622,13 @@ bg(i = ~ is.na(sd6new2) ,j=~ sd6new2, bg = "#E73C6D") %>%
   color(i = c(1,9),j=~ pol1, color='white')
 ```
 
+
+```{r}
+LAPOP <- LAPOP[order(LAPOP$pais),] %>%
+        filter(wave != 2021)
+```
+
+
 Resumen de datos (caso equivalente a país-año) imputados por variable:
 
 ```{r}
@@ -627,13 +656,13 @@ prop_casos_perdidos <- function(variable) {
 
 # Crear la tabla de proporción de casos perdidos por variable
 tabla_prop_perdidos <- data.frame(
-  Variable = colnames(prom),
-  Proporcion_Casos_Perdidos = sapply(prom, prop_casos_perdidos)
+  Variable = colnames(LAPOP),
+  Proporcion_Casos_Perdidos = sapply(LAPOP, prop_casos_perdidos)
 )%>%t()
 ```
 
 ```{r Almacenado datos LAPOP}
-saveRDS(LAPOP,"data/data_lapop.rds")
+saveRDS(LAPOP,"data/data_lapop_2023.rds")
 ```
 
 ## Latinobarómetro
@@ -677,65 +706,73 @@ rm(list=setdiff(ls(),c("LAPOP","prop_casos_perdidos",
 
 ```{r Variables Latinobarómetro a utilizar, warning=FALSE, message=FALSE, include = FALSE,eval=FALSE}
 # Justicia en distribución
-redistribucion <- data.frame(
-    variable = c("p17st","p26st.e","p14st","P12ST","P12ST","P27ST","P18ST",
-                 "P21ST","P20ST","P23ST"),
-    año=c(2007, 2008, 2009, 2010, 2011, 2013, 2015, 2016, 2017, 2018),
-    descripcion=c("Es justa la distribución del ingreso", # 1 Muy justa 4 Muy injusta
-                  "Garantías: Justa distribución de la riqueza", #1 Completamente garantizadas 4 Para nada garantizadas
-                  "Es justa la distribución del ingreso", ## 1 Muy justa 4 Muy injusta
-                  "Es justa la distribución del ingreso", ## 1 Muy justa 4 Muy injusta
-                  "¿Cuán justa cree Ud. que es la distribución del ingreso en (país)?", # 1 Muy justa 4 Muy injusta
-                  "Cómo de justa es la distribución del ingreso en el país", # 1 Muy justa 4 Muy injusta
-                  "Cómo de justa es la distribución del ingreso en el país",# 1 Muy justa 4 Muy injusta
-                  "Cómo de justa es la distribución del ingreso en el país",# 1 Muy justa 4 Muy injusta
-                  "Cómo de justa es la distribución del ingreso en el país",# 1 Muy justa 4 Muy injusta
-                  "Cómo de justa es la distribución del ingreso en el país"# 1 Muy justa 4 Muy injusta
-                  ),
-    standard='Es justa la distribucion de ingreso/riqueza',
-    code='justiciaingresoriqueza')
+
+redistribucion <- data.frame(     
+  variable = c("p17st","p26st.e","p14st","P12ST","P12ST","P27ST","P18ST", 
+               "P21ST","P20ST","P23ST", "P17ST"),     
+  año = c(2007, 2008, 2009, 2010, 2011, 2013, 2015, 2016, 2017, 2018, 2023),     
+  descripcion = c(
+    "Es justa la distribución del ingreso", # 1 Muy justa 4 Muy injusta                   
+    "Garantías: Justa distribución de la riqueza", #1 Completamente garantizadas 4 Para nada garantizadas                   
+    "Es justa la distribución del ingreso", ## 1 Muy justa 4 Muy injusta                   
+    "Es justa la distribución del ingreso", ## 1 Muy justa 4 Muy injusta                   
+    "¿Cuán justa cree Ud. que es la distribución del ingreso en (país)?", # 1 Muy justa 4 Muy injusta                   
+    "Cómo de justa es la distribución del ingreso en el país", # 1 Muy justa 4 Muy injusta                   
+    "Cómo de justa es la distribución del ingreso en el país",# 1 Muy justa 4 Muy injusta                   
+    "Cómo de justa es la distribución del ingreso en el país",# 1 Muy justa 4 Muy injusta                   
+    "Cómo de justa es la distribución del ingreso en el país",# 1 Muy justa 4 Muy injusta                   
+    "Cómo de justa es la distribución del ingreso en el país",# 1 Muy justa 4 Muy injusta                   
+    "Cuán justa es la distribución del ingreso en {PAÍS}" # 1 Muy justa 4 Muy injusta
+  ),     
+  standard = 'Es justa la distribucion de ingreso/riqueza',     
+  code = 'justiciaingresoriqueza'
+)  # Comentario movido fuera del paréntesis
+
 
 # Frecuencia de hablar sobre política
 hablarpolitica <- data.frame(
-  variable = c("p71sta","p37st.aa","p61st","P30TGB.A","P20TGB.A"),
-  año = c(2005,2006,2007,2013,2015),
+  variable = c("p71sta","p37st.aa","p61st","P30TGB.A","P20TGB.A", "P44ST.A"),
+  año = c(2005,2006,2007,2013,2015, 2023),
   descripcion=c(rep('Frecuencia con que habla de política',3),
                 rep("Frecuencia con la que hace las siguientes cosas: hablar de
-                    política con los amigos.",2)),
+                    política con los amigos.",2),
+                 "Frecuencia con que habla de política con los amigos"),
   standard='Frecuencia con que habla de política',
   code='hablarpolitica')
 
 # Frecuencia de tratar de convencer políticamente
 convencerpoliticamenre <-
   data.frame(
-    variable = c("p71stb", "p37st.ab", "P30ST.C", "P20ST.C"),
-    año = c(2005, 2006, 2013, 2015),
+    variable = c("p71stb", "p37st.ab", "P30ST.C", "P20ST.C", "P44ST.C"),
+    año = c(2005, 2006, 2013, 2015,2023),
     descripcion = c(
       rep("Frecuencia con que trata de convencer políticamente", 2),
-      rep("Frecuencia con la que hace las siguientes cosas: tratar de convencer a alguien de lo que piensas políticamente.", 2)),
+      rep("Frecuencia con la que hace las siguientes cosas: tratar de convencer a alguien de lo que piensas políticamente.", 2),
+      "recuencia con que trata de convencer políticamente"),
     standard = 'Frecuencia intentar convencer políticamente',
     code = 'convencerpolitica')
 
 # Frecuencia de firmar una petición
 firmarpeticion <-
   data.frame(
-    variable = c("p72sta","p37st.ba","p62st.a","p82wvsta","P32STGBS","P21TGB.A"),
-    año = c(2005, 2006, 2007, 2008, 2013, 2015),
+    variable = c("p72sta","p37st.ba","p62st.a","p82wvsta","P32STGBS","P21TGB.A", "P45ST.A"),
+    año = c(2005, 2006, 2007, 2008, 2013, 2015,2023),
     descripcion = c(
       rep("Acción política: Firmar una petición", 4),
       "P32STGBS Dispuesto a salir a marchar y protestar por: Juntarse con otras
       personas para tratar un tema o firmar una petición",
       "P21TGB.A Acciones que ha realizado: Juntarse con otras Personas para
-      tratar un tema o firmar una petición"),
+      tratar un tema o firmar una petición",
+      "Acción política: Firmar una petición"),
     standard = 'Ha firmado o está dispuesto a firmar una petición',
     code = 'firmadopeticion')
 
 # Apoyo a la democracia
 apoyodemocracia <- data.frame(
   variable = c("p13st", "p16st", "p17st", "p9st", "p13st", "p10st", "P10ST",
-             "P11STGBS", "P12STGBS", "P12STGBS", "P8STGBS", "P8STGBS"),
-  año = c(2004,2005,2006,2007,2008,2009,2010,2015,2013,2018,2016,2017),
-  descripcion = c("Apoyo a la democracia"),
+             "P11STGBS", "P12STGBS", "P12STGBS", "P8STGBS", "P8STGBS", "P10STGBS"),
+  año = c(2004,2005,2006,2007,2008,2009,2010,2015,2013,2018,2016,2017,2023),
+  descripcion = c(rep("Apoyo a la democracia")),
   standard='Apoyo a la democracia',
   code='apoyodemocracia'
 )
@@ -1165,7 +1202,10 @@ De este modo, las variables consideradas quedan sin casos
 perdidos.
 
 ```{r Almacenado datos latinobarómetro}
-saveRDS(prom_wave_latin,"data/data_latinobarometro.rds")
+
+prom_wave_latin <- prom_wave_latin %>% filter(wave!=2020)
+
+saveRDS(prom_wave_latin,"data/data_latinobarometro_2023.rds")
 ```
 
 ```{r Identificación de casos perdidos, eval=FALSE}
@@ -1499,8 +1539,8 @@ en un total de 31 variables.
 # Se limpia el espacio de trabajo
 rm(list=setdiff(ls(),"mean_na"))
 # Comienza la carga de datos
-data_lapop <- readRDS("data/data_lapop.rds")
-data_latinobarometro <- readRDS("data/data_latinobarometro.rds")
+data_lapop <- readRDS("data/data_lapop_2023.rds")
+data_latinobarometro <- readRDS("data/data_latinobarometro_2023.rds")
 data_wvs <- readRDS("data/data_wvs.rds")
 
 # Ediciones de formato
