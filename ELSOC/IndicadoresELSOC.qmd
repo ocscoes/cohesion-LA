@@ -22,7 +22,6 @@ editor_options:
   chunk_output_type: console
 biblio-style: apalike
 fig-cap-location: bottom
-
 ---
 
 <style>
@@ -493,8 +492,133 @@ chart.Correlation(elsoc %>%
                           c07_08) %>%
                     setNames(str_wrap(get_label(.), width = 30)))
 ```
-
 :::
+
+## Correlación subdimensiones
+
+```{r}
+elsoc <- elsoc %>%
+  mutate(
+    sub_confianzainstituciones = rowMeans(across(starts_with("c05_0")), na.rm = TRUE),
+    sub_actitudhacialademocracia = c01,
+    sub_participacioncivica = rowMeans(across(starts_with("c08_0")), na.rm = TRUE),
+    sub_interespolitico = rowMeans(across(17:19), na.rm = TRUE),
+    sub_justiciadistributiva = rowMeans(across(starts_with("c18_")), na.rm = TRUE),
+    sub_surgirenlavida = rowMeans(across(starts_with("d05_0")), na.rm = TRUE),
+    sub_identidadnacional = c32_02,
+    sub_orgullonacional = c32_01,
+    sub_cohesionbarrial = rowMeans(across(starts_with("t02_0")), na.rm = TRUE),
+    sub_sociabilidadbarrial = rowMeans(across(starts_with("t03_0")), na.rm = TRUE),
+    sub_satisfaccionresidencial = rowMeans(across(37:46), na.rm = TRUE),
+    sub_confianzainterpersonal = rowMeans(across(47:49), na.rm = TRUE),
+    sub_comportamientoprosocial = rowMeans(across(starts_with("c07_0")), na.rm = TRUE),
+    sub_confianzavecinos= t01
+  )
+```
+
+:::panel-tabset
+### Correlación Sentido Pertenencia
+
+```{r Correlación Sentido Pertenencia, warning=FALSE, fig.width=10, fig.align='center'}
+chart.Correlation(elsoc %>%
+                    select(sub_identidadnacional,
+                           sub_orgullonacional) %>%
+                    setNames(c("Identidad Nacional",
+                               "Orgullo Nacional")))
+```
+
+### Correlación Calidad de Vida en el Vecindario
+
+```{r Correlación Calidad de Vida, warning=FALSE, fig.width=10, fig.align='center'}
+chart.Correlation(elsoc %>%
+                    select(sub_cohesionbarrial,
+                           sub_sociabilidadbarrial,
+                           sub_confianzavecinos,
+                           sub_satisfaccionresidencial) %>%
+                    setNames(c("Cohesión Barrial",
+                               "Sociabilidad Barrial",
+                               "Confianza Vecinos",
+                               "Satisfacción Residencial")))
+```
+
+### Correlación Redes Sociales
+```{r Correlación Redes Sociales, warning=FALSE, fig.width=10, fig.align='center'}
+chart.Correlation(elsoc %>%
+                    select(sub_confianzainterpersonal,
+                           sub_comportamientoprosocial) %>%
+                    setNames(c("Confianza Interpersonal",
+                               "Comportamiento Prosocial")))
+```
+
+### Correlación Confianza Inst. & Democracia
+```{r Correlación confianza democracia, warning=FALSE, fig.width=10, fig.align='center'}
+chart.Correlation(elsoc %>%
+                    select(sub_confianzainstituciones,
+                           sub_actitudhacialademocracia) %>%
+                    setNames(c("Confianza Instituciones",
+                               "Actitud hacia la democracia")))
+```
+
+### Correlación Participación Política
+```{r Correlación part. política, warning=FALSE, fig.width=10, fig.align='center'}
+chart.Correlation(elsoc %>%
+                    select(sub_participacioncivica,
+                           sub_interespolitico) %>%
+                    setNames(c("Participación ciudadana",
+                               "Interés Político")))
+```
+
+### Correlación Justicia y Meritocracia
+```{r Correlación justicia, warning=FALSE, fig.width=10, fig.align='center'}
+chart.Correlation(elsoc %>%
+                    select(sub_justiciadistributiva,
+                           sub_surgirenlavida) %>%
+                    setNames(c("Percepción de justicia",
+                               "Surgir en la vida")))
+```
+:::
+
+## Correlación Dimensiones
+
+```{r}
+elsoc <- elsoc %>%
+  mutate(
+    dim_sentido_pertenencia = rowMeans(select(., sub_identidadnacional, sub_orgullonacional), na.rm = TRUE),
+    dim_calidad_vida_vecindario = rowMeans(select(., sub_cohesionbarrial, sub_confianzavecinos,
+                                                  sub_sociabilidadbarrial, sub_satisfaccionresidencial), na.rm = TRUE),
+    dim_redes = rowMeans(select(., sub_confianzainterpersonal, sub_comportamientoprosocial), na.rm = TRUE),
+    dim_confianza = rowMeans(select(., sub_confianzainstituciones, sub_actitudhacialademocracia), na.rm = TRUE),
+    dim_participacion = rowMeans(select(., sub_participacioncivica, sub_interespolitico), na.rm = TRUE),
+    dim_justicia = rowMeans(select(., sub_justiciadistributiva, sub_surgirenlavida), na.rm = TRUE)
+  )
+
+```
+
+:::panel-subset
+
+### Cohesión Horizontal
+```{r Correlación cohesion horizontal, warning=FALSE, fig.width=10, fig.align='center'}
+chart.Correlation(elsoc %>%
+                    select(dim_sentido_pertenencia,
+                           dim_calidad_vida_vecindario,
+                           dim_redes) %>%
+                    setNames(c("Sentido Pertenencia",
+                               "Calidad de Vida en el Vecindario",
+                               "Redes Sociales")))
+```
+
+### Cohesión Vertical
+```{r Correlación cohesion vertical, warning=FALSE, fig.width=10, fig.align='center'}
+chart.Correlation(elsoc %>%
+                    select(dim_confianza,
+                           dim_participacion,
+                           dim_justicia) %>%
+                    setNames(c("Confianza Instituciones",
+                               "Participación Política",
+                               "Justicia y Meritocracia")))
+```
+:::
+
 
 ## Visualización de medias por dimensión
 
@@ -573,6 +697,36 @@ elsoc_subs <- elsoc_summary %>%
 names(elsoc_subs)<-c("Ola", "Confianza en instituciones","Actitud hacia la democracia","Participación cívica","Interés político","Justicia distributiva",
                      "Surgir en la vida","Identidad nacional","Orgullo nacional","Confianza en vecinos","Cohesión barrial","Sociabilidad barrial","Satisfacción residencial","Confianza interpersonal","Comportamiento prosocial")
 ```
+
+## Correlación subdimensiones
+
+### Sentido de Pertenencia
+
+```{r Correlación sentido de pertenencia, warning=FALSE, fig.width=10, fig.align='center', eval=FALSE}
+chart.Correlation(elsoc_summary %>%
+                    ungroup %>%
+                    select(sub_identidadnacional,
+                           sub_orgullonacional) %>%
+                    setNames(c("Identidad Nacional",
+                             "Orgullo Nacional")))
+```
+
+### Calida de vida en el vecindario
+
+```{r Correlación calidad vecindario, warning=FALSE, fig.width=10, fig.align='center', eval=FALSE}
+chart.Correlation(elsoc_summary %>%
+                    ungroup %>%
+                    select(sub_cohesionbarrial,
+                           sub_confianzavecinos,
+                           sub_sociabilidadbarrial,
+                           sub_satisfaccionresidencial) %>%
+                    setNames(c("Cohesión Barrial",
+                             "Confianza Vecinos",
+                             "Sociabilidad Barrial",
+                             "Satisfacción Residencial")))
+```
+
+
 
 ```{r,warning=FALSE,message=FALSE}
 
