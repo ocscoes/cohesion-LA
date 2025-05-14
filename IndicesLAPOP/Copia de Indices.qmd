@@ -188,7 +188,7 @@ mean_na <- function(...) {
 }
 ```
 
-```{r Carga de datos LAPOP, warning=FALSE,message=FALSE, include = FALSE,eval=FALSE}
+```{r Carga de datos LAPOP, warning=FALSE,message=FALSE, include = FALSE,eval= FALSE}
 
 # Este bloque tiene eval = FALSE pues tarda.
 # Se almacenó el resultado en "data/Lapop_data_proms.RDS"
@@ -205,7 +205,7 @@ vars_hor <- c("b4","b43",
 vars_ver <- c("b21a","b21","b18","b23","b10a","b39n","b13",
               "pn4","b4","nicfear","prot3",
               "pol1","vb2",
-              "movus1", "exc7")
+              "movus1", "exc7", "ros4")
 vars <- c("wave","year","pais","wt",vars_hor,vars_ver)
 
 # A continuación se realiza la carga de archivos LAPOP.
@@ -446,7 +446,7 @@ LAPOP <- LAPOP[order(LAPOP$pais),] %>%
         filter(!pais %in% c("Suriname","Bahamas","Barbados","Grenada",
                             "Saint Lucia","Dominica","Saint Kitts and Nevis",
                             "Saint Vincent and the Grenadines")) %>%
-        select(-c(b43,vicbar1,vicbar3,vicbar7,jamb18a,b23,b39n,nicfear, movus1))
+        select(-c(b43,vicbar1,vicbar3,vicbar7,jamb18a,b23,b39n,nicfear))
 ```
 
 A partir de la revisión anterior se ha determinado la
@@ -1711,7 +1711,7 @@ chart.Correlation(datos %>% select(pol1, hablarpolitica) %>%
 ### Justicia Distributiva
 
 ```{r Correlación Subdimensión Justicia Distributiva, warning=FALSE, fig.width=10}
-chart.Correlation(datos %>% select(justiciaingresoriqueza, igualdadingresos) %>%
+chart.Correlation(datos %>% select(justiciaingresoriqueza, igualdadingresos, ros4) %>%
                     setNames(c("Justicia ingreso/riqueza", "Igualdad de ingresos")))
 ```
 :::

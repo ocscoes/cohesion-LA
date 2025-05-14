@@ -530,7 +530,6 @@ Además, se suma los siguientes países con datos parciales
 | Perú      | 2006-2022              |
 | Venezuela | 2014-2022              |
 
-
 ```{r Datos parciales}
 
 
@@ -572,15 +571,15 @@ ggplotly(plot)
 
 Algunas ausencias notables incluyen:
 
-1) El Salvador: Por la prominencia que ha ganado en el debate regional a raíz de las medidas tomadas por el Gobierno de Nayib Bukele para combatir el crimen en ese país.
+1)  El Salvador: Por la prominencia que ha ganado en el debate regional a raíz de las medidas tomadas por el Gobierno de Nayib Bukele para combatir el crimen en ese país.
 
-2) República Dominicana: Principal economía del Mar Caribe y país de mayor población entre los que no se tienen datos.
+2)  República Dominicana: Principal economía del Mar Caribe y país de mayor población entre los que no se tienen datos.
 
-3) Costa Rica: Interesante en el contexto centroamericano por su estabilidad política y económica.
+3)  Costa Rica: Interesante en el contexto centroamericano por su estabilidad política y económica.
 
-4) Paraguay: Único país hispanohablante de Sudamérica ausente.
+4)  Paraguay: Único país hispanohablante de Sudamérica ausente.
 
-5) Guyana: País pequeño pero que ha experimentado un rápido crecimiento económico en los últimos años debido al descubrimiento de reservas de petroleo. 
+5)  Guyana: País pequeño pero que ha experimentado un rápido crecimiento económico en los últimos años debido al descubrimiento de reservas de petroleo.
 
 ```{r}
 #| label: datos-sin-filtro
@@ -672,8 +671,6 @@ ggplotly(plot)
   
 ```
 
-
-
 # Anexos
 
 ::: panel-tabset
@@ -691,8 +688,6 @@ chart.Correlation(datos %>% select(recibir_beneficios,
                                "Aceptar soborno",
                                "Participar en reuniones comunitarias")))
 ```
-
-
 
 ### Participación cívica
 
@@ -727,7 +722,6 @@ chart.Correlation(prom %>%
 
 ```
 
-
 ## Promedio Cohesión sin filtros de calidad
 
 ```{r}
@@ -757,4 +751,3 @@ plot<-ggplot(datos_sf, aes(x = wave, y = cohesion_general, color=pais,group=pais
 ggplotly(plot)
   
 ```
-
