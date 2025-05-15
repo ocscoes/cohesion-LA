@@ -60,11 +60,11 @@ Luego, nos centramos en hacer una revisión empírica y teórica de los indicado
 
 Recordemos que la propuesta inicial, con indicadores, subdimensiones y dimensiones -- es la que sigue:
 
-![](data/Esquema.svg)
+![](data/propuesta_ocs.svg)
 
 ## Indicadores
 
-:::Tabset
+::: Tabset
 ### Orgullo Nacional
 
 ```{r warning=FALSE, fig.width=10, fig.align='center'}
@@ -87,8 +87,6 @@ chart.Correlation(datos %>% select(aoj11,sd2new2,sd3new2,sd6new2,seguridadbarrio
 
 
 ```
-
-
 
 ### Confianza en Instituciones
 
@@ -154,17 +152,17 @@ chart.Correlation(datos %>% select(dif_hijos, dif_padres) %>%
 
 Algunas observaciones:
 
-- **Orgullo Nacional**: Se observa una correlación moderada a baja (0,2) entre los dos indicadores de esta subdimensión.
+-   **Orgullo Nacional**: Se observa una correlación moderada a baja (0,2) entre los dos indicadores de esta subdimensión.
 
-- **Satisfacción Residencial**: En general, se observan correlaciones de moderadas a fuertes entre los indicadores de esta subdimensión. Los indicadores de seguridad correlaciona de manera más moderadas con los indicadores de acceso a servicios, lo que podría indicar la presencia de dos subdimensiones. Ahora bien, no sé si se justifica tener dos indicadores de seguridad, ya que ambos (uno de LAPOP y otro de WVS) miden lo mismo.
+-   **Satisfacción Residencial**: En general, se observan correlaciones de moderadas a fuertes entre los indicadores de esta subdimensión. Los indicadores de seguridad correlaciona de manera más moderadas con los indicadores de acceso a servicios, lo que podría indicar la presencia de dos subdimensiones. Ahora bien, no sé si se justifica tener dos indicadores de seguridad, ya que ambos (uno de LAPOP y otro de WVS) miden lo mismo.
 
-- **Comportamiento prosocial**: Compuesto por único indicador que mide participación en reuniones comunitarias. Me genera dudas si este basta para armar una subdimensión de "comportamiento prosocial"
+-   **Comportamiento prosocial**: Compuesto por único indicador que mide participación en reuniones comunitarias. Me genera dudas si este basta para armar una subdimensión de "comportamiento prosocial"
 
-- **Participación Política**: Aquí hay algunos indicadores que muestran correlaciones bajas. *Hablar de política* tiene las correlaciones más fuertes, pero ¿no mide más bien interés político? De hecho, así aparece en la propuesta echa a partir de ELSOC.
+-   **Participación Política**: Aquí hay algunos indicadores que muestran correlaciones bajas. *Hablar de política* tiene las correlaciones más fuertes, pero ¿no mide más bien interés político? De hecho, así aparece en la propuesta echa a partir de ELSOC.
 
-- **Interés Político**: La correlación entre ambos indicadores es moderada a baja. Queda la misma dura que en la subdimensión anterior: Votar en las elecciones, ¿no es un indicador de participación política?
+-   **Interés Político**: La correlación entre ambos indicadores es moderada a baja. Queda la misma dura que en la subdimensión anterior: Votar en las elecciones, ¿no es un indicador de participación política?
 
-- **Surgir en la vida**: La correlación entre ambos indicadores es inexistente. Tampoco sé si me hace tanto sentido teóricamente.
+-   **Surgir en la vida**: La correlación entre ambos indicadores es inexistente. Tampoco sé si me hace tanto sentido teóricamente.
 
 ## Subdimensiones
 
@@ -172,8 +170,7 @@ Algunas observaciones:
 load("data/base_subdimensiones.RData")
 ```
 
-
-:::subset
+::: subset
 ### Redes Sociales
 
 ### Redes Sociales y sociabilidad
@@ -217,7 +214,6 @@ chart.Correlation(prom %>%
                                "Interés Político")))
 ```
 
-
 ### Percepción Justicia
 
 ```{r}
@@ -233,12 +229,11 @@ chart.Correlation(prom %>%
 ```
 :::
 
+Observaciones:
 
-Observaciones: 
-
-- **Redes sociales y sociabilidad**: La correlación entre los dos indicadores y subdimensiones es moderada y negativa, ¿mayor confianza menor participación en reuniones sociales? Como se mencionó anteriormente, es posible que el indicador de comportamiento prosocial sea insuficiente para la subdimensión.
-- **Participación Política**: La correlación es moderada. Podría aumentar mejorando la consistencia de los indicadores de cada subdimensión.
-- **Percepción de Justicia**: Correlación moderada. Probablemente haya que revisar la subdimensión de surgir en la vida. Desde el punto de vista teórico, podríamos agregar una subdimensión de justicia procedimental
+-   **Redes sociales y sociabilidad**: La correlación entre los dos indicadores y subdimensiones es moderada y negativa, ¿mayor confianza menor participación en reuniones sociales? Como se mencionó anteriormente, es posible que el indicador de comportamiento prosocial sea insuficiente para la subdimensión.
+-   **Participación Política**: La correlación es moderada. Podría aumentar mejorando la consistencia de los indicadores de cada subdimensión.
+-   **Percepción de Justicia**: Correlación moderada. Probablemente haya que revisar la subdimensión de surgir en la vida. Desde el punto de vista teórico, podríamos agregar una subdimensión de justicia procedimental
 
 ## Dimensiones
 
@@ -246,7 +241,7 @@ Observaciones:
 load("data/base_dimensiones.RData")
 ```
 
-:::subset
+::: subset
 ### Cohesión Horizontal
 
 ```{r}
@@ -282,9 +277,9 @@ chart.Correlation(prom %>%
 
 Observaciones
 
-- **Cohesión Vertical**: Las tres dimensiones de la cohesión horizontal muestran una buena correlación entre sí. Aunque la correlación entre calidad de vida en el vecindario y redes sociales podría mejorar.
+-   **Cohesión Vertical**: Las tres dimensiones de la cohesión horizontal muestran una buena correlación entre sí. Aunque la correlación entre calidad de vida en el vecindario y redes sociales podría mejorar.
 
-- **Cohesión Horizontal**: Participación política tiene correlaciones bajísimas con las otras subdimensiones.
+-   **Cohesión Horizontal**: Participación política tiene correlaciones bajísimas con las otras subdimensiones.
 
 ## Cohesión Social
 
@@ -502,7 +497,7 @@ En primer lugar, la dimensión de Participación Política no muestra correlaci�
 
 La mayor limitación de la propuesta es que la mayoría de los indicadores nuevos, incluyendo algunas subdimensiones enteras, provienen de la Encuesta Mundial de Valores. El efecto inmediato de esto es que mucho países que no participan en la WVS, particularmente de Centro América y el Caribe, quedan completa o parcialmente afuera de la medición.
 
-En efecto, solo 7 países tienen datos para todas las 9 olas entre 2004 y 2022:   Argentina, Brasil, Chile, Colombia, México, Estados Unidos y Uruguay.
+En efecto, solo 7 países tienen datos para todas las 9 olas entre 2004 y 2022: Argentina, Brasil, Chile, Colombia, México, Estados Unidos y Uruguay.
 
 ```{r datos-completos}
 
@@ -545,16 +540,16 @@ ggplotly(plot)
 
 Además, se suma los siguientes países con datos parciales
 
-| País      | Olas con datos válidos |N° Olas|% Olas
-|-----------|------------------------|-------|----|
-| Bolivia   | 2010-2022              |6      |67%
-| Canadá    | 2004-2018              |8      |89%     
-| Ecuador   | 2006-2022              |8      |89%
-| Guatemala | 2004-2010; 2014-2022   |8      |89%
-| Haití     | 2010-2022              |6      |67%
-| Nicaragua | 2014-2022              |4      |44%
-| Perú      | 2006-2022              |8      |89%
-| Venezuela | 2014-2022              |4.     |67%
+| País      | Olas con datos válidos | N° Olas | \% Olas |
+|-----------|------------------------|---------|---------|
+| Bolivia   | 2010-2022              | 6       | 67%     |
+| Canadá    | 2004-2018              | 8       | 89%     |
+| Ecuador   | 2006-2022              | 8       | 89%     |
+| Guatemala | 2004-2010; 2014-2022   | 8       | 89%     |
+| Haití     | 2010-2022              | 6       | 67%     |
+| Nicaragua | 2014-2022              | 4       | 44%     |
+| Perú      | 2006-2022              | 8       | 89%     |
+| Venezuela | 2014-2022              | 4\.     | 67%     |
 
 ```{r Datos parciales}
 
@@ -599,14 +594,13 @@ Algunas ausencias notables incluyen:
 
 1)  El Salvador: Por la prominencia que ha ganado en el debate regional a raíz de las medidas tomadas por el Gobierno de Nayib Bukele para combatir el crimen en ese país. Esto podría reflejarse en el salto que dan muchos indicadores en el país, alcanzando en 2022 niveles similares a Uruguay (los más altos en América Latina)
 
-2)  Costa Rica: Interesante en el contexto centroamericano por su estabilidad política y económica. Aunque muestra caídas desde 2004, se mantiene constantentemente con los indicadores más altos en América Central, solo superado por El Salvador en 2022. 
+2)  Costa Rica: Interesante en el contexto centroamericano por su estabilidad política y económica. Aunque muestra caídas desde 2004, se mantiene constantentemente con los indicadores más altos en América Central, solo superado por El Salvador en 2022.
 
 3)  Guyana: País pequeño pero que ha experimentado un rápido crecimiento económico en los últimos años debido al descubrimiento de reservas de petroleo. Pasó desde los niveles más bajos en 2014 a un aumento sustantivo y constante entre 2016 y 2022.
 
 4)  República Dominicana: Principal economía del Mar Caribe y país de mayor población entre los que no se tienen datos.
 
 5)  Paraguay: Único país hispanohablante de Sudamérica ausente.
-
 
 ```{r}
 #| label: datos-sin-filtro
