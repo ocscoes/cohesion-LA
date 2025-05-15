@@ -619,6 +619,21 @@ chart.Correlation(elsoc %>%
 ```
 :::
 
+## Correlación Dimensiones de Cohesión
+
+```{r Correlación cohesion, warning=FALSE, fig.width=10, fig.align='center'}
+
+elsoc <- elsoc %>%
+  mutate(
+    cohesion_horizontal = rowMeans(select(., dim_sentido_pertenencia, dim_calidad_vida_vecindario, dim_redes), na.rm = TRUE),
+    cohesion_vertical = rowMeans(select(., dim_confianza, dim_participacion, dim_justicia))
+  )
+
+chart.Correlation(elsoc %>%
+                    select(cohesion_horizontal, cohesion_vertical) %>%
+                    setNames(c("Cohesión Horizontal",
+                               "Cohesión Vertical")))
+```
 
 ## Visualización de medias por dimensión
 

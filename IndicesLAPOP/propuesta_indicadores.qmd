@@ -60,11 +60,11 @@ Luego, nos centramos en hacer una revisión empírica y teórica de los indicado
 
 Recordemos que la propuesta inicial, con indicadores, subdimensiones y dimensiones -- es la que sigue:
 
-![](data/propuesta_ocs.svg)
+![](data/Esquema.svg)
 
 ## Indicadores
 
-::: Tabset
+::: panel-tabset
 ### Orgullo Nacional
 
 ```{r warning=FALSE, fig.width=10, fig.align='center'}
@@ -101,7 +101,7 @@ chart.Correlation(datos %>% select(b21a, b21, b18, b10a, b13) %>%
 
 ### Apoyo a la Democracia
 
-```{r Correlación Subdimensión Apoyo a la Democracia, warning=FALSE, fig.width=10}
+```{r warning=FALSE, fig.width=10}
 #| label: sd-apoyo-democracia
 #| fig-cap: Correlación indicadores Actitud hacia la democracia
 chart.Correlation(datos %>% select(pn4, b4, apoyodemocracia) %>%
@@ -170,8 +170,7 @@ Algunas observaciones:
 load("data/base_subdimensiones.RData")
 ```
 
-::: subset
-### Redes Sociales
+::: panel-tabset
 
 ### Redes Sociales y sociabilidad
 
@@ -241,7 +240,7 @@ Observaciones:
 load("data/base_dimensiones.RData")
 ```
 
-::: subset
+::: panel-tabset
 ### Cohesión Horizontal
 
 ```{r}
@@ -320,7 +319,7 @@ Finalmente, los subdimensiones de Comportamiento Prosocial y Participación Cív
 ::: panel-tabset
 ### Comportamiento Prosocial
 
-```{r Correlación Subdimensión Comportamiento Prosocial, warning=FALSE, fig.width=10}
+```{r warning=FALSE, fig.width=10}
 #| label: propuesta-comportamiento-prosocial
 #| fig-cap: Correlación entre indicadores propuestos para subdimensión de Comportamiento Prosocial
 
@@ -434,7 +433,7 @@ chart.Correlation(prom %>%
 
 ## Dimensiones
 
-::: tabset
+::: panel-tabset
 ### Cohesión Horizontal
 
 ```{r}
@@ -488,6 +487,12 @@ chart.Correlation(prom %>%
 ```
 
 Pese a la baja coherencia interna de la dimensión vertical, la correlación entre ambas dimensiones de la cohesión social es de 0,78, bastante más alto que en la medición anterior.
+
+## Propuesta Final
+
+En vista de todo lo anterior, la siguiente figura ilustra la propuesta final de indicadores.
+
+![](data/propuesta_ocs.svg)
 
 # Conclusiones
 
@@ -549,7 +554,7 @@ Además, se suma los siguientes países con datos parciales
 | Haití     | 2010-2022              | 6       | 67%     |
 | Nicaragua | 2014-2022              | 4       | 44%     |
 | Perú      | 2006-2022              | 8       | 89%     |
-| Venezuela | 2014-2022              | 4\.     | 67%     |
+| Venezuela | 2014-2022              | 4     | 67%     |
 
 ```{r Datos parciales}
 
