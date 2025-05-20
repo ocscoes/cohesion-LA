@@ -1,0 +1,779 @@
+---
+title: "Propuesta Indicadores Cohesión Social"
+author: "Observatorio Cohesión Social"
+format: html
+editor: visual
+echo: false
+---
+
+```{r}
+#| label: carga de paquetes
+
+library(pacman)
+p_load(tidyverse,
+       PerformanceAnalytics,
+       psych,
+       plotly)
+
+mean_na <- function(...) {
+  mean_result <- mean(c(...), na.rm = TRUE)
+  if (is.nan(mean_result)) {
+    mean_result <- NA
+  }
+  return(mean_result)
+}
+```
+
+```{r}
+
+#| label: merge-datos
+
+# Comienza la carga de datos
+data_lapop <- readRDS("data/data_lapop_2023.rds")
+data_latinobarometro <- readRDS("data/data_latinobarometro_2023.rds")
+data_wvs <- readRDS("data/data_wvs.rds")
+
+# Ediciones de formato
+data_latinobarometro$pais <- as.character(data_latinobarometro$pais)
+data_lapop$pais <- as.character(data_lapop$pais)
+data_wvs$pais <- as.character(data_wvs$pais)
+
+# Recodificación para estandarizar
+data_latinobarometro$pais[data_latinobarometro$pais =='Dominican Rep.'] <- "Dominican Republic" 
+data_wvs$pais[data_wvs$pais =='Trinidad and Tobago'] <- "Trinidad & Tobago" 
+data_wvs$pais[data_wvs$pais =='United States of America'] <- "United States"
+
+# Merge
+datos <- merge(data_lapop,data_latinobarometro,by=c("pais","wave"),all.x = TRUE)
+datos <- merge(datos,data_wvs,by=c("pais","wave"),all.x = TRUE)
+```
+
+# Introducción
+
+Nos propusimos en este documento es revisar la construcción de índices de Cohesión Social para América Latina realizada a partir de datos de LAPOP, Latinobarómetro y la Encuesta Mundial de Valores.
+
+En primer lugar, incluimos datos de las olas más recientes de LAPOP (2023) y Latinobarómetro (2022). Dado que los datos anteriores llegaban hasta 2018, incluir estas nuevas mediciones podría permitir realizar un análisis macro de los efectos de la pandemia sobre la Cohesión Social.
+
+Luego, nos centramos en hacer una revisión empírica y teórica de los indicadores anteriormente propuestos, detectando algunas posibles falencias. A partir de este diagnóstico, avanzamos hacia propuesta buscando lograr el mejor ajuste estadístico y teórico del modelo.
+
+# Análisis
+
+Recordemos que la propuesta inicial, con indicadores, subdimensiones y dimensiones -- es la que sigue:
+
+![](data/Esquema.svg)
+
+## Indicadores
+
+::: panel-tabset
+### Orgullo Nacional
+
+```{r warning=FALSE, fig.width=10, fig.align='center'}
+#| label: orgullo-nacional
+#| fig-cap: Correlación indicadores subdimensión Orgullo Nacional
+
+chart.Correlation(datos %>% select(b4,orgullonacional) %>%
+                    setNames(c("Pride in Political System", "Orgullo Nacional")))
+```
+
+### Satisfacción Residencial
+
+```{r  warning=FALSE, fig.width=10}
+#| label: satisfacción-residencial
+#| fig-cap: Correlación indicadores subdimensión Satisfacción Residencial
+
+chart.Correlation(datos %>% select(aoj11,sd2new2,sd3new2,sd6new2,seguridadbarrio) %>%
+                    setNames(c("Perception of Neighborhood Insecurity", "Satisfaction with Roads",
+                             "Satisfaction with Public Schools","Satisfaction with Public Medical and Health Services","Seguridad del barrio")))
+
+
+```
+
+### Confianza en Instituciones
+
+```{r warning=FALSE, fig.width=10}
+#| label: confianza instituciones
+#| fig-cap: Correlación indicadores subdimensión Confianza Instituciones
+chart.Correlation(datos %>% select(b21a, b21, b18, b10a, b13) %>%
+                    setNames(c("Trust in Executive", "Trust in Political Parties",
+                               "Trust in National Police","Trust in Judicial System",
+                               "Trust in the National Legislature")))
+```
+
+### Apoyo a la Democracia
+
+```{r warning=FALSE, fig.width=10}
+#| label: sd-apoyo-democracia
+#| fig-cap: Correlación indicadores Actitud hacia la democracia
+chart.Correlation(datos %>% select(pn4, b4, apoyodemocracia) %>%
+                    setNames(c("Satisfaction with Democracy", "Pride in Political System",
+                             "Apoyo a la democracia")))
+```
+
+### Participación cívica
+
+```{r, warning=FALSE, fig.width=10}
+#| label: participacion-civica
+#| fig-cap: Correlación indicadores Participación Civica
+chart.Correlation(datos %>% select(prot3, hablarpolitica, convencerpolitica, firmadopeticion) %>%
+                    setNames(c("Participated in a Protest", "Frecuencia en la que habla de política",
+                             "Convencer políticamente","Firmar petición")))
+```
+
+### Interés Político
+
+```{r warning=FALSE, fig.width=10}
+#| label: interés político
+#| fig-cap: Correlación indicadores subdimensión Satisfacción Residencial
+chart.Correlation(datos %>% select(pol1, vb2) %>%
+                    setNames(c("Political Interest (w/PP)", "Votó usted en las últimas elecciones presidenciale
+                               s")))
+```
+
+### Justicia Distributiva
+
+```{r warning=FALSE, fig.width=10}
+#| label: justicia-distributiva
+#| fig-cap: Correlación indicadores Justicia Distributiva
+#
+chart.Correlation(datos %>% select(justiciaingresoriqueza, igualdadingresos) %>%
+                    setNames(c("Justicia ingreso/riqueza", "Igualdad de ingresos")))
+```
+
+### Surgir en la vida
+
+```{r warning=FALSE, fig.width=10}
+#| label: surgir-vida
+#| fig-cap: Correlación indicadores Surgir en la vida
+#| 
+chart.Correlation(datos %>% select(dif_hijos, dif_padres) %>%
+                    setNames(c("Diferencia riqueza hijos", "Diferencia riqueza padres")))
+```
+:::
+
+Algunas observaciones:
+
+-   **Orgullo Nacional**: Se observa una correlación moderada a baja (0,2) entre los dos indicadores de esta subdimensión.
+
+-   **Satisfacción Residencial**: En general, se observan correlaciones de moderadas a fuertes entre los indicadores de esta subdimensión. Los indicadores de seguridad correlaciona de manera más moderadas con los indicadores de acceso a servicios, lo que podría indicar la presencia de dos subdimensiones. Ahora bien, no sé si se justifica tener dos indicadores de seguridad, ya que ambos (uno de LAPOP y otro de WVS) miden lo mismo.
+
+-   **Comportamiento prosocial**: Compuesto por único indicador que mide participación en reuniones comunitarias. Me genera dudas si este basta para armar una subdimensión de "comportamiento prosocial"
+
+-   **Participación Política**: Aquí hay algunos indicadores que muestran correlaciones bajas. *Hablar de política* tiene las correlaciones más fuertes, pero ¿no mide más bien interés político? De hecho, así aparece en la propuesta echa a partir de ELSOC.
+
+-   **Interés Político**: La correlación entre ambos indicadores es moderada a baja. Queda la misma dura que en la subdimensión anterior: Votar en las elecciones, ¿no es un indicador de participación política?
+
+-   **Surgir en la vida**: La correlación entre ambos indicadores es inexistente. Tampoco sé si me hace tanto sentido teóricamente.
+
+## Subdimensiones
+
+```{r}
+load("data/base_subdimensiones.RData")
+```
+
+::: panel-tabset
+
+### Redes Sociales y sociabilidad
+
+```{r}
+#| label: redes-sociales
+#| fig-cap: Correlación subdimensiones redes sociales y sociabilidad
+chart.Correlation(prom %>% 
+                    ungroup() %>%
+                    select(sub_confianzainterpersonal, sub_comportamientoprosocial) %>%
+                    setNames(c("Confianza Interpersonal",
+                               "Comportamiento Prosocial")))
+```
+
+### Apoyo a la Democracia
+
+```{r}
+#| label: d-apoyo-democracia
+#| fig-cap: Correlación subdimensiones apoyo a la democracia
+
+chart.Correlation(prom %>% 
+                    ungroup() %>%
+                    select(sub_actitudhacialademocracia,
+         sub_confianzainstitutciones) %>%
+                    setNames(c("Actitud hacia la democracia",
+                               "Confianza en las instituciones")))
+```
+
+### Participación Política
+
+```{r}
+#| label: participacion-politica
+#| fig-cap: Correlación subdimensiones participación política
+
+
+chart.Correlation(prom %>% 
+                    ungroup() %>% 
+                    select(sub_participacioncivica,
+         sub_interespolitico) %>%
+                    setNames(c("Participación Cívica",
+                               "Interés Político")))
+```
+
+### Percepción Justicia
+
+```{r}
+#| label: percepcion-justicia
+#| fig-cap: Correlación subdimensiones Percepción Justicia
+
+chart.Correlation(prom %>%
+                    ungroup() %>%
+                    select(sub_justiciadistributiva,
+         sub_surgirenlavida) %>%
+                    setNames(c("Justicia Distributiva",
+                               "Surgir en la vida")))
+```
+:::
+
+Observaciones:
+
+-   **Redes sociales y sociabilidad**: La correlación entre los dos indicadores y subdimensiones es moderada y negativa, ¿mayor confianza menor participación en reuniones sociales? Como se mencionó anteriormente, es posible que el indicador de comportamiento prosocial sea insuficiente para la subdimensión.
+-   **Participación Política**: La correlación es moderada. Podría aumentar mejorando la consistencia de los indicadores de cada subdimensión.
+-   **Percepción de Justicia**: Correlación moderada. Probablemente haya que revisar la subdimensión de surgir en la vida. Desde el punto de vista teórico, podríamos agregar una subdimensión de justicia procedimental
+
+## Dimensiones
+
+```{r}
+load("data/base_dimensiones.RData")
+```
+
+::: panel-tabset
+### Cohesión Horizontal
+
+```{r}
+#| label: cohesion-horizontal
+#| fig-cap: Correlación dimensiones cohesión horizontal
+
+chart.Correlation(prom %>% 
+                    ungroup %>%
+                    select(dim_sentidopertenencia,
+         dim_calidaddevidaenelvecindario,
+         dim_redessociales) %>%
+                    setNames(c("Sentido de Pertenencia",
+                               "Calidad de vida en el vecindario",
+                               "Redes sociales")))
+```
+
+### Cohesión Vertical
+
+```{r}
+#| label: cohesion-vertical
+#| fig-cap: Correlación dimensiones cohesión vertical
+  
+chart.Correlation(prom %>%
+                  ungroup %>% select(dim_confianzainstitucionesdemocracia,
+         dim_participacionpolitica,
+         dim_percepcionjusticia) %>%
+                    setNames(c("Confianza Instituciones",
+                               "Participación Política",
+                               "Percepción de Justicia")))
+
+```
+:::
+
+Observaciones
+
+-   **Cohesión Vertical**: Las tres dimensiones de la cohesión horizontal muestran una buena correlación entre sí. Aunque la correlación entre calidad de vida en el vecindario y redes sociales podría mejorar.
+
+-   **Cohesión Horizontal**: Participación política tiene correlaciones bajísimas con las otras subdimensiones.
+
+## Cohesión Social
+
+```{r}
+#| label: cohesion-social
+#| fig-cap: Correlación dimensiones cohesión social
+
+load("data/base_cohesion.RData")
+
+chart.Correlation(prom %>% 
+                    ungroup() %>%
+                    select(cohesion_horizontal,
+         cohesion_vertical) %>%
+                    setNames(c("Cohesión Horizontal",
+                               "Cohesión Vertical")))
+```
+
+La correlación entre la Cohesión Horizontal y la Vertical es moderada y negativa. Lo último sería un hallazgo interesante, pero no sé si tiene mucha justificación teórica.
+
+# Propuesta
+
+Propongo reemplazar algunos de los indicadores para mejorar la coherencia teórica y estadística del modelo. La mayoría de los nuevos indicadores propuestos provienen de la Encuesta Mundial de Valores. Una limitación de esto es que la WVS cuenta con una menor participación de países latinoamericanos en comparacióna LAPOP y Latinobarométro. Esto tendría como consecuencia reducir la calidad de los indicadores, lo que redundaría en menos países disponibles.
+
+Los cambios propuestos son los siguientes:
+
+-   En la subdimensión **Satisfacción Residencial**, eliminar el indicador de seguridad de la WVS, dejando solo el de LAPOP.
+-   En la subdimensión **Comportamiento Prosocial**, incluir de manera invertida un set de variables de la WVS que mide la legitimidad de acciones que podríamos denominar como *antisociales*: obtener beneficios sociales sin tener el derecho, evadir en el transporte público, aceptar un soborno, evadir impuestos.
+-   Incluir en la subdimensión de **Participación Cívica** un set de variables de participación política de la WVS: protestas pacíficas, huelgas y firmar peticiones. Además, incluir el indicador de voto en las últimas elecciones en esta subdimensión.
+-   Mover desde Participación Cívica hacia **Interés Político** el indicador de hablar de política.
+-   Incluir una subdimensión de Justicia Procedimental es la dimensión de **Percepción de Justicia**. Esta subdimensión se medirá através de un único indicador sobre percepción de corrupción presente en LAPOP.
+
+# Resultados
+
+Finalmente, los subdimensiones de Comportamiento Prosocial y Participación Cívica quedaron compuestas únicamente por los indicadores nuevos incluidos desde la WVS. En los anexos es posibles observar que los indicadores original no mejoraron su ajuste al incluir los nuevos. Por otro lado, aunque la correlación de los indicadores de interés político mejoró, esta sigue siendo moderada (0,35)
+
+## Indicadores
+
+::: panel-tabset
+### Comportamiento Prosocial
+
+```{r warning=FALSE, fig.width=10}
+#| label: propuesta-comportamiento-prosocial
+#| fig-cap: Correlación entre indicadores propuestos para subdimensión de Comportamiento Prosocial
+
+chart.Correlation(datos %>% select(recibir_beneficios,
+                                   evadir_transporte,
+                                   evadir_impuestos,
+                                   aceptar_soborno) %>%
+                    setNames(c("Recibir beneficios sin necesidad",
+                               "Evadir tarifa transporte público",
+                               "Evadir impuestos",
+                               "Aceptar soborno")))
+```
+
+### Participación cívica
+
+```{r warning=FALSE, fig.width=10}
+#| label: propuesta-participacion-civica
+#| fig-cap: Correlación entre indicadores propuestos para subdimensión de Participación Cívica. 
+
+
+chart.Correlation(datos %>% select(protestaspacificas,
+                                   firmapeticion_wvs,
+                                   huelgas) %>%
+                    setNames(c("Participar en protestas pacíficas",
+                               "Firmar Petición (WVS)",
+                               "Participar en Huelgas")))
+```
+
+### Interés Político
+
+```{r warning=FALSE, fig.width=10}
+#| label: propuesta-interes-politico
+#| fig-cap: Correlación entre indicadores propuestos para subdimensión de Interés Político. 
+
+chart.Correlation(datos %>% select(pol1, hablarpolitica) %>%
+                    setNames(c("Political Interest (w/PP)", "Hablar de política")))
+```
+:::
+
+## Subdimensiones
+
+## Correlaciones dimensiones
+
+::: panel-tabset
+### Redes Sociales y sociabilidad
+
+```{r}
+#| label: propuesta-redes-sociales
+#| fig-cap: Correlación entre subdimensiones propuestas para dimensión de Redes sociales y sociabilidad
+
+load("data/base_subdimensiones_rev.RData")
+
+chart.Correlation(prom %>% 
+                    ungroup() %>%
+                    select(sub_confianzainterpersonal, sub_comportamientoprosocial) %>%
+                    setNames(c("Confianza Interpersonal",
+                               "Comportamiento Prosocial")))
+```
+
+### Apoyo a la Democracia
+
+```{r}
+#| label: propuesta-apoyo-democracia
+#| fig-cap: Correlación entre subdimensiones propuestas para dimensión de Apoyo a la democracia
+
+
+chart.Correlation(prom %>% 
+                    ungroup() %>%
+                    select(sub_actitudhacialademocracia,
+         sub_confianzainstitutciones) %>%
+                    setNames(c("Actitud hacia la democracia",
+                               "Confianza en las instituciones")))
+```
+
+### Participación Política
+
+```{r}
+#| label: propuesta-participacion-politica
+#| fig-cap: Correlación entre subdimensiones propuestas para dimensión de Participación Política
+
+
+chart.Correlation(prom %>% 
+                    ungroup() %>% 
+                    select(sub_participacioncivica,
+         sub_interespolitico) %>%
+                    setNames(c("Participación Cívica",
+                               "Interés Político")))
+```
+
+### Percepción Justicia
+
+```{r}
+#| label: propuesta-percepcion-justicia
+#| fig-cap: Correlación entre subdimensiones propuestas para dimensión de Percepción Justicia
+
+chart.Correlation(prom %>%
+                    ungroup() %>%
+                    select(sub_justiciadistributiva,
+         sub_justiciaprocedimental,
+         sub_surgirenlavida) %>%
+                    setNames(c("Justicia Distributiva",
+                               "Justicia Procedimental",
+                               "Surgir en la vida")))
+```
+:::
+
+-   La correlación entre las subdimensiones de Redes Sociales pasan de -0.25 a 0.64
+-   La correlación entre las subdimensiones de Apoyo a la Democracia pasó de 0,64 a 0,79
+-   La correlación entre las subdimensiones de Participación política suben desde 0,31 a 0,46
+-   La nueva subdimensión de justicia procedimental tiene una relación de 0,34 con justicia distributiva y de -0,36 con surgir en la vida (ahora medida como importancia del trabajo duro).
+
+## Dimensiones
+
+::: panel-tabset
+### Cohesión Horizontal
+
+```{r}
+#| label: propuesta-cohesion-horizontal
+#| fig-cap: Correlación entre dimensiones propuestas para Cohesión Horizontal
+
+load("data/base_dimensiones_rev.RData")
+
+chart.Correlation(prom %>% 
+                    ungroup %>%
+                    select(dim_sentidopertenencia,
+         dim_calidaddevidaenelvecindario,
+         dim_redessociales) %>%
+                    setNames(c("Sentido de Pertenencia",
+                               "Calidad de vida en el vecindario",
+                               "Redes sociales")))
+```
+
+### Cohesión Vertical
+
+```{r}
+#| label: propuesta-cohesion-vertical
+#| fig-cap: Correlación entre dimensiones propuestas para Cohesión Vertical
+  
+chart.Correlation(prom %>%
+                  ungroup %>% select(dim_confianzainstitucionesdemocracia,
+         dim_participacionpolitica,
+         dim_percepcionjusticia) %>%
+                    setNames(c("Confianza Instituciones",
+                               "Participación Política",
+                               "Percepción de Justicia")))
+
+```
+:::
+
+Las dimensiones de Cohesión Horizontal muestran correlaciones bastante buenas entre sí. No así las dimensiones de la Cohesión Vertical. Por alguna razón, Participación Política tiene muy baja correlación con las otras dos dimensiones.
+
+## Cohesión
+
+```{r}
+#| label: propuesta-cohesion-social
+#| fig-cap: Correlación entre dimensiones propuestas para Cohesión Social
+load("data/base_cohesion_rev.RData")
+
+chart.Correlation(prom %>% 
+                    ungroup() %>%
+                    select(cohesion_horizontal,
+         cohesion_vertical) %>%
+                    setNames(c("Cohesión Horizontal",
+                               "Cohesión Vertical")))
+```
+
+Pese a la baja coherencia interna de la dimensión vertical, la correlación entre ambas dimensiones de la cohesión social es de 0,78, bastante más alto que en la medición anterior.
+
+## Propuesta Final
+
+En vista de todo lo anterior, la siguiente figura ilustra la propuesta final de indicadores.
+
+![](data/propuesta_ocs.svg)
+
+# Conclusiones
+
+Esta nueva propuesta avanza hacia una mayor coherencia teórica y estadística para un modelo de medición de la cohesión social en América Latina. Muestra de esto las dimensiones verticales y horizontales de la cohesión pasan de tener una correlación global de -0,32 a una de 0,78. Sin embargo, se siguen observando algunos problemas de ajuste, particularmente en la Cohesión Vertical.
+
+En primer lugar, la dimensión de Participación Política no muestra correlación con el resto. En segundo relación, la consistencia estadística de la dimensión de Percepciones de Justicia es ambigua. Con todo, las dificultades que implica la construcción de este tipo de modelos con, no solo una, sino tres fuentes secundarias, deben tenerse en cuenta en la evaluación de esta propuesta.
+
+La mayor limitación de la propuesta es que la mayoría de los indicadores nuevos, incluyendo algunas subdimensiones enteras, provienen de la Encuesta Mundial de Valores. El efecto inmediato de esto es que mucho países que no participan en la WVS, particularmente de Centro América y el Caribe, quedan completa o parcialmente afuera de la medición.
+
+En efecto, solo 7 países tienen datos para todas las 9 olas entre 2004 y 2022: Argentina, Brasil, Chile, Colombia, México, Estados Unidos y Uruguay.
+
+```{r datos-completos}
+
+prom$cohesion_general <- (prom$cohesion_horizontal+prom$cohesion_vertical)/2
+
+paises_a <- prom %>%
+  filter(pais=="Argentina"|
+           pais=="Brasil"|
+           pais=="Chile"|
+           pais=="Colombia"|
+           pais=="Mexico"|
+         pais=="United States"|
+           pais=="Uruguay")
+
+plot<-ggplot(paises_a, aes(x = wave, y = cohesion_general, color=pais,group=pais)) +
+  geom_point() +
+  geom_line() +
+  # geom_smooth(method = "lm", se = TRUE)+
+  theme_minimal()+
+  ggtitle(paste0('Cohesión general por país, datos completos'))+
+  labs(
+    x = "Ola",
+    y = "Puntaje (0-10)",
+    #color = "Tasa homofilia",
+    subtitle = "Datos por país.",
+    caption = paste("Datos LAPOP."))+
+  theme(legend.position='bottom',
+        #text=element_text(family=font_ggplot),
+        plot.title = element_text(face="bold"),
+        legend.title = element_text(
+                                    #size=size_title_legend,
+                                    face = "bold"
+        ), 
+        #legend.text = element_text(size=size_text_legend),
+        #legend.key.width = unit(size_key_legend, 'cm'),
+  )
+
+ggplotly(plot)
+```
+
+Además, se suma los siguientes países con datos parciales
+
+| País      | Olas con datos válidos | N° Olas | \% Olas |
+|-----------|------------------------|---------|---------|
+| Bolivia   | 2010-2022              | 6       | 67%     |
+| Canadá    | 2004-2018              | 8       | 89%     |
+| Ecuador   | 2006-2022              | 8       | 89%     |
+| Guatemala | 2004-2010; 2014-2022   | 8       | 89%     |
+| Haití     | 2010-2022              | 6       | 67%     |
+| Nicaragua | 2014-2022              | 4       | 44%     |
+| Perú      | 2006-2022              | 8       | 89%     |
+| Venezuela | 2014-2022              | 4     | 67%     |
+
+```{r Datos parciales}
+
+
+paises_b <- prom %>%
+  filter(pais=="Bolivia"|
+           pais=="Canada"|
+           pais=="Ecuador"|
+           pais=="Guatemala"|
+           pais=="Haiti"|
+         pais=="Nicaragua"|
+           pais=="Peru"|
+           pais=="Venezuela")
+
+plot<-ggplot(paises_b, aes(x = wave, y = cohesion_general, color=pais,group=pais)) +
+  geom_point() +
+  geom_line() +
+  # geom_smooth(method = "lm", se = TRUE)+
+  theme_minimal()+
+  ggtitle(paste0('Cohesión general por país, datos parciales'))+
+  labs(
+    x = "Ola",
+    y = "Puntaje (0-10)",
+    #color = "Tasa homofilia",
+    subtitle = "Datos por país.",
+    caption = paste("Datos LAPOP."))+
+  theme(legend.position='bottom',
+        #text=element_text(family=font_ggplot),
+        plot.title = element_text(face="bold"),
+        legend.title = element_text(
+                                    #size=size_title_legend,
+                                    face = "bold"
+        ), 
+        #legend.text = element_text(size=size_text_legend),
+        #legend.key.width = unit(size_key_legend, 'cm'),
+  )
+
+ggplotly(plot)
+```
+
+Algunas ausencias notables incluyen:
+
+1)  El Salvador: Por la prominencia que ha ganado en el debate regional a raíz de las medidas tomadas por el Gobierno de Nayib Bukele para combatir el crimen en ese país. Esto podría reflejarse en el salto que dan muchos indicadores en el país, alcanzando en 2022 niveles similares a Uruguay (los más altos en América Latina)
+
+2)  Costa Rica: Interesante en el contexto centroamericano por su estabilidad política y económica. Aunque muestra caídas desde 2004, se mantiene constantentemente con los indicadores más altos en América Central, solo superado por El Salvador en 2022.
+
+3)  Guyana: País pequeño pero que ha experimentado un rápido crecimiento económico en los últimos años debido al descubrimiento de reservas de petroleo. Pasó desde los niveles más bajos en 2014 a un aumento sustantivo y constante entre 2016 y 2022.
+
+4)  República Dominicana: Principal economía del Mar Caribe y país de mayor población entre los que no se tienen datos.
+
+5)  Paraguay: Único país hispanohablante de Sudamérica ausente.
+
+```{r}
+#| label: datos-sin-filtro
+datos_sf <- datos %>%
+  group_by(wave,pais)%>%
+  mutate(sub_orgullonacional = mean_na(mean_na(b4),
+                                       mean_na(orgullonacional)),
+         sub_satisfaccionresidencial = mean_na(mean_na(aoj11),
+                                               mean_na(sd2new2),
+                                               mean_na(sd3new2),
+                                               mean_na(sd6new2)),
+         sub_confianzainterpersonal = it1,
+         sub_comportamientoprosocial = mean_na(mean_na(evadir_impuestos),
+                                               mean_na(evadir_transporte),
+                                               mean_na(aceptar_soborno),
+                                               mean_na(recibir_beneficios)),
+         sub_confianzainstitutciones= mean_na(mean_na(b21a),
+                                              mean_na(b21),
+                                              mean_na(b18),
+                                              mean_na(b10a),
+                                              mean_na(b13)),
+         sub_actitudhacialademocracia = mean_na(mean_na(pn4),
+                                                mean_na(b4),
+                                                mean_na(apoyodemocracia)),
+         sub_participacioncivica = mean_na(mean_na(protestaspacificas),
+                                           mean_na(huelgas),
+                                           mean_na(firmapeticion_wvs)),
+         sub_interespolitico = mean_na(mean_na(pol1),
+                                       mean_na(hablarpolitica)),
+         sub_justiciadistributiva = mean_na(mean_na(justiciaingresoriqueza),
+                                            mean_na(igualdadingresos)),
+         sub_surgirenlavida = mean_na(mean_na(trabajoduro)),
+         sub_justiciaprocedimental= exc7,
+         dim_sentidopertenencia = mean_na(sub_orgullonacional),
+         dim_calidaddevidaenelvecindario = mean_na(sub_satisfaccionresidencial),
+         dim_redessociales = mean_na(sub_confianzainterpersonal,
+                                     sub_comportamientoprosocial),
+         dim_confianzainstitucionesdemocracia = mean_na(sub_confianzainstitutciones,
+                                                        sub_actitudhacialademocracia),
+         dim_participacionpolitica = mean_na(sub_participacioncivica,
+                                             sub_interespolitico),
+         dim_percepcionjusticia = mean_na(sub_justiciadistributiva,
+                                       sub_surgirenlavida,
+                                       sub_justiciaprocedimental),
+        cohesion_horizontal = mean_na(dim_sentidopertenencia,
+                                       dim_calidaddevidaenelvecindario,
+                                       dim_redessociales),
+         cohesion_vertical = mean_na(dim_confianzainstitucionesdemocracia,
+                                     dim_participacionpolitica,
+                                     dim_percepcionjusticia),
+        cohesion_general= (cohesion_horizontal+cohesion_vertical)/2)
+
+paises_c <- datos_sf %>%
+  filter(pais=="Cuba"|
+           pais=="Dominican Republic"|
+           pais=="Honduras"|
+           pais=="Paraguay"|
+           pais=="El Salvador"|
+         pais=="Costa Rica"|
+           pais=="Panama"|
+           pais=="Jamaica"|
+           pais=="Trinidad and Tobago"|
+           pais=="Guyana")
+
+plot<-ggplot(paises_c, aes(x = wave, y = cohesion_general, color=pais,group=pais)) +
+  geom_point() +
+  geom_line() +
+  # geom_smooth(method = "lm", se = TRUE)+
+  theme_minimal()+
+  ggtitle(paste0('Promedio indicadores disponibles, países con más de 1millón de hab. '))+
+  labs(
+    x = "Ola",
+    y = "Puntaje (0-10)",
+    #color = "Tasa homofilia",
+    subtitle = "Datos por país.",
+    caption = paste("Datos LAPOP."))+
+  theme(legend.position='bottom',
+        #text=element_text(family=font_ggplot),
+        plot.title = element_text(face="bold"),
+        legend.title = element_text(
+                                    #size=size_title_legend,
+                                    face = "bold"
+        ), 
+        #legend.text = element_text(size=size_text_legend),
+        #legend.key.width = unit(size_key_legend, 'cm'),
+  )
+
+ggplotly(plot)
+  
+```
+
+# Anexos
+
+::: panel-tabset
+### Comportamiento Prosocial
+
+```{r, warning=FALSE, fig.width=10}
+chart.Correlation(datos %>% select(recibir_beneficios,
+                                   evadir_transporte,
+                                   evadir_impuestos,
+                                   aceptar_soborno,
+                                   cp8) %>%
+                    setNames(c("Recibir beneficios sin necesidad",
+                               "Evadir tarifa transporte público",
+                               "Evadir impuestos",
+                               "Aceptar soborno",
+                               "Participar en reuniones comunitarias")))
+```
+
+### Participación cívica
+
+```{r, warning=FALSE, fig.width=10}
+chart.Correlation(datos %>% select(prot3, convencerpolitica, firmadopeticion, protestaspacificas,
+                                   firmapeticion_wvs,
+                                   huelgas,
+                                   vb2) %>%
+                    setNames(c("Participated in a Protest",
+                             "Convencer políticamente","Firmar petición","Participar en protestas pacíficas",
+                               "Firmar Petición (WVS)",
+                               "Participar en Huelgas", "Votar en Elecciones")))
+```
+
+### Interés Político
+
+```{r, warning=FALSE, fig.width=10}
+chart.Correlation(datos %>% select(pol1, hablarpolitica) %>%
+                    setNames(c("Political Interest (w/PP)", "Hablar de política")))
+```
+:::
+
+```{r}
+  
+chart.Correlation(prom %>%
+                  ungroup %>% select(dim_confianzainstitucionesdemocracia,
+         dim_participacionpolitica,
+         dim_percepcionjusticia) %>%
+                    setNames(c("Confianza Instituciones",
+                               "Participación Política",
+                               "Percepción de Justicia")))
+
+```
+
+## Promedio Cohesión sin filtros de calidad
+
+```{r}
+plot<-ggplot(datos_sf, aes(x = wave, y = cohesion_general, color=pais,group=pais)) +
+  geom_point() +
+  geom_line() +
+  # geom_smooth(method = "lm", se = TRUE)+
+  theme_minimal()+
+  ggtitle(paste0('Promedio indicadores disponibles'))+
+  labs(
+    x = "Ola",
+    y = "Puntaje (0-10)",
+    #color = "Tasa homofilia",
+    subtitle = "Datos por país.",
+    caption = paste("Datos LAPOP."))+
+  theme(legend.position='bottom',
+        #text=element_text(family=font_ggplot),
+        plot.title = element_text(face="bold"),
+        legend.title = element_text(
+                                    #size=size_title_legend,
+                                    face = "bold"
+        ), 
+        #legend.text = element_text(size=size_text_legend),
+        #legend.key.width = unit(size_key_legend, 'cm'),
+  )
+
+ggplotly(plot)
+  
+```

@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.42">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Observatorio Cohesión Social">
+
+<title>Propuesta Indicadores Cohesión Social</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="propuesta_indicadores_files/libs/clipboard/clipboard.min.js"></script>
+<script src="propuesta_indicadores_files/libs/quarto-html/quarto.js"></script>
+<script src="propuesta_indicadores_files/libs/quarto-html/popper.min.js"></script>
+<script src="propuesta_indicadores_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="propuesta_indicadores_files/libs/quarto-html/anchor.min.js"></script>
+<link href="propuesta_indicadores_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="propuesta_indicadores_files/libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="propuesta_indicadores_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="propuesta_indicadores_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="propuesta_indicadores_files/libs/bootstrap/bootstrap-c0367b04c37547644fece4185067e4a7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="propuesta_indicadores_files/libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+<script src="propuesta_indicadores_files/libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="propuesta_indicadores_files/libs/plotly-binding-4.10.4/plotly.js"></script>
+<script src="propuesta_indicadores_files/libs/typedarray-0.1/typedarray.min.js"></script>
+<script src="propuesta_indicadores_files/libs/jquery-3.5.1/jquery.min.js"></script>
+<link href="propuesta_indicadores_files/libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet">
+<script src="propuesta_indicadores_files/libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+<link href="propuesta_indicadores_files/libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="propuesta_indicadores_files/libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Propuesta Indicadores Cohesión Social</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Observatorio Cohesión Social </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="introducción" class="level1">
+<h1>Introducción</h1>
+<p>Nos propusimos en este documento es revisar la construcción de índices de Cohesión Social para América Latina realizada a partir de datos de LAPOP, Latinobarómetro y la Encuesta Mundial de Valores.</p>
+<p>En primer lugar, incluimos datos de las olas más recientes de LAPOP (2023) y Latinobarómetro (2022). Dado que los datos anteriores llegaban hasta 2018, incluir estas nuevas mediciones podría permitir realizar un análisis macro de los efectos de la pandemia sobre la Cohesión Social.</p>
+<p>Luego, nos centramos en hacer una revisión empírica y teórica de los indicadores anteriormente propuestos, detectando algunas posibles falencias. A partir de este diagnóstico, avanzamos hacia propuesta buscando lograr el mejor ajuste estadístico y teórico del modelo.</p>
+</section>
+<section id="análisis" class="level1">
+<h1>Análisis</h1>
+<p>Recordemos que la propuesta inicial, con indicadores, subdimensiones y dimensiones – es la que sigue:</p>
+<p><img src="data/Esquema.svg" class="img-fluid"></p>
+<section id="indicadores" class="level2">
+<h2 class="anchored" data-anchor-id="indicadores">Indicadores</h2>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">Orgullo Nacional</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">Satisfacción Residencial</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false" href="">Confianza en Instituciones</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false" href="">Apoyo a la Democracia</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-5-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-5" role="tab" aria-controls="tabset-1-5" aria-selected="false" href="">Participación cívica</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-6-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-6" role="tab" aria-controls="tabset-1-6" aria-selected="false" href="">Interés Político</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-7-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-7" role="tab" aria-controls="tabset-1-7" aria-selected="false" href="">Justicia Distributiva</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-8-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-8" role="tab" aria-controls="tabset-1-8" aria-selected="false" href="">Surgir en la vida</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="propuesta_indicadores_files/figure-html/orgullo-nacional-1.png" class="img-fluid figure-img" width="960"></p>
+<figcaption>Correlación indicadores subdimensión Orgullo Nacional</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="propuesta_indicadores_files/figure-html/satisfacción-residencial-1.png" class="img-fluid figure-img" width="960"></p>
+<figcaption>Correlación indicadores subdimensión Satisfacción Residencial</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="propuesta_indicadores_files/figure-html/confianza%20instituciones-1.png" class="img-fluid figure-img" width="960"></p>
+<figcaption>Correlación indicadores subdimensión Confianza Instituciones</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-1-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-4-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="propuesta_indicadores_files/figure-html/sd-apoyo-democracia-1.png" class="img-fluid figure-img" width="960"></p>
+<figcaption>Correlación indicadores Actitud hacia la democracia</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-1-5" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-5-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="propuesta_indicadores_files/figure-html/participacion-civica-1.png" class="img-fluid figure-img" width="960"></p>
+<figcaption>Correlación indicadores Participación Civica</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-1-6" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-6-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="propuesta_indicadores_files/figure-html/interés%20político-1.png" class="img-fluid figure-img" width="960"></p>
+<figcaption>Correlación indicadores subdimensión Satisfacción Residencial</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-1-7" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-7-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="propuesta_indicadores_files/figure-html/justicia-distributiva-1.png" class="img-fluid figure-img" width="960"></p>
+<figcaption>Correlación indicadores Justicia Distributiva</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-1-8" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-8-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="propuesta_indicadores_files/figure-html/surgir-vida-1.png" class="img-fluid figure-img" width="960"></p>
+<figcaption>Correlación indicadores Surgir en la vida</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Algunas observaciones:</p>
+<ul>
+<li><p><strong>Orgullo Nacional</strong>: Se observa una correlación moderada a baja (0,2) entre los dos indicadores de esta subdimensión.</p></li>
+<li><p><strong>Satisfacción Residencial</strong>: En general, se observan correlaciones de moderadas a fuertes entre los indicadores de esta subdimensión. Los indicadores de seguridad correlaciona de manera más moderadas con los indicadores de acceso a servicios, lo que podría indicar la presencia de dos subdimensiones. Ahora bien, no sé si se justifica tener dos indicadores de seguridad, ya que ambos (uno de LAPOP y otro de WVS) miden lo mismo.</p></li>
+<li><p><strong>Comportamiento prosocial</strong>: Compuesto por único indicador que mide participación en reuniones comunitarias. Me genera dudas si este basta para armar una subdimensión de “comportamiento prosocial”</p></li>
+<li><p><strong>Participación Política</strong>: Aquí hay algunos indicadores que muestran correlaciones bajas. <em>Hablar de política</em> tiene las correlaciones más fuertes, pero ¿no mide más bien interés político? De hecho, así aparece en la propuesta echa a partir de ELSOC.</p></li>
+<li><p><strong>Interés Político</strong>: La correlación entre ambos indicadores es moderada a baja. Queda la misma dura que en la subdimensión anterior: Votar en las elecciones, ¿no es un indicador de participación política?</p></li>
+<li><p><strong>Surgir en la vida</strong>: La correlación entre ambos indicadores es inexistente. Tampoco sé si me hace tanto sentido teóricamente.</p></li>
+</ul>
+</section>
+<section id="subdimensiones" class="level2">
+<h2 class="anchored" data-anchor-id="subdimensiones">Subdimensiones</h2>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true" href="">Redes Sociales y sociabilidad</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false" href="">Apoyo a la Democracia</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-3" role="tab" aria-controls="tabset-2-3" aria-selected="false" href="">Participación Política</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-4" role="tab" aria-controls="tabset-2-4" aria-selected="false" href="">Percepción Justicia</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="propuesta_indicadores_files/figure-html/redes-sociales-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>Correlación subdimensiones redes sociales y sociabilidad</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="propuesta_indicadores_files/figure-html/d-apoyo-democracia-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>Correlación subdimensiones apoyo a la democracia</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-2-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-3-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="propuesta_indicadores_files/figure-html/participacion-politica-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>Correlación subdimensiones participación política</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-2-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-4-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="propuesta_indicadores_files/figure-html/percepcion-justicia-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>Correlación subdimensiones Percepción Justicia</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Observaciones:</p>
+<ul>
+<li><strong>Redes sociales y sociabilidad</strong>: La correlación entre los dos indicadores y subdimensiones es moderada y negativa, ¿mayor confianza menor participación en reuniones sociales? Como se mencionó anteriormente, es posible que el indicador de comportamiento prosocial sea insuficiente para la subdimensión.</li>
+<li><strong>Participación Política</strong>: La correlación es moderada. Podría aumentar mejorando la consistencia de los indicadores de cada subdimensión.</li>
+<li><strong>Percepción de Justicia</strong>: Correlación moderada. Probablemente haya que revisar la subdimensión de surgir en la vida. Desde el punto de vista teórico, podríamos agregar una subdimensión de justicia procedimental</li>
+</ul>
+</section>
+<section id="dimensiones" class="level2">
+<h2 class="anchored" data-anchor-id="dimensiones">Dimensiones</h2>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true" href="">Cohesión Horizontal</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false" href="">Cohesión Vertical</a></li></ul>
+<div class="tab-content">
+<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="propuesta_indicadores_files/figure-html/cohesion-horizontal-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>Correlación dimensiones cohesión horizontal</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="propuesta_indicadores_files/figure-html/cohesion-vertical-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>Correlación dimensiones cohesión vertical</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Observaciones</p>
+<ul>
+<li><p><strong>Cohesión Vertical</strong>: Las tres dimensiones de la cohesión horizontal muestran una buena correlación entre sí. Aunque la correlación entre calidad de vida en el vecindario y redes sociales podría mejorar.</p></li>
+<li><p><strong>Cohesión Horizontal</strong>: Participación política tiene correlaciones bajísimas con las otras subdimensiones.</p></li>
+</ul>
+</section>
+<section id="cohesión-social" class="level2">
+<h2 class="anchored" data-anchor-id="cohesión-social">Cohesión Social</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="propuesta_indicadores_files/figure-html/cohesion-social-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>Correlación dimensiones cohesión social</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>La correlación entre la Cohesión Horizontal y la Vertical es moderada y negativa. Lo último sería un hallazgo interesante, pero no sé si tiene mucha justificación teórica.</p>
+</section>
+</section>
+<section id="propuesta" class="level1">
+<h1>Propuesta</h1>
+<p>Propongo reemplazar algunos de los indicadores para mejorar la coherencia teórica y estadística del modelo. La mayoría de los nuevos indicadores propuestos provienen de la Encuesta Mundial de Valores. Una limitación de esto es que la WVS cuenta con una menor participación de países latinoamericanos en comparacióna LAPOP y Latinobarométro. Esto tendría como consecuencia reducir la calidad de los indicadores, lo que redundaría en menos países disponibles.</p>
+<p>Los cambios propuestos son los siguientes:</p>
+<ul>
+<li>En la subdimensión <strong>Satisfacción Residencial</strong>, eliminar el indicador de seguridad de la WVS, dejando solo el de LAPOP.</li>
+<li>En la subdimensión <strong>Comportamiento Prosocial</strong>, incluir de manera invertida un set de variables de la WVS que mide la legitimidad de acciones que podríamos denominar como <em>antisociales</em>: obtener beneficios sociales sin tener el derecho, evadir en el transporte público, aceptar un soborno, evadir impuestos.</li>
+<li>Incluir en la subdimensión de <strong>Participación Cívica</strong> un set de variables de participación política de la WVS: protestas pacíficas, huelgas y firmar peticiones. Además, incluir el indicador de voto en las últimas elecciones en esta subdimensión.</li>
+<li>Mover desde Participación Cívica hacia <strong>Interés Político</strong> el indicador de hablar de política.</li>
+<li>Incluir una subdimensión de Justicia Procedimental es la dimensión de <strong>Percepción de Justicia</strong>. Esta subdimensión se medirá através de un único indicador sobre percepción de corrupción presente en LAPOP.</li>
+</ul>
+</section>
+<section id="resultados" class="level1">
+<h1>Resultados</h1>
+<p>Finalmente, los subdimensiones de Comportamiento Prosocial y Participación Cívica quedaron compuestas únicamente por los indicadores nuevos incluidos desde la WVS. En los anexos es posibles observar que los indicadores original no mejoraron su ajuste al incluir los nuevos. Por otro lado, aunque la correlación de los indicadores de interés político mejoró, esta sigue siendo moderada (0,35)</p>
+<section id="indicadores-1" class="level2">
+<h2 class="anchored" data-anchor-id="indicadores-1">Indicadores</h2>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true" href="">Comportamiento Prosocial</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false" href="">Participación cívica</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-3" role="tab" aria-controls="tabset-4-3" aria-selected="false" href="">Interés Político</a></li></ul>
+<div class="tab-content">
+<div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="propuesta_indicadores_files/figure-html/propuesta-comportamiento-prosocial-1.png" class="img-fluid figure-img" width="960"></p>
+<figcaption>Correlación entre indicadores propuestos para subdimensión de Comportamiento Prosocial</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="propuesta_indicadores_files/figure-html/propuesta-participacion-civica-1.png" class="img-fluid figure-img" width="960"></p>
+<figcaption>Correlación entre indicadores propuestos para subdimensión de Participación Cívica.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-4-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-3-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="propuesta_indicadores_files/figure-html/propuesta-interes-politico-1.png" class="img-fluid figure-img" width="960"></p>
+<figcaption>Correlación entre indicadores propuestos para subdimensión de Interés Político.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="subdimensiones-1" class="level2">
+<h2 class="anchored" data-anchor-id="subdimensiones-1">Subdimensiones</h2>
+</section>
+<section id="correlaciones-dimensiones" class="level2">
+<h2 class="anchored" data-anchor-id="correlaciones-dimensiones">Correlaciones dimensiones</h2>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-5-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-1" role="tab" aria-controls="tabset-5-1" aria-selected="true" href="">Redes Sociales y sociabilidad</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-2" role="tab" aria-controls="tabset-5-2" aria-selected="false" href="">Apoyo a la Democracia</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-3" role="tab" aria-controls="tabset-5-3" aria-selected="false" href="">Participación Política</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-4" role="tab" aria-controls="tabset-5-4" aria-selected="false" href="">Percepción Justicia</a></li></ul>
+<div class="tab-content">
+<div id="tabset-5-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-5-1-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="propuesta_indicadores_files/figure-html/propuesta-redes-sociales-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>Correlación entre subdimensiones propuestas para dimensión de Redes sociales y sociabilidad</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-5-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-2-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="propuesta_indicadores_files/figure-html/propuesta-apoyo-democracia-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>Correlación entre subdimensiones propuestas para dimensión de Apoyo a la democracia</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-5-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-3-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="propuesta_indicadores_files/figure-html/propuesta-participacion-politica-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>Correlación entre subdimensiones propuestas para dimensión de Participación Política</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-5-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-4-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="propuesta_indicadores_files/figure-html/propuesta-percepcion-justicia-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>Correlación entre subdimensiones propuestas para dimensión de Percepción Justicia</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<ul>
+<li>La correlación entre las subdimensiones de Redes Sociales pasan de -0.25 a 0.64</li>
+<li>La correlación entre las subdimensiones de Apoyo a la Democracia pasó de 0,64 a 0,79</li>
+<li>La correlación entre las subdimensiones de Participación política suben desde 0,31 a 0,46</li>
+<li>La nueva subdimensión de justicia procedimental tiene una relación de 0,34 con justicia distributiva y de -0,36 con surgir en la vida (ahora medida como importancia del trabajo duro).</li>
+</ul>
+</section>
+<section id="dimensiones-1" class="level2">
+<h2 class="anchored" data-anchor-id="dimensiones-1">Dimensiones</h2>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-6-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-1" role="tab" aria-controls="tabset-6-1" aria-selected="true" href="">Cohesión Horizontal</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-2" role="tab" aria-controls="tabset-6-2" aria-selected="false" href="">Cohesión Vertical</a></li></ul>
+<div class="tab-content">
+<div id="tabset-6-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-6-1-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="propuesta_indicadores_files/figure-html/propuesta-cohesion-horizontal-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>Correlación entre dimensiones propuestas para Cohesión Horizontal</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-6-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-6-2-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="propuesta_indicadores_files/figure-html/propuesta-cohesion-vertical-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>Correlación entre dimensiones propuestas para Cohesión Vertical</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Las dimensiones de Cohesión Horizontal muestran correlaciones bastante buenas entre sí. No así las dimensiones de la Cohesión Vertical. Por alguna razón, Participación Política tiene muy baja correlación con las otras dos dimensiones.</p>
+</section>
+<section id="cohesión" class="level2">
+<h2 class="anchored" data-anchor-id="cohesión">Cohesión</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="propuesta_indicadores_files/figure-html/propuesta-cohesion-social-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>Correlación entre dimensiones propuestas para Cohesión Social</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Pese a la baja coherencia interna de la dimensión vertical, la correlación entre ambas dimensiones de la cohesión social es de 0,78, bastante más alto que en la medición anterior.</p>
+</section>
+<section id="propuesta-final" class="level2">
+<h2 class="anchored" data-anchor-id="propuesta-final">Propuesta Final</h2>
+<p>En vista de todo lo anterior, la siguiente figura ilustra la propuesta final de indicadores.</p>
+<p><img src="data/propuesta_ocs.svg" class="img-fluid"></p>
+</section>
+</section>
+<section id="conclusiones" class="level1">
+<h1>Conclusiones</h1>
+<p>Esta nueva propuesta avanza hacia una mayor coherencia teórica y estadística para un modelo de medición de la cohesión social en América Latina. Muestra de esto las dimensiones verticales y horizontales de la cohesión pasan de tener una correlación global de -0,32 a una de 0,78. Sin embargo, se siguen observando algunos problemas de ajuste, particularmente en la Cohesión Vertical.</p>
+<p>En primer lugar, la dimensión de Participación Política no muestra correlación con el resto. En segundo relación, la consistencia estadística de la dimensión de Percepciones de Justicia es ambigua. Con todo, las dificultades que implica la construcción de este tipo de modelos con, no solo una, sino tres fuentes secundarias, deben tenerse en cuenta en la evaluación de esta propuesta.</p>
+<p>La mayor limitación de la propuesta es que la mayoría de los indicadores nuevos, incluyendo algunas subdimensiones enteras, provienen de la Encuesta Mundial de Valores. El efecto inmediato de esto es que mucho países que no participan en la WVS, particularmente de Centro América y el Caribe, quedan completa o parcialmente afuera de la medición.</p>
+<p>En efecto, solo 7 países tienen datos para todas las 9 olas entre 2004 y 2022: Argentina, Brasil, Chile, Colombia, México, Estados Unidos y Uruguay.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="plotly html-widget html-fill-item" id="htmlwidget-acbef3092e5157cc77e0" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-acbef3092e5157cc77e0">{"x":{"data":[{"x":[2004,2006,2008,2010,2012,2014,2016,2018,2022],"y":[5.4745700318939985,5.1830096766700535,5.1507242430727,5.1860703697627901,5.5708787434581648,5.4252472972055532,5.2383343605527655,5.1070440554612269,5.0560775689048434],"text":["wave: 2004<br />cohesion_general: 5.474570<br />pais: Argentina<br />pais: Argentina","wave: 2006<br />cohesion_general: 5.183010<br />pais: Argentina<br />pais: Argentina","wave: 2008<br />cohesion_general: 5.150724<br />pais: Argentina<br />pais: Argentina","wave: 2010<br />cohesion_general: 5.186070<br />pais: Argentina<br />pais: Argentina","wave: 2012<br />cohesion_general: 5.570879<br />pais: Argentina<br />pais: Argentina","wave: 2014<br />cohesion_general: 5.425247<br />pais: Argentina<br />pais: Argentina","wave: 2016<br />cohesion_general: 5.238334<br />pais: Argentina<br />pais: Argentina","wave: 2018<br />cohesion_general: 5.107044<br />pais: Argentina<br />pais: Argentina","wave: 2022<br />cohesion_general: 5.056078<br />pais: Argentina<br />pais: Argentina"],"type":"scatter","mode":"markers+lines","marker":{"autocolorscale":false,"color":"rgba(248,118,109,1)","opacity":1,"size":5.6692913385826778,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(248,118,109,1)"}},"hoveron":"points","name":"Argentina","legendgroup":"Argentina","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","line":{"width":1.8897637795275593,"color":"rgba(248,118,109,1)","dash":"solid"},"frame":null},{"x":[2004,2006,2008,2010,2012,2014,2016,2018,2022],"y":[5.5658277827757514,5.1648430317816434,5.1209284198332954,5.2799011944133092,5.3474726938971839,5.3986833949936068,5.1302011069633835,4.934583741938102,4.8343378483365145],"text":["wave: 2004<br />cohesion_general: 5.565828<br />pais: Chile<br />pais: Chile","wave: 2006<br />cohesion_general: 5.164843<br />pais: Chile<br />pais: Chile","wave: 2008<br />cohesion_general: 5.120928<br />pais: Chile<br />pais: Chile","wave: 2010<br />cohesion_general: 5.279901<br />pais: Chile<br />pais: Chile","wave: 2012<br />cohesion_general: 5.347473<br />pais: Chile<br />pais: Chile","wave: 2014<br />cohesion_general: 5.398683<br />pais: Chile<br />pais: Chile","wave: 2016<br />cohesion_general: 5.130201<br />pais: Chile<br />pais: Chile","wave: 2018<br />cohesion_general: 4.934584<br />pais: Chile<br />pais: Chile","wave: 2022<br />cohesion_general: 4.834338<br />pais: Chile<br />pais: Chile"],"type":"scatter","mode":"markers+lines","marker":{"autocolorscale":false,"color":"rgba(183,159,0,1)","opacity":1,"size":5.6692913385826778,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(183,159,0,1)"}},"hoveron":"points","name":"Chile","legendgroup":"Chile","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","line":{"width":1.8897637795275593,"color":"rgba(183,159,0,1)","dash":"solid"},"frame":null},{"x":[2004,2006,2008,2010,2012,2014,2016,2018,2022],"y":[6.0799211268242033,5.4934239918541259,5.5958788162570965,5.5425840484833406,5.3486083377518296,5.1944085275615102,5.0156909440373507,5.1129417108375819,4.9936238660721006],"text":["wave: 2004<br />cohesion_general: 6.079921<br />pais: Colombia<br />pais: Colombia","wave: 2006<br />cohesion_general: 5.493424<br />pais: Colombia<br />pais: Colombia","wave: 2008<br />cohesion_general: 5.595879<br />pais: Colombia<br />pais: Colombia","wave: 2010<br />cohesion_general: 5.542584<br />pais: Colombia<br />pais: Colombia","wave: 2012<br />cohesion_general: 5.348608<br />pais: Colombia<br />pais: Colombia","wave: 2014<br />cohesion_general: 5.194409<br />pais: Colombia<br />pais: Colombia","wave: 2016<br />cohesion_general: 5.015691<br />pais: Colombia<br />pais: Colombia","wave: 2018<br />cohesion_general: 5.112942<br />pais: Colombia<br />pais: Colombia","wave: 2022<br />cohesion_general: 4.993624<br />pais: Colombia<br />pais: Colombia"],"type":"scatter","mode":"markers+lines","marker":{"autocolorscale":false,"color":"rgba(0,186,56,1)","opacity":1,"size":5.6692913385826778,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(0,186,56,1)"}},"hoveron":"points","name":"Colombia","legendgroup":"Colombia","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","line":{"width":1.8897637795275593,"color":"rgba(0,186,56,1)","dash":"solid"},"frame":null},{"x":[2004,2006,2008,2010,2012,2014,2016,2018,2022],"y":[5.8816072335269487,5.5590470416921036,5.4689721504631983,5.3603697608104985,5.3625342112726617,5.1958797120490541,4.9997733341236685,5.0631982040059551,5.2949656964677541],"text":["wave: 2004<br />cohesion_general: 5.881607<br />pais: Mexico<br />pais: Mexico","wave: 2006<br />cohesion_general: 5.559047<br />pais: Mexico<br />pais: Mexico","wave: 2008<br />cohesion_general: 5.468972<br />pais: Mexico<br />pais: Mexico","wave: 2010<br />cohesion_general: 5.360370<br />pais: Mexico<br />pais: Mexico","wave: 2012<br />cohesion_general: 5.362534<br />pais: Mexico<br />pais: Mexico","wave: 2014<br />cohesion_general: 5.195880<br />pais: Mexico<br />pais: Mexico","wave: 2016<br />cohesion_general: 4.999773<br />pais: Mexico<br />pais: Mexico","wave: 2018<br />cohesion_general: 5.063198<br />pais: Mexico<br />pais: Mexico","wave: 2022<br />cohesion_general: 5.294966<br />pais: Mexico<br />pais: Mexico"],"type":"scatter","mode":"markers+lines","marker":{"autocolorscale":false,"color":"rgba(0,191,196,1)","opacity":1,"size":5.6692913385826778,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(0,191,196,1)"}},"hoveron":"points","name":"Mexico","legendgroup":"Mexico","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","line":{"width":1.8897637795275593,"color":"rgba(0,191,196,1)","dash":"solid"},"frame":null},{"x":[2004,2006,2008,2010,2012,2014,2016,2018,2022],"y":[6.9277287218763561,6.9277287218763561,6.0364983023555379,5.8741299861935676,5.836466188042265,5.7464140763097085,5.7546165697425788,5.7723776592246843,5.8949228419984703],"text":["wave: 2004<br />cohesion_general: 6.927729<br />pais: United States<br />pais: United States","wave: 2006<br />cohesion_general: 6.927729<br />pais: United States<br />pais: United States","wave: 2008<br />cohesion_general: 6.036498<br />pais: United States<br />pais: United States","wave: 2010<br />cohesion_general: 5.874130<br />pais: United States<br />pais: United States","wave: 2012<br />cohesion_general: 5.836466<br />pais: United States<br />pais: United States","wave: 2014<br />cohesion_general: 5.746414<br />pais: United States<br />pais: United States","wave: 2016<br />cohesion_general: 5.754617<br />pais: United States<br />pais: United States","wave: 2018<br />cohesion_general: 5.772378<br />pais: United States<br />pais: United States","wave: 2022<br />cohesion_general: 5.894923<br />pais: United States<br />pais: United States"],"type":"scatter","mode":"markers+lines","marker":{"autocolorscale":false,"color":"rgba(97,156,255,1)","opacity":1,"size":5.6692913385826778,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(97,156,255,1)"}},"hoveron":"points","name":"United States","legendgroup":"United States","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","line":{"width":1.8897637795275593,"color":"rgba(97,156,255,1)","dash":"solid"},"frame":null},{"x":[2004,2006,2008,2010,2012,2014,2016,2018,2022],"y":[6.1907791942749908,5.7660081716900162,5.7492601345407071,5.9585743573009644,5.711054795443455,5.6974623923733763,5.6256408791716979,5.6150664266684664,5.7726203815646961],"text":["wave: 2004<br />cohesion_general: 6.190779<br />pais: Uruguay<br />pais: Uruguay","wave: 2006<br />cohesion_general: 5.766008<br />pais: Uruguay<br />pais: Uruguay","wave: 2008<br />cohesion_general: 5.749260<br />pais: Uruguay<br />pais: Uruguay","wave: 2010<br />cohesion_general: 5.958574<br />pais: Uruguay<br />pais: Uruguay","wave: 2012<br />cohesion_general: 5.711055<br />pais: Uruguay<br />pais: Uruguay","wave: 2014<br />cohesion_general: 5.697462<br />pais: Uruguay<br />pais: Uruguay","wave: 2016<br />cohesion_general: 5.625641<br />pais: Uruguay<br />pais: Uruguay","wave: 2018<br />cohesion_general: 5.615066<br />pais: Uruguay<br />pais: Uruguay","wave: 2022<br />cohesion_general: 5.772620<br />pais: Uruguay<br />pais: Uruguay"],"type":"scatter","mode":"markers+lines","marker":{"autocolorscale":false,"color":"rgba(245,100,227,1)","opacity":1,"size":5.6692913385826778,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(245,100,227,1)"}},"hoveron":"points","name":"Uruguay","legendgroup":"Uruguay","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","line":{"width":1.8897637795275593,"color":"rgba(245,100,227,1)","dash":"solid"},"frame":null}],"layout":{"margin":{"t":43.762557077625573,"r":7.3059360730593621,"b":40.182648401826498,"l":43.105022831050235},"font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724},"title":{"text":"<b> Cohesión general por país, datos completos <\/b>","font":{"color":"rgba(0,0,0,1)","family":"","size":17.534246575342465},"x":0,"xref":"paper"},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[2003.0999999999999,2022.9000000000001],"tickmode":"array","ticktext":["2005","2010","2015","2020"],"tickvals":[2005,2010,2015,2020],"categoryorder":"array","categoryarray":["2005","2010","2015","2020"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.6529680365296811,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.68949771689498},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"y","title":{"text":"Ola","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[4.7296683046595227,7.0323982655533479],"tickmode":"array","ticktext":["5.0","5.5","6.0","6.5","7.0"],"tickvals":[5,5.5,6,6.5,7],"categoryorder":"array","categoryarray":["5.0","5.5","6.0","6.5","7.0"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.6529680365296811,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.68949771689498},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"x","title":{"text":"Puntaje (0-10)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":true,"legend":{"bgcolor":null,"bordercolor":null,"borderwidth":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.68949771689498},"title":{"text":"pais","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"f231481e73b":{"x":{},"y":{},"colour":{},"type":"scatter"},"f235c73dd01":{"x":{},"y":{},"colour":{}}},"cur_data":"f231481e73b","visdat":{"f231481e73b":["function (y) ","x"],"f235c73dd01":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<p>Además, se suma los siguientes países con datos parciales</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>País</th>
+<th>Olas con datos válidos</th>
+<th>N° Olas</th>
+<th>% Olas</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Bolivia</td>
+<td>2010-2022</td>
+<td>6</td>
+<td>67%</td>
+</tr>
+<tr class="even">
+<td>Canadá</td>
+<td>2004-2018</td>
+<td>8</td>
+<td>89%</td>
+</tr>
+<tr class="odd">
+<td>Ecuador</td>
+<td>2006-2022</td>
+<td>8</td>
+<td>89%</td>
+</tr>
+<tr class="even">
+<td>Guatemala</td>
+<td>2004-2010; 2014-2022</td>
+<td>8</td>
+<td>89%</td>
+</tr>
+<tr class="odd">
+<td>Haití</td>
+<td>2010-2022</td>
+<td>6</td>
+<td>67%</td>
+</tr>
+<tr class="even">
+<td>Nicaragua</td>
+<td>2014-2022</td>
+<td>4</td>
+<td>44%</td>
+</tr>
+<tr class="odd">
+<td>Perú</td>
+<td>2006-2022</td>
+<td>8</td>
+<td>89%</td>
+</tr>
+<tr class="even">
+<td>Venezuela</td>
+<td>2014-2022</td>
+<td>4</td>
+<td>67%</td>
+</tr>
+</tbody>
+</table>
+<div class="cell">
+<div class="cell-output-display">
+<div class="plotly html-widget html-fill-item" id="htmlwidget-78d97cbed88279e36986" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-78d97cbed88279e36986">{"x":{"data":[{"x":[2004,2006,2008,2010,2012,2014,2016,2018,2022],"y":[null,null,null,5.3186091224174312,5.1541905976916986,5.218087123232972,5.1496927059816793,5.0578045535112075,4.8442719708813531],"text":["wave: 2004<br />cohesion_general:       NA<br />pais: Bolivia<br />pais: Bolivia","wave: 2006<br />cohesion_general:       NA<br />pais: Bolivia<br />pais: Bolivia","wave: 2008<br />cohesion_general:       NA<br />pais: Bolivia<br />pais: Bolivia","wave: 2010<br />cohesion_general: 5.318609<br />pais: Bolivia<br />pais: Bolivia","wave: 2012<br />cohesion_general: 5.154191<br />pais: Bolivia<br />pais: Bolivia","wave: 2014<br />cohesion_general: 5.218087<br />pais: Bolivia<br />pais: Bolivia","wave: 2016<br />cohesion_general: 5.149693<br />pais: Bolivia<br />pais: Bolivia","wave: 2018<br />cohesion_general: 5.057805<br />pais: Bolivia<br />pais: Bolivia","wave: 2022<br />cohesion_general: 4.844272<br />pais: Bolivia<br />pais: Bolivia"],"type":"scatter","mode":"markers+lines","marker":{"autocolorscale":false,"color":"rgba(248,118,109,1)","opacity":1,"size":5.6692913385826778,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(248,118,109,1)"}},"hoveron":"points","name":"Bolivia","legendgroup":"Bolivia","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","line":{"width":1.8897637795275593,"color":"rgba(248,118,109,1)","dash":"solid"},"frame":null},{"x":[2004,2006,2008,2010,2012,2014,2016,2018,2022],"y":[7.2603249694140208,7.2603249694140208,6.9970449505162131,6.5767312616715152,6.5840305924774025,6.2388403348804751,6.3587531123416188,6.317070030805441,null],"text":["wave: 2004<br />cohesion_general: 7.260325<br />pais: Canada<br />pais: Canada","wave: 2006<br />cohesion_general: 7.260325<br />pais: Canada<br />pais: Canada","wave: 2008<br />cohesion_general: 6.997045<br />pais: Canada<br />pais: Canada","wave: 2010<br />cohesion_general: 6.576731<br />pais: Canada<br />pais: Canada","wave: 2012<br />cohesion_general: 6.584031<br />pais: Canada<br />pais: Canada","wave: 2014<br />cohesion_general: 6.238840<br />pais: Canada<br />pais: Canada","wave: 2016<br />cohesion_general: 6.358753<br />pais: Canada<br />pais: Canada","wave: 2018<br />cohesion_general: 6.317070<br />pais: Canada<br />pais: Canada","wave: 2022<br />cohesion_general:       NA<br />pais: Canada<br />pais: Canada"],"type":"scatter","mode":"markers+lines","marker":{"autocolorscale":false,"color":"rgba(205,150,0,1)","opacity":1,"size":5.6692913385826778,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(205,150,0,1)"}},"hoveron":"points","name":"Canada","legendgroup":"Canada","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","line":{"width":1.8897637795275593,"color":"rgba(205,150,0,1)","dash":"solid"},"frame":null},{"x":[2004,2006,2008,2010,2012,2014,2016,2018,2022],"y":[null,4.9206733555893667,5.1820579598135925,5.3652124455320642,5.5991405359023734,5.8180674482478967,5.5549245945562964,5.2644439301087278,4.7185780077575821],"text":["wave: 2004<br />cohesion_general:       NA<br />pais: Ecuador<br />pais: Ecuador","wave: 2006<br />cohesion_general: 4.920673<br />pais: Ecuador<br />pais: Ecuador","wave: 2008<br />cohesion_general: 5.182058<br />pais: Ecuador<br />pais: Ecuador","wave: 2010<br />cohesion_general: 5.365212<br />pais: Ecuador<br />pais: Ecuador","wave: 2012<br />cohesion_general: 5.599141<br />pais: Ecuador<br />pais: Ecuador","wave: 2014<br />cohesion_general: 5.818067<br />pais: Ecuador<br />pais: Ecuador","wave: 2016<br />cohesion_general: 5.554925<br />pais: Ecuador<br />pais: Ecuador","wave: 2018<br />cohesion_general: 5.264444<br />pais: Ecuador<br />pais: Ecuador","wave: 2022<br />cohesion_general: 4.718578<br />pais: Ecuador<br />pais: Ecuador"],"type":"scatter","mode":"markers+lines","marker":{"autocolorscale":false,"color":"rgba(124,174,0,1)","opacity":1,"size":5.6692913385826778,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(124,174,0,1)"}},"hoveron":"points","name":"Ecuador","legendgroup":"Ecuador","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","line":{"width":1.8897637795275593,"color":"rgba(124,174,0,1)","dash":"solid"},"frame":null},{"x":[2004,2006,2008,2010,2012,2014,2016,2018,2022],"y":[5.111662593986293,4.7648887163186719,4.758104963204401,4.7212108048627082,null,4.9990752871558426,5.0132394138598366,4.8863746246361446,4.9032633500456591],"text":["wave: 2004<br />cohesion_general: 5.111663<br />pais: Guatemala<br />pais: Guatemala","wave: 2006<br />cohesion_general: 4.764889<br />pais: Guatemala<br />pais: Guatemala","wave: 2008<br />cohesion_general: 4.758105<br />pais: Guatemala<br />pais: Guatemala","wave: 2010<br />cohesion_general: 4.721211<br />pais: Guatemala<br />pais: Guatemala","wave: 2012<br />cohesion_general:       NA<br />pais: Guatemala<br />pais: Guatemala","wave: 2014<br />cohesion_general: 4.999075<br />pais: Guatemala<br />pais: Guatemala","wave: 2016<br />cohesion_general: 5.013239<br />pais: Guatemala<br />pais: Guatemala","wave: 2018<br />cohesion_general: 4.886375<br />pais: Guatemala<br />pais: Guatemala","wave: 2022<br />cohesion_general: 4.903263<br />pais: Guatemala<br />pais: Guatemala"],"type":"scatter","mode":"markers+lines","marker":{"autocolorscale":false,"color":"rgba(0,190,103,1)","opacity":1,"size":5.6692913385826778,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(0,190,103,1)"}},"hoveron":"points","name":"Guatemala","legendgroup":"Guatemala","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","line":{"width":1.8897637795275593,"color":"rgba(0,190,103,1)","dash":"solid"},"frame":null},{"x":[2004,2006,2008,2010,2012,2014,2016,2018,2022],"y":[null,null,null,3.8646420491855702,4.3140846918961806,4.3559824423352111,3.8603316824873954,3.8603316824873954,3.5852941146922004],"text":["wave: 2004<br />cohesion_general:       NA<br />pais: Haiti<br />pais: Haiti","wave: 2006<br />cohesion_general:       NA<br />pais: Haiti<br />pais: Haiti","wave: 2008<br />cohesion_general:       NA<br />pais: Haiti<br />pais: Haiti","wave: 2010<br />cohesion_general: 3.864642<br />pais: Haiti<br />pais: Haiti","wave: 2012<br />cohesion_general: 4.314085<br />pais: Haiti<br />pais: Haiti","wave: 2014<br />cohesion_general: 4.355982<br />pais: Haiti<br />pais: Haiti","wave: 2016<br />cohesion_general: 3.860332<br />pais: Haiti<br />pais: Haiti","wave: 2018<br />cohesion_general: 3.860332<br />pais: Haiti<br />pais: Haiti","wave: 2022<br />cohesion_general: 3.585294<br />pais: Haiti<br />pais: Haiti"],"type":"scatter","mode":"markers+lines","marker":{"autocolorscale":false,"color":"rgba(0,191,196,1)","opacity":1,"size":5.6692913385826778,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(0,191,196,1)"}},"hoveron":"points","name":"Haiti","legendgroup":"Haiti","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","line":{"width":1.8897637795275593,"color":"rgba(0,191,196,1)","dash":"solid"},"frame":null},{"x":[2004,2006,2008,2010,2012,2014,2016,2018,2022],"y":[null,null,null,null,null,5.4696256035802104,5.5675770539981624,5.2001223609878409,5.1597903547933761],"text":["wave: 2004<br />cohesion_general:       NA<br />pais: Nicaragua<br />pais: Nicaragua","wave: 2006<br />cohesion_general:       NA<br />pais: Nicaragua<br />pais: Nicaragua","wave: 2008<br />cohesion_general:       NA<br />pais: Nicaragua<br />pais: Nicaragua","wave: 2010<br />cohesion_general:       NA<br />pais: Nicaragua<br />pais: Nicaragua","wave: 2012<br />cohesion_general:       NA<br />pais: Nicaragua<br />pais: Nicaragua","wave: 2014<br />cohesion_general: 5.469626<br />pais: Nicaragua<br />pais: Nicaragua","wave: 2016<br />cohesion_general: 5.567577<br />pais: Nicaragua<br />pais: Nicaragua","wave: 2018<br />cohesion_general: 5.200122<br />pais: Nicaragua<br />pais: Nicaragua","wave: 2022<br />cohesion_general: 5.159790<br />pais: Nicaragua<br />pais: Nicaragua"],"type":"scatter","mode":"markers+lines","marker":{"autocolorscale":false,"color":"rgba(0,169,255,1)","opacity":1,"size":5.6692913385826778,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(0,169,255,1)"}},"hoveron":"points","name":"Nicaragua","legendgroup":"Nicaragua","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","line":{"width":1.8897637795275593,"color":"rgba(0,169,255,1)","dash":"solid"},"frame":null},{"x":[2004,2006,2008,2010,2012,2014,2016,2018,2022],"y":[null,4.7626081845884807,4.8315534961080804,4.9121278846443586,5.0954731713458941,4.9172718623359808,4.8946796875302141,4.7861747488777695,4.7792863091923508],"text":["wave: 2004<br />cohesion_general:       NA<br />pais: Peru<br />pais: Peru","wave: 2006<br />cohesion_general: 4.762608<br />pais: Peru<br />pais: Peru","wave: 2008<br />cohesion_general: 4.831553<br />pais: Peru<br />pais: Peru","wave: 2010<br />cohesion_general: 4.912128<br />pais: Peru<br />pais: Peru","wave: 2012<br />cohesion_general: 5.095473<br />pais: Peru<br />pais: Peru","wave: 2014<br />cohesion_general: 4.917272<br />pais: Peru<br />pais: Peru","wave: 2016<br />cohesion_general: 4.894680<br />pais: Peru<br />pais: Peru","wave: 2018<br />cohesion_general: 4.786175<br />pais: Peru<br />pais: Peru","wave: 2022<br />cohesion_general: 4.779286<br />pais: Peru<br />pais: Peru"],"type":"scatter","mode":"markers+lines","marker":{"autocolorscale":false,"color":"rgba(199,124,255,1)","opacity":1,"size":5.6692913385826778,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(199,124,255,1)"}},"hoveron":"points","name":"Peru","legendgroup":"Peru","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","line":{"width":1.8897637795275593,"color":"rgba(199,124,255,1)","dash":"solid"},"frame":null},{"x":[2004,2006,2008,2010,2012,2014,2016,2018,2022],"y":[null,null,null,null,null,4.929906983737256,4.6052615886184958,4.5789921529456832,4.6679727425316564],"text":["wave: 2004<br />cohesion_general:       NA<br />pais: Venezuela<br />pais: Venezuela","wave: 2006<br />cohesion_general:       NA<br />pais: Venezuela<br />pais: Venezuela","wave: 2008<br />cohesion_general:       NA<br />pais: Venezuela<br />pais: Venezuela","wave: 2010<br />cohesion_general:       NA<br />pais: Venezuela<br />pais: Venezuela","wave: 2012<br />cohesion_general:       NA<br />pais: Venezuela<br />pais: Venezuela","wave: 2014<br />cohesion_general: 4.929907<br />pais: Venezuela<br />pais: Venezuela","wave: 2016<br />cohesion_general: 4.605262<br />pais: Venezuela<br />pais: Venezuela","wave: 2018<br />cohesion_general: 4.578992<br />pais: Venezuela<br />pais: Venezuela","wave: 2022<br />cohesion_general: 4.667973<br />pais: Venezuela<br />pais: Venezuela"],"type":"scatter","mode":"markers+lines","marker":{"autocolorscale":false,"color":"rgba(255,97,204,1)","opacity":1,"size":5.6692913385826778,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(255,97,204,1)"}},"hoveron":"points","name":"Venezuela","legendgroup":"Venezuela","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","line":{"width":1.8897637795275593,"color":"rgba(255,97,204,1)","dash":"solid"},"frame":null}],"layout":{"margin":{"t":43.762557077625573,"r":7.3059360730593621,"b":40.182648401826498,"l":31.415525114155255},"font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724},"title":{"text":"<b> Cohesión general por país, datos parciales <\/b>","font":{"color":"rgba(0,0,0,1)","family":"","size":17.534246575342465},"x":0,"xref":"paper"},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[2003.0999999999999,2022.9000000000001],"tickmode":"array","ticktext":["2005","2010","2015","2020"],"tickvals":[2005,2010,2015,2020],"categoryorder":"array","categoryarray":["2005","2010","2015","2020"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.6529680365296811,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.68949771689498},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"y","title":{"text":"Ola","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[3.4015425719561092,7.4440765121501116],"tickmode":"array","ticktext":["4","5","6","7"],"tickvals":[4,5,6,7],"categoryorder":"array","categoryarray":["4","5","6","7"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.6529680365296811,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.68949771689498},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"x","title":{"text":"Puntaje (0-10)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":true,"legend":{"bgcolor":null,"bordercolor":null,"borderwidth":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.68949771689498},"title":{"text":"pais","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"f2342fbce94":{"x":{},"y":{},"colour":{},"type":"scatter"},"f2321b778e7":{"x":{},"y":{},"colour":{}}},"cur_data":"f2342fbce94","visdat":{"f2342fbce94":["function (y) ","x"],"f2321b778e7":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<p>Algunas ausencias notables incluyen:</p>
+<ol type="1">
+<li><p>El Salvador: Por la prominencia que ha ganado en el debate regional a raíz de las medidas tomadas por el Gobierno de Nayib Bukele para combatir el crimen en ese país. Esto podría reflejarse en el salto que dan muchos indicadores en el país, alcanzando en 2022 niveles similares a Uruguay (los más altos en América Latina)</p></li>
+<li><p>Costa Rica: Interesante en el contexto centroamericano por su estabilidad política y económica. Aunque muestra caídas desde 2004, se mantiene constantentemente con los indicadores más altos en América Central, solo superado por El Salvador en 2022.</p></li>
+<li><p>Guyana: País pequeño pero que ha experimentado un rápido crecimiento económico en los últimos años debido al descubrimiento de reservas de petroleo. Pasó desde los niveles más bajos en 2014 a un aumento sustantivo y constante entre 2016 y 2022.</p></li>
+<li><p>República Dominicana: Principal economía del Mar Caribe y país de mayor población entre los que no se tienen datos.</p></li>
+<li><p>Paraguay: Único país hispanohablante de Sudamérica ausente.</p></li>
+</ol>
+<div class="cell">
+<div class="cell-output-display">
+<div class="plotly html-widget html-fill-item" id="htmlwidget-b6f016fc81f57cc2501f" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-b6f016fc81f57cc2501f">{"x":{"data":[{"x":[2004,2006,2008,2010,2012,2014,2016,2018,2022],"y":[5.4859604183324606,5.2319153191665828,5.2741645706748361,5.404375320860038,4.8594976923538225,5.1169528596445675,5.0602109998220746,4.997886336193325,5.1515391122155938],"text":["wave: 2004<br />cohesion_general: 5.485960<br />pais: Costa Rica<br />pais: Costa Rica","wave: 2006<br />cohesion_general: 5.231915<br />pais: Costa Rica<br />pais: Costa Rica","wave: 2008<br />cohesion_general: 5.274165<br />pais: Costa Rica<br />pais: Costa Rica","wave: 2010<br />cohesion_general: 5.404375<br />pais: Costa Rica<br />pais: Costa Rica","wave: 2012<br />cohesion_general: 4.859498<br />pais: Costa Rica<br />pais: Costa Rica","wave: 2014<br />cohesion_general: 5.116953<br />pais: Costa Rica<br />pais: Costa Rica","wave: 2016<br />cohesion_general: 5.060211<br />pais: Costa Rica<br />pais: Costa Rica","wave: 2018<br />cohesion_general: 4.997886<br />pais: Costa Rica<br />pais: Costa Rica","wave: 2022<br />cohesion_general: 5.151539<br />pais: Costa Rica<br />pais: Costa Rica"],"type":"scatter","mode":"markers+lines","marker":{"autocolorscale":false,"color":"rgba(248,118,109,1)","opacity":1,"size":5.6692913385826778,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(248,118,109,1)"}},"hoveron":"points","name":"Costa Rica","legendgroup":"Costa Rica","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","line":{"width":1.8897637795275593,"color":"rgba(248,118,109,1)","dash":"solid"},"frame":null},{"x":[2004,2006,2008,2010,2012,2014,2016,2018,2022],"y":[4.4006821863332517,4.8115273827073848,4.9608814559519647,4.6105731298676327,4.5353515829588043,4.6006286207132741,4.506256614639498,4.2993102672519008,4.6741220195051172],"text":["wave: 2004<br />cohesion_general: 4.400682<br />pais: Dominican Republic<br />pais: Dominican Republic","wave: 2006<br />cohesion_general: 4.811527<br />pais: Dominican Republic<br />pais: Dominican Republic","wave: 2008<br />cohesion_general: 4.960881<br />pais: Dominican Republic<br />pais: Dominican Republic","wave: 2010<br />cohesion_general: 4.610573<br />pais: Dominican Republic<br />pais: Dominican Republic","wave: 2012<br />cohesion_general: 4.535352<br />pais: Dominican Republic<br />pais: Dominican Republic","wave: 2014<br />cohesion_general: 4.600629<br />pais: Dominican Republic<br />pais: Dominican Republic","wave: 2016<br />cohesion_general: 4.506257<br />pais: Dominican Republic<br />pais: Dominican Republic","wave: 2018<br />cohesion_general: 4.299310<br />pais: Dominican Republic<br />pais: Dominican Republic","wave: 2022<br />cohesion_general: 4.674122<br />pais: Dominican Republic<br />pais: Dominican Republic"],"type":"scatter","mode":"markers+lines","marker":{"autocolorscale":false,"color":"rgba(205,150,0,1)","opacity":1,"size":5.6692913385826778,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(205,150,0,1)"}},"hoveron":"points","name":"Dominican Republic","legendgroup":"Dominican Republic","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","line":{"width":1.8897637795275593,"color":"rgba(205,150,0,1)","dash":"solid"},"frame":null},{"x":[2004,2006,2008,2010,2012,2014,2016,2018,2022],"y":[5.0217411886099761,4.6788513631214714,4.6874882327345704,4.9375445028010674,4.8262930578066801,4.8295158464333667,4.5232077225557585,4.3299095332894986,5.6806932440523816],"text":["wave: 2004<br />cohesion_general: 5.021741<br />pais: El Salvador<br />pais: El Salvador","wave: 2006<br />cohesion_general: 4.678851<br />pais: El Salvador<br />pais: El Salvador","wave: 2008<br />cohesion_general: 4.687488<br />pais: El Salvador<br />pais: El Salvador","wave: 2010<br />cohesion_general: 4.937545<br />pais: El Salvador<br />pais: El Salvador","wave: 2012<br />cohesion_general: 4.826293<br />pais: El Salvador<br />pais: El Salvador","wave: 2014<br />cohesion_general: 4.829516<br />pais: El Salvador<br />pais: El Salvador","wave: 2016<br />cohesion_general: 4.523208<br />pais: El Salvador<br />pais: El Salvador","wave: 2018<br />cohesion_general: 4.329910<br />pais: El Salvador<br />pais: El Salvador","wave: 2022<br />cohesion_general: 5.680693<br />pais: El Salvador<br />pais: El Salvador"],"type":"scatter","mode":"markers+lines","marker":{"autocolorscale":false,"color":"rgba(124,174,0,1)","opacity":1,"size":5.6692913385826778,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(124,174,0,1)"}},"hoveron":"points","name":"El Salvador","legendgroup":"El Salvador","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","line":{"width":1.8897637795275593,"color":"rgba(124,174,0,1)","dash":"solid"},"frame":null},{"x":[2004,2006,2008,2010,2012,2014,2016,2018,2022],"y":[4.4746309549843817,4.3324065530987843,4.4985614266743177,4.4535905390049306,4.6696953996448967,4.2022267941631286,5.0376543805303857,5.0376543805303857,5.2158008027343605],"text":["wave: 2004<br />cohesion_general: 4.474631<br />pais: Guyana<br />pais: Guyana","wave: 2006<br />cohesion_general: 4.332407<br />pais: Guyana<br />pais: Guyana","wave: 2008<br />cohesion_general: 4.498561<br />pais: Guyana<br />pais: Guyana","wave: 2010<br />cohesion_general: 4.453591<br />pais: Guyana<br />pais: Guyana","wave: 2012<br />cohesion_general: 4.669695<br />pais: Guyana<br />pais: Guyana","wave: 2014<br />cohesion_general: 4.202227<br />pais: Guyana<br />pais: Guyana","wave: 2016<br />cohesion_general: 5.037654<br />pais: Guyana<br />pais: Guyana","wave: 2018<br />cohesion_general: 5.037654<br />pais: Guyana<br />pais: Guyana","wave: 2022<br />cohesion_general: 5.215801<br />pais: Guyana<br />pais: Guyana"],"type":"scatter","mode":"markers+lines","marker":{"autocolorscale":false,"color":"rgba(0,190,103,1)","opacity":1,"size":5.6692913385826778,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(0,190,103,1)"}},"hoveron":"points","name":"Guyana","legendgroup":"Guyana","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","line":{"width":1.8897637795275593,"color":"rgba(0,190,103,1)","dash":"solid"},"frame":null},{"x":[2004,2006,2008,2010,2012,2014,2016,2018,2022],"y":[4.7804813444223733,4.68613066683693,4.2423613046594504,5.0014860160712935,4.2940191197996631,4.5210328287771535,4.425618971378297,4.2068062223182796,4.263617082668655],"text":["wave: 2004<br />cohesion_general: 4.780481<br />pais: Honduras<br />pais: Honduras","wave: 2006<br />cohesion_general: 4.686131<br />pais: Honduras<br />pais: Honduras","wave: 2008<br />cohesion_general: 4.242361<br />pais: Honduras<br />pais: Honduras","wave: 2010<br />cohesion_general: 5.001486<br />pais: Honduras<br />pais: Honduras","wave: 2012<br />cohesion_general: 4.294019<br />pais: Honduras<br />pais: Honduras","wave: 2014<br />cohesion_general: 4.521033<br />pais: Honduras<br />pais: Honduras","wave: 2016<br />cohesion_general: 4.425619<br />pais: Honduras<br />pais: Honduras","wave: 2018<br />cohesion_general: 4.206806<br />pais: Honduras<br />pais: Honduras","wave: 2022<br />cohesion_general: 4.263617<br />pais: Honduras<br />pais: Honduras"],"type":"scatter","mode":"markers+lines","marker":{"autocolorscale":false,"color":"rgba(0,191,196,1)","opacity":1,"size":5.6692913385826778,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(0,191,196,1)"}},"hoveron":"points","name":"Honduras","legendgroup":"Honduras","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","line":{"width":1.8897637795275593,"color":"rgba(0,191,196,1)","dash":"solid"},"frame":null},{"x":[2004,2006,2008,2010,2012,2014,2016,2018,2022],"y":[4.4436630989781145,4.2528772533530192,4.493520458382692,4.1420787976925144,4.6421364813817592,4.0324116627413709,4.1939869451938252,4.340965853281963,4.0426665963310082],"text":["wave: 2004<br />cohesion_general: 4.443663<br />pais: Jamaica<br />pais: Jamaica","wave: 2006<br />cohesion_general: 4.252877<br />pais: Jamaica<br />pais: Jamaica","wave: 2008<br />cohesion_general: 4.493520<br />pais: Jamaica<br />pais: Jamaica","wave: 2010<br />cohesion_general: 4.142079<br />pais: Jamaica<br />pais: Jamaica","wave: 2012<br />cohesion_general: 4.642136<br />pais: Jamaica<br />pais: Jamaica","wave: 2014<br />cohesion_general: 4.032412<br />pais: Jamaica<br />pais: Jamaica","wave: 2016<br />cohesion_general: 4.193987<br />pais: Jamaica<br />pais: Jamaica","wave: 2018<br />cohesion_general: 4.340966<br />pais: Jamaica<br />pais: Jamaica","wave: 2022<br />cohesion_general: 4.042667<br />pais: Jamaica<br />pais: Jamaica"],"type":"scatter","mode":"markers+lines","marker":{"autocolorscale":false,"color":"rgba(0,169,255,1)","opacity":1,"size":5.6692913385826778,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(0,169,255,1)"}},"hoveron":"points","name":"Jamaica","legendgroup":"Jamaica","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","line":{"width":1.8897637795275593,"color":"rgba(0,169,255,1)","dash":"solid"},"frame":null},{"x":[2004,2006,2008,2010,2012,2014,2016,2018,2022],"y":[4.3934240119447505,4.4364318215736649,4.6873777227812399,5.1264909327965809,4.6432475454253774,5.0237286443908316,4.3435682979176526,4.1781718313073881,4.1505012154275658],"text":["wave: 2004<br />cohesion_general: 4.393424<br />pais: Panama<br />pais: Panama","wave: 2006<br />cohesion_general: 4.436432<br />pais: Panama<br />pais: Panama","wave: 2008<br />cohesion_general: 4.687378<br />pais: Panama<br />pais: Panama","wave: 2010<br />cohesion_general: 5.126491<br />pais: Panama<br />pais: Panama","wave: 2012<br />cohesion_general: 4.643248<br />pais: Panama<br />pais: Panama","wave: 2014<br />cohesion_general: 5.023729<br />pais: Panama<br />pais: Panama","wave: 2016<br />cohesion_general: 4.343568<br />pais: Panama<br />pais: Panama","wave: 2018<br />cohesion_general: 4.178172<br />pais: Panama<br />pais: Panama","wave: 2022<br />cohesion_general: 4.150501<br />pais: Panama<br />pais: Panama"],"type":"scatter","mode":"markers+lines","marker":{"autocolorscale":false,"color":"rgba(199,124,255,1)","opacity":1,"size":5.6692913385826778,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(199,124,255,1)"}},"hoveron":"points","name":"Panama","legendgroup":"Panama","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","line":{"width":1.8897637795275593,"color":"rgba(199,124,255,1)","dash":"solid"},"frame":null},{"x":[2004,2006,2008,2010,2012,2014,2016,2018,2022],"y":[4.0537501571111481,4.0242891637918685,3.9819814764625585,4.4775275303549362,4.5615859464151418,4.5017870550855701,4.4032514714925437,4.5428857479341023,4.290493987822078],"text":["wave: 2004<br />cohesion_general: 4.053750<br />pais: Paraguay<br />pais: Paraguay","wave: 2006<br />cohesion_general: 4.024289<br />pais: Paraguay<br />pais: Paraguay","wave: 2008<br />cohesion_general: 3.981981<br />pais: Paraguay<br />pais: Paraguay","wave: 2010<br />cohesion_general: 4.477528<br />pais: Paraguay<br />pais: Paraguay","wave: 2012<br />cohesion_general: 4.561586<br />pais: Paraguay<br />pais: Paraguay","wave: 2014<br />cohesion_general: 4.501787<br />pais: Paraguay<br />pais: Paraguay","wave: 2016<br />cohesion_general: 4.403251<br />pais: Paraguay<br />pais: Paraguay","wave: 2018<br />cohesion_general: 4.542886<br />pais: Paraguay<br />pais: Paraguay","wave: 2022<br />cohesion_general: 4.290494<br />pais: Paraguay<br />pais: Paraguay"],"type":"scatter","mode":"markers+lines","marker":{"autocolorscale":false,"color":"rgba(255,97,204,1)","opacity":1,"size":5.6692913385826778,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(255,97,204,1)"}},"hoveron":"points","name":"Paraguay","legendgroup":"Paraguay","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","line":{"width":1.8897637795275593,"color":"rgba(255,97,204,1)","dash":"solid"},"frame":null}],"layout":{"margin":{"t":43.762557077625573,"r":7.3059360730593621,"b":40.182648401826498,"l":43.105022831050235},"font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724},"title":{"text":"<b> Promedio indicadores disponibles, países con más de 1millón de hab.  <\/b>","font":{"color":"rgba(0,0,0,1)","family":"","size":17.534246575342465},"x":0,"xref":"paper"},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[2003.0999999999999,2022.9000000000001],"tickmode":"array","ticktext":["2005","2010","2015","2020"],"tickvals":[2005,2010,2015,2020],"categoryorder":"array","categoryarray":["2005","2010","2015","2020"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.6529680365296811,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.68949771689498},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"y","title":{"text":"Ola","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[3.8970458880830674,5.7656288324318732],"tickmode":"array","ticktext":["4.0","4.5","5.0","5.5"],"tickvals":[4,4.5,5,5.5],"categoryorder":"array","categoryarray":["4.0","4.5","5.0","5.5"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.6529680365296811,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.68949771689498},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"x","title":{"text":"Puntaje (0-10)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":true,"legend":{"bgcolor":null,"bordercolor":null,"borderwidth":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.68949771689498},"title":{"text":"pais","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"f2335171b25":{"x":{},"y":{},"colour":{},"type":"scatter"},"f237ff7355d":{"x":{},"y":{},"colour":{}}},"cur_data":"f2335171b25","visdat":{"f2335171b25":["function (y) ","x"],"f237ff7355d":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</section>
+<section id="anexos" class="level1">
+<h1>Anexos</h1>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-7-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-1" role="tab" aria-controls="tabset-7-1" aria-selected="true" href="">Comportamiento Prosocial</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-2" role="tab" aria-controls="tabset-7-2" aria-selected="false" href="">Participación cívica</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-3" role="tab" aria-controls="tabset-7-3" aria-selected="false" href="">Interés Político</a></li></ul>
+<div class="tab-content">
+<div id="tabset-7-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-7-1-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="propuesta_indicadores_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-7-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-7-2-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="propuesta_indicadores_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-7-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-7-3-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="propuesta_indicadores_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="propuesta_indicadores_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<section id="promedio-cohesión-sin-filtros-de-calidad" class="level2">
+<h2 class="anchored" data-anchor-id="promedio-cohesión-sin-filtros-de-calidad">Promedio Cohesión sin filtros de calidad</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div class="plotly html-widget html-fill-item" id="htmlwidget-0c4f6de87aad338d07e6" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-0c4f6de87aad338d07e6">{"x":{"data":[{"x":[2004,2006,2008,2010,2012,2014,2016,2018,2022],"y":[5.0465670979055286,5.1830096766700535,5.1507242430727,5.1860703697627901,5.5708787434581648,5.4252472972055532,5.2383343605527655,5.1070440554612269,5.0560775689048434],"text":["wave: 2004<br />cohesion_general: 5.046567<br />pais: Argentina<br />pais: Argentina","wave: 2006<br />cohesion_general: 5.183010<br />pais: Argentina<br />pais: Argentina","wave: 2008<br />cohesion_general: 5.150724<br />pais: Argentina<br />pais: Argentina","wave: 2010<br />cohesion_general: 5.186070<br />pais: Argentina<br />pais: Argentina","wave: 2012<br />cohesion_general: 5.570879<br />pais: Argentina<br />pais: Argentina","wave: 2014<br />cohesion_general: 5.425247<br />pais: Argentina<br />pais: Argentina","wave: 2016<br />cohesion_general: 5.238334<br />pais: Argentina<br />pais: Argentina","wave: 2018<br />cohesion_general: 5.107044<br />pais: Argentina<br />pais: Argentina","wave: 2022<br />cohesion_general: 5.056078<br />pais: Argentina<br />pais: Argentina"],"type":"scatter","mode":"markers+lines","marker":{"autocolorscale":false,"color":"rgba(248,118,109,1)","opacity":1,"size":5.6692913385826778,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(248,118,109,1)"}},"hoveron":"points","name":"Argentina","legendgroup":"Argentina","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","line":{"width":1.8897637795275593,"color":"rgba(248,118,109,1)","dash":"solid"},"frame":null},{"x":[2004,2006,2008,2010,2012,2014,2016,2018,2022],"y":[4.9783546450069913,4.7720979068026201,4.7720979068026201,4.1757328876431838,5.0814480592628328,4.4595797877365131,4.4595797877365131,4.4595797877365131,4.7643270231986588],"text":["wave: 2004<br />cohesion_general: 4.978355<br />pais: Belize<br />pais: Belize","wave: 2006<br />cohesion_general: 4.772098<br />pais: Belize<br />pais: Belize","wave: 2008<br />cohesion_general: 4.772098<br />pais: Belize<br />pais: Belize","wave: 2010<br />cohesion_general: 4.175733<br />pais: Belize<br />pais: Belize","wave: 2012<br />cohesion_general: 5.081448<br />pais: Belize<br />pais: Belize","wave: 2014<br />cohesion_general: 4.459580<br />pais: Belize<br />pais: Belize","wave: 2016<br />cohesion_general: 4.459580<br />pais: Belize<br />pais: Belize","wave: 2018<br />cohesion_general: 4.459580<br />pais: Belize<br />pais: Belize","wave: 2022<br />cohesion_general: 4.764327<br />pais: Belize<br />pais: Belize"],"type":"scatter","mode":"markers+lines","marker":{"autocolorscale":false,"color":"rgba(237,129,65,1)","opacity":1,"size":5.6692913385826778,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(237,129,65,1)"}},"hoveron":"points","name":"Belize","legendgroup":"Belize","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","line":{"width":1.8897637795275593,"color":"rgba(237,129,65,1)","dash":"solid"},"frame":null},{"x":[2004,2006,2008,2010,2012,2014,2016,2018,2022],"y":[4.2965102755956037,4.568697869785602,4.5945434800284168,5.3186091224174312,5.1541905976916986,5.218087123232972,5.1496927059816793,5.0578045535112075,4.8442719708813531],"text":["wave: 2004<br />cohesion_general: 4.296510<br />pais: Bolivia<br />pais: Bolivia","wave: 2006<br />cohesion_general: 4.568698<br />pais: Bolivia<br />pais: Bolivia","wave: 2008<br />cohesion_general: 4.594543<br />pais: Bolivia<br />pais: Bolivia","wave: 2010<br />cohesion_general: 5.318609<br />pais: Bolivia<br />pais: Bolivia","wave: 2012<br />cohesion_general: 5.154191<br />pais: Bolivia<br />pais: Bolivia","wave: 2014<br />cohesion_general: 5.218087<br />pais: Bolivia<br />pais: Bolivia","wave: 2016<br />cohesion_general: 5.149693<br />pais: Bolivia<br />pais: Bolivia","wave: 2018<br />cohesion_general: 5.057805<br />pais: Bolivia<br />pais: Bolivia","wave: 2022<br />cohesion_general: 4.844272<br />pais: Bolivia<br />pais: Bolivia"],"type":"scatter","mode":"markers+lines","marker":{"autocolorscale":false,"color":"rgba(224,139,0,1)","opacity":1,"size":5.6692913385826778,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(224,139,0,1)"}},"hoveron":"points","name":"Bolivia","legendgroup":"Bolivia","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","line":{"width":1.8897637795275593,"color":"rgba(224,139,0,1)","dash":"solid"},"frame":null},{"x":[2004,2006,2008,2010,2012,2014,2016,2018,2022],"y":[5.2357202532703671,5.0453060025502232,4.9713813607367658,5.159952718758027,5.105835256399109,4.8343025146869252,4.5582506750660849,4.7489347753143232,5.1653194238820976],"text":["wave: 2004<br />cohesion_general: 5.235720<br />pais: Brazil<br />pais: Brazil","wave: 2006<br />cohesion_general: 5.045306<br />pais: Brazil<br />pais: Brazil","wave: 2008<br />cohesion_general: 4.971381<br />pais: Brazil<br />pais: Brazil","wave: 2010<br />cohesion_general: 5.159953<br />pais: Brazil<br />pais: Brazil","wave: 2012<br />cohesion_general: 5.105835<br />pais: Brazil<br />pais: Brazil","wave: 2014<br />cohesion_general: 4.834303<br />pais: Brazil<br />pais: Brazil","wave: 2016<br />cohesion_general: 4.558251<br />pais: Brazil<br />pais: Brazil","wave: 2018<br />cohesion_general: 4.748935<br />pais: Brazil<br />pais: Brazil","wave: 2022<br />cohesion_general: 5.165319<br />pais: Brazil<br />pais: Brazil"],"type":"scatter","mode":"markers+lines","marker":{"autocolorscale":false,"color":"rgba(207,148,0,1)","opacity":1,"size":5.6692913385826778,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(207,148,0,1)"}},"hoveron":"points","name":"Brazil","legendgroup":"Brazil","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","line":{"width":1.8897637795275593,"color":"rgba(207,148,0,1)","dash":"solid"},"frame":null},{"x":[2004,2006,2008,2010,2012,2014,2016,2018,2022],"y":[7.1488773108566477,7.1488773108566477,6.8820254633604545,6.5699679406444371,6.574798535190614,6.3963697143625264,6.4888649357712076,6.4758421171169402,6.3602910494160572],"text":["wave: 2004<br />cohesion_general: 7.148877<br />pais: Canada<br />pais: Canada","wave: 2006<br />cohesion_general: 7.148877<br />pais: Canada<br />pais: Canada","wave: 2008<br />cohesion_general: 6.882025<br />pais: Canada<br />pais: Canada","wave: 2010<br />cohesion_general: 6.569968<br />pais: Canada<br />pais: Canada","wave: 2012<br />cohesion_general: 6.574799<br />pais: Canada<br />pais: Canada","wave: 2014<br />cohesion_general: 6.396370<br />pais: Canada<br />pais: Canada","wave: 2016<br />cohesion_general: 6.488865<br />pais: Canada<br />pais: Canada","wave: 2018<br />cohesion_general: 6.475842<br />pais: Canada<br />pais: Canada","wave: 2022<br />cohesion_general: 6.360291<br />pais: Canada<br />pais: Canada"],"type":"scatter","mode":"markers+lines","marker":{"autocolorscale":false,"color":"rgba(187,157,0,1)","opacity":1,"size":5.6692913385826778,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(187,157,0,1)"}},"hoveron":"points","name":"Canada","legendgroup":"Canada","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","line":{"width":1.8897637795275593,"color":"rgba(187,157,0,1)","dash":"solid"},"frame":null},{"x":[2004,2006,2008,2010,2012,2014,2016,2018,2022],"y":[5.2851286096762262,5.1648430317816434,5.1209284198332954,5.2799011944133092,5.3474726938971839,5.3986833949936068,5.1302011069633835,4.934583741938102,4.8343378483365145],"text":["wave: 2004<br />cohesion_general: 5.285129<br />pais: Chile<br />pais: Chile","wave: 2006<br />cohesion_general: 5.164843<br />pais: Chile<br />pais: Chile","wave: 2008<br />cohesion_general: 5.120928<br />pais: Chile<br />pais: Chile","wave: 2010<br />cohesion_general: 5.279901<br />pais: Chile<br />pais: Chile","wave: 2012<br />cohesion_general: 5.347473<br />pais: Chile<br />pais: Chile","wave: 2014<br />cohesion_general: 5.398683<br />pais: Chile<br />pais: Chile","wave: 2016<br />cohesion_general: 5.130201<br />pais: Chile<br />pais: Chile","wave: 2018<br />cohesion_general: 4.934584<br />pais: Chile<br />pais: Chile","wave: 2022<br />cohesion_general: 4.834338<br />pais: Chile<br />pais: Chile"],"type":"scatter","mode":"markers+lines","marker":{"autocolorscale":false,"color":"rgba(163,165,0,1)","opacity":1,"size":5.6692913385826778,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(163,165,0,1)"}},"hoveron":"points","name":"Chile","legendgroup":"Chile","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","line":{"width":1.8897637795275593,"color":"rgba(163,165,0,1)","dash":"solid"},"frame":null},{"x":[2004,2006,2008,2010,2012,2014,2016,2018,2022],"y":[5.772560975625737,5.4934239918541259,5.5958788162570965,5.5425840484833406,5.3486083377518296,5.1944085275615102,5.0156909440373507,5.1129417108375819,4.9936238660721006],"text":["wave: 2004<br />cohesion_general: 5.772561<br />pais: Colombia<br />pais: Colombia","wave: 2006<br />cohesion_general: 5.493424<br />pais: Colombia<br />pais: Colombia","wave: 2008<br />cohesion_general: 5.595879<br />pais: Colombia<br />pais: Colombia","wave: 2010<br />cohesion_general: 5.542584<br />pais: Colombia<br />pais: Colombia","wave: 2012<br />cohesion_general: 5.348608<br />pais: Colombia<br />pais: Colombia","wave: 2014<br />cohesion_general: 5.194409<br />pais: Colombia<br />pais: Colombia","wave: 2016<br />cohesion_general: 5.015691<br />pais: Colombia<br />pais: Colombia","wave: 2018<br />cohesion_general: 5.112942<br />pais: Colombia<br />pais: Colombia","wave: 2022<br />cohesion_general: 4.993624<br />pais: Colombia<br />pais: Colombia"],"type":"scatter","mode":"markers+lines","marker":{"autocolorscale":false,"color":"rgba(133,173,0,1)","opacity":1,"size":5.6692913385826778,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(133,173,0,1)"}},"hoveron":"points","name":"Colombia","legendgroup":"Colombia","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","line":{"width":1.8897637795275593,"color":"rgba(133,173,0,1)","dash":"solid"},"frame":null},{"x":[2004,2006,2008,2010,2012,2014,2016,2018,2022],"y":[5.4859604183324606,5.2319153191665828,5.2741645706748361,5.404375320860038,4.8594976923538225,5.1169528596445675,5.0602109998220746,4.997886336193325,5.1515391122155938],"text":["wave: 2004<br />cohesion_general: 5.485960<br />pais: Costa Rica<br />pais: Costa Rica","wave: 2006<br />cohesion_general: 5.231915<br />pais: Costa Rica<br />pais: Costa Rica","wave: 2008<br />cohesion_general: 5.274165<br />pais: Costa Rica<br />pais: Costa Rica","wave: 2010<br />cohesion_general: 5.404375<br />pais: Costa Rica<br />pais: Costa Rica","wave: 2012<br />cohesion_general: 4.859498<br />pais: Costa Rica<br />pais: Costa Rica","wave: 2014<br />cohesion_general: 5.116953<br />pais: Costa Rica<br />pais: Costa Rica","wave: 2016<br />cohesion_general: 5.060211<br />pais: Costa Rica<br />pais: Costa Rica","wave: 2018<br />cohesion_general: 4.997886<br />pais: Costa Rica<br />pais: Costa Rica","wave: 2022<br />cohesion_general: 5.151539<br />pais: Costa Rica<br />pais: Costa Rica"],"type":"scatter","mode":"markers+lines","marker":{"autocolorscale":false,"color":"rgba(91,179,0,1)","opacity":1,"size":5.6692913385826778,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(91,179,0,1)"}},"hoveron":"points","name":"Costa Rica","legendgroup":"Costa Rica","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","line":{"width":1.8897637795275593,"color":"rgba(91,179,0,1)","dash":"solid"},"frame":null},{"x":[2004,2006,2008,2010,2012,2014,2016,2018,2022],"y":[4.4006821863332517,4.8115273827073848,4.9608814559519647,4.6105731298676327,4.5353515829588043,4.6006286207132741,4.506256614639498,4.2993102672519008,4.6741220195051172],"text":["wave: 2004<br />cohesion_general: 4.400682<br />pais: Dominican Republic<br />pais: Dominican Republic","wave: 2006<br />cohesion_general: 4.811527<br />pais: Dominican Republic<br />pais: Dominican Republic","wave: 2008<br />cohesion_general: 4.960881<br />pais: Dominican Republic<br />pais: Dominican Republic","wave: 2010<br />cohesion_general: 4.610573<br />pais: Dominican Republic<br />pais: Dominican Republic","wave: 2012<br />cohesion_general: 4.535352<br />pais: Dominican Republic<br />pais: Dominican Republic","wave: 2014<br />cohesion_general: 4.600629<br />pais: Dominican Republic<br />pais: Dominican Republic","wave: 2016<br />cohesion_general: 4.506257<br />pais: Dominican Republic<br />pais: Dominican Republic","wave: 2018<br />cohesion_general: 4.299310<br />pais: Dominican Republic<br />pais: Dominican Republic","wave: 2022<br />cohesion_general: 4.674122<br />pais: Dominican Republic<br />pais: Dominican Republic"],"type":"scatter","mode":"markers+lines","marker":{"autocolorscale":false,"color":"rgba(0,184,32,1)","opacity":1,"size":5.6692913385826778,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(0,184,32,1)"}},"hoveron":"points","name":"Dominican Republic","legendgroup":"Dominican Republic","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","line":{"width":1.8897637795275593,"color":"rgba(0,184,32,1)","dash":"solid"},"frame":null},{"x":[2004,2006,2008,2010,2012,2014,2016,2018,2022],"y":[4.155503097793626,4.9206733555893667,5.1820579598135925,5.3652124455320642,5.5991405359023734,5.8180674482478967,5.5549245945562964,5.2644439301087278,4.7185780077575821],"text":["wave: 2004<br />cohesion_general: 4.155503<br />pais: Ecuador<br />pais: Ecuador","wave: 2006<br />cohesion_general: 4.920673<br />pais: Ecuador<br />pais: Ecuador","wave: 2008<br />cohesion_general: 5.182058<br />pais: Ecuador<br />pais: Ecuador","wave: 2010<br />cohesion_general: 5.365212<br />pais: Ecuador<br />pais: Ecuador","wave: 2012<br />cohesion_general: 5.599141<br />pais: Ecuador<br />pais: Ecuador","wave: 2014<br />cohesion_general: 5.818067<br />pais: Ecuador<br />pais: Ecuador","wave: 2016<br />cohesion_general: 5.554925<br />pais: Ecuador<br />pais: Ecuador","wave: 2018<br />cohesion_general: 5.264444<br />pais: Ecuador<br />pais: Ecuador","wave: 2022<br />cohesion_general: 4.718578<br />pais: Ecuador<br />pais: Ecuador"],"type":"scatter","mode":"markers+lines","marker":{"autocolorscale":false,"color":"rgba(0,188,89,1)","opacity":1,"size":5.6692913385826778,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(0,188,89,1)"}},"hoveron":"points","name":"Ecuador","legendgroup":"Ecuador","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","line":{"width":1.8897637795275593,"color":"rgba(0,188,89,1)","dash":"solid"},"frame":null},{"x":[2004,2006,2008,2010,2012,2014,2016,2018,2022],"y":[5.0217411886099761,4.6788513631214714,4.6874882327345704,4.9375445028010674,4.8262930578066801,4.8295158464333667,4.5232077225557585,4.3299095332894986,5.6806932440523816],"text":["wave: 2004<br />cohesion_general: 5.021741<br />pais: El Salvador<br />pais: El Salvador","wave: 2006<br />cohesion_general: 4.678851<br />pais: El Salvador<br />pais: El Salvador","wave: 2008<br />cohesion_general: 4.687488<br />pais: El Salvador<br />pais: El Salvador","wave: 2010<br />cohesion_general: 4.937545<br />pais: El Salvador<br />pais: El Salvador","wave: 2012<br />cohesion_general: 4.826293<br />pais: El Salvador<br />pais: El Salvador","wave: 2014<br />cohesion_general: 4.829516<br />pais: El Salvador<br />pais: El Salvador","wave: 2016<br />cohesion_general: 4.523208<br />pais: El Salvador<br />pais: El Salvador","wave: 2018<br />cohesion_general: 4.329910<br />pais: El Salvador<br />pais: El Salvador","wave: 2022<br />cohesion_general: 5.680693<br />pais: El Salvador<br />pais: El Salvador"],"type":"scatter","mode":"markers+lines","marker":{"autocolorscale":false,"color":"rgba(0,191,125,1)","opacity":1,"size":5.6692913385826778,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(0,191,125,1)"}},"hoveron":"points","name":"El Salvador","legendgroup":"El Salvador","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","line":{"width":1.8897637795275593,"color":"rgba(0,191,125,1)","dash":"solid"},"frame":null},{"x":[2004,2006,2008,2010,2012,2014,2016,2018,2022],"y":[4.861773962919421,4.7648887163186719,4.758104963204401,4.7212108048627082,4.5352950658768574,4.9990752871558426,5.0132394138598366,4.8863746246361446,4.9032633500456591],"text":["wave: 2004<br />cohesion_general: 4.861774<br />pais: Guatemala<br />pais: Guatemala","wave: 2006<br />cohesion_general: 4.764889<br />pais: Guatemala<br />pais: Guatemala","wave: 2008<br />cohesion_general: 4.758105<br />pais: Guatemala<br />pais: Guatemala","wave: 2010<br />cohesion_general: 4.721211<br />pais: Guatemala<br />pais: Guatemala","wave: 2012<br />cohesion_general: 4.535295<br />pais: Guatemala<br />pais: Guatemala","wave: 2014<br />cohesion_general: 4.999075<br />pais: Guatemala<br />pais: Guatemala","wave: 2016<br />cohesion_general: 5.013239<br />pais: Guatemala<br />pais: Guatemala","wave: 2018<br />cohesion_general: 4.886375<br />pais: Guatemala<br />pais: Guatemala","wave: 2022<br />cohesion_general: 4.903263<br />pais: Guatemala<br />pais: Guatemala"],"type":"scatter","mode":"markers+lines","marker":{"autocolorscale":false,"color":"rgba(0,193,156,1)","opacity":1,"size":5.6692913385826778,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(0,193,156,1)"}},"hoveron":"points","name":"Guatemala","legendgroup":"Guatemala","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","line":{"width":1.8897637795275593,"color":"rgba(0,193,156,1)","dash":"solid"},"frame":null},{"x":[2004,2006,2008,2010,2012,2014,2016,2018,2022],"y":[4.4746309549843817,4.3324065530987843,4.4985614266743177,4.4535905390049306,4.6696953996448967,4.2022267941631286,5.0376543805303857,5.0376543805303857,5.2158008027343605],"text":["wave: 2004<br />cohesion_general: 4.474631<br />pais: Guyana<br />pais: Guyana","wave: 2006<br />cohesion_general: 4.332407<br />pais: Guyana<br />pais: Guyana","wave: 2008<br />cohesion_general: 4.498561<br />pais: Guyana<br />pais: Guyana","wave: 2010<br />cohesion_general: 4.453591<br />pais: Guyana<br />pais: Guyana","wave: 2012<br />cohesion_general: 4.669695<br />pais: Guyana<br />pais: Guyana","wave: 2014<br />cohesion_general: 4.202227<br />pais: Guyana<br />pais: Guyana","wave: 2016<br />cohesion_general: 5.037654<br />pais: Guyana<br />pais: Guyana","wave: 2018<br />cohesion_general: 5.037654<br />pais: Guyana<br />pais: Guyana","wave: 2022<br />cohesion_general: 5.215801<br />pais: Guyana<br />pais: Guyana"],"type":"scatter","mode":"markers+lines","marker":{"autocolorscale":false,"color":"rgba(0,192,184,1)","opacity":1,"size":5.6692913385826778,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(0,192,184,1)"}},"hoveron":"points","name":"Guyana","legendgroup":"Guyana","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","line":{"width":1.8897637795275593,"color":"rgba(0,192,184,1)","dash":"solid"},"frame":null},{"x":[2004,2006,2008,2010,2012,2014,2016,2018,2022],"y":[4.0050898426062869,3.9131951407485586,3.8862218824006911,4.1842623872919047,4.5644433077618967,4.5820204860119258,4.2139889368359427,4.2139889368359427,3.9939245128085048],"text":["wave: 2004<br />cohesion_general: 4.005090<br />pais: Haiti<br />pais: Haiti","wave: 2006<br />cohesion_general: 3.913195<br />pais: Haiti<br />pais: Haiti","wave: 2008<br />cohesion_general: 3.886222<br />pais: Haiti<br />pais: Haiti","wave: 2010<br />cohesion_general: 4.184262<br />pais: Haiti<br />pais: Haiti","wave: 2012<br />cohesion_general: 4.564443<br />pais: Haiti<br />pais: Haiti","wave: 2014<br />cohesion_general: 4.582020<br />pais: Haiti<br />pais: Haiti","wave: 2016<br />cohesion_general: 4.213989<br />pais: Haiti<br />pais: Haiti","wave: 2018<br />cohesion_general: 4.213989<br />pais: Haiti<br />pais: Haiti","wave: 2022<br />cohesion_general: 3.993925<br />pais: Haiti<br />pais: Haiti"],"type":"scatter","mode":"markers+lines","marker":{"autocolorscale":false,"color":"rgba(0,189,208,1)","opacity":1,"size":5.6692913385826778,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(0,189,208,1)"}},"hoveron":"points","name":"Haiti","legendgroup":"Haiti","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","line":{"width":1.8897637795275593,"color":"rgba(0,189,208,1)","dash":"solid"},"frame":null},{"x":[2004,2006,2008,2010,2012,2014,2016,2018,2022],"y":[4.7804813444223733,4.68613066683693,4.2423613046594504,5.0014860160712935,4.2940191197996631,4.5210328287771535,4.425618971378297,4.2068062223182796,4.263617082668655],"text":["wave: 2004<br />cohesion_general: 4.780481<br />pais: Honduras<br />pais: Honduras","wave: 2006<br />cohesion_general: 4.686131<br />pais: Honduras<br />pais: Honduras","wave: 2008<br />cohesion_general: 4.242361<br />pais: Honduras<br />pais: Honduras","wave: 2010<br />cohesion_general: 5.001486<br />pais: Honduras<br />pais: Honduras","wave: 2012<br />cohesion_general: 4.294019<br />pais: Honduras<br />pais: Honduras","wave: 2014<br />cohesion_general: 4.521033<br />pais: Honduras<br />pais: Honduras","wave: 2016<br />cohesion_general: 4.425619<br />pais: Honduras<br />pais: Honduras","wave: 2018<br />cohesion_general: 4.206806<br />pais: Honduras<br />pais: Honduras","wave: 2022<br />cohesion_general: 4.263617<br />pais: Honduras<br />pais: Honduras"],"type":"scatter","mode":"markers+lines","marker":{"autocolorscale":false,"color":"rgba(0,184,229,1)","opacity":1,"size":5.6692913385826778,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(0,184,229,1)"}},"hoveron":"points","name":"Honduras","legendgroup":"Honduras","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","line":{"width":1.8897637795275593,"color":"rgba(0,184,229,1)","dash":"solid"},"frame":null},{"x":[2004,2006,2008,2010,2012,2014,2016,2018,2022],"y":[4.4436630989781145,4.2528772533530192,4.493520458382692,4.1420787976925144,4.6421364813817592,4.0324116627413709,4.1939869451938252,4.340965853281963,4.0426665963310082],"text":["wave: 2004<br />cohesion_general: 4.443663<br />pais: Jamaica<br />pais: Jamaica","wave: 2006<br />cohesion_general: 4.252877<br />pais: Jamaica<br />pais: Jamaica","wave: 2008<br />cohesion_general: 4.493520<br />pais: Jamaica<br />pais: Jamaica","wave: 2010<br />cohesion_general: 4.142079<br />pais: Jamaica<br />pais: Jamaica","wave: 2012<br />cohesion_general: 4.642136<br />pais: Jamaica<br />pais: Jamaica","wave: 2014<br />cohesion_general: 4.032412<br />pais: Jamaica<br />pais: Jamaica","wave: 2016<br />cohesion_general: 4.193987<br />pais: Jamaica<br />pais: Jamaica","wave: 2018<br />cohesion_general: 4.340966<br />pais: Jamaica<br />pais: Jamaica","wave: 2022<br />cohesion_general: 4.042667<br />pais: Jamaica<br />pais: Jamaica"],"type":"scatter","mode":"markers+lines","marker":{"autocolorscale":false,"color":"rgba(0,176,246,1)","opacity":1,"size":5.6692913385826778,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(0,176,246,1)"}},"hoveron":"points","name":"Jamaica","legendgroup":"Jamaica","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","line":{"width":1.8897637795275593,"color":"rgba(0,176,246,1)","dash":"solid"},"frame":null},{"x":[2004,2006,2008,2010,2012,2014,2016,2018,2022],"y":[5.6956082590151258,5.5590470416921036,5.4689721504631983,5.3603697608104985,5.3625342112726617,5.1958797120490541,4.9997733341236685,5.0631982040059551,5.2949656964677541],"text":["wave: 2004<br />cohesion_general: 5.695608<br />pais: Mexico<br />pais: Mexico","wave: 2006<br />cohesion_general: 5.559047<br />pais: Mexico<br />pais: Mexico","wave: 2008<br />cohesion_general: 5.468972<br />pais: Mexico<br />pais: Mexico","wave: 2010<br />cohesion_general: 5.360370<br />pais: Mexico<br />pais: Mexico","wave: 2012<br />cohesion_general: 5.362534<br />pais: Mexico<br />pais: Mexico","wave: 2014<br />cohesion_general: 5.195880<br />pais: Mexico<br />pais: Mexico","wave: 2016<br />cohesion_general: 4.999773<br />pais: Mexico<br />pais: Mexico","wave: 2018<br />cohesion_general: 5.063198<br />pais: Mexico<br />pais: Mexico","wave: 2022<br />cohesion_general: 5.294966<br />pais: Mexico<br />pais: Mexico"],"type":"scatter","mode":"markers+lines","marker":{"autocolorscale":false,"color":"rgba(0,165,255,1)","opacity":1,"size":5.6692913385826778,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(0,165,255,1)"}},"hoveron":"points","name":"Mexico","legendgroup":"Mexico","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","line":{"width":1.8897637795275593,"color":"rgba(0,165,255,1)","dash":"solid"},"frame":null},{"x":[2004,2006,2008,2010,2012,2014,2016,2018,2022],"y":[4.4164529772096142,4.3939659324043543,4.4179948284366324,4.7324076509895443,5.193835148533033,5.4696256035802104,5.5675770539981624,5.2001223609878409,4.8769446621120203],"text":["wave: 2004<br />cohesion_general: 4.416453<br />pais: Nicaragua<br />pais: Nicaragua","wave: 2006<br />cohesion_general: 4.393966<br />pais: Nicaragua<br />pais: Nicaragua","wave: 2008<br />cohesion_general: 4.417995<br />pais: Nicaragua<br />pais: Nicaragua","wave: 2010<br />cohesion_general: 4.732408<br />pais: Nicaragua<br />pais: Nicaragua","wave: 2012<br />cohesion_general: 5.193835<br />pais: Nicaragua<br />pais: Nicaragua","wave: 2014<br />cohesion_general: 5.469626<br />pais: Nicaragua<br />pais: Nicaragua","wave: 2016<br />cohesion_general: 5.567577<br />pais: Nicaragua<br />pais: Nicaragua","wave: 2018<br />cohesion_general: 5.200122<br />pais: Nicaragua<br />pais: Nicaragua","wave: 2022<br />cohesion_general: 4.876945<br />pais: Nicaragua<br />pais: Nicaragua"],"type":"scatter","mode":"markers+lines","marker":{"autocolorscale":false,"color":"rgba(121,151,255,1)","opacity":1,"size":5.6692913385826778,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(121,151,255,1)"}},"hoveron":"points","name":"Nicaragua","legendgroup":"Nicaragua","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","line":{"width":1.8897637795275593,"color":"rgba(121,151,255,1)","dash":"solid"},"frame":null},{"x":[2004,2006,2008,2010,2012,2014,2016,2018,2022],"y":[4.3934240119447505,4.4364318215736649,4.6873777227812399,5.1264909327965809,4.6432475454253774,5.0237286443908316,4.3435682979176526,4.1781718313073881,4.1505012154275658],"text":["wave: 2004<br />cohesion_general: 4.393424<br />pais: Panama<br />pais: Panama","wave: 2006<br />cohesion_general: 4.436432<br />pais: Panama<br />pais: Panama","wave: 2008<br />cohesion_general: 4.687378<br />pais: Panama<br />pais: Panama","wave: 2010<br />cohesion_general: 5.126491<br />pais: Panama<br />pais: Panama","wave: 2012<br />cohesion_general: 4.643248<br />pais: Panama<br />pais: Panama","wave: 2014<br />cohesion_general: 5.023729<br />pais: Panama<br />pais: Panama","wave: 2016<br />cohesion_general: 4.343568<br />pais: Panama<br />pais: Panama","wave: 2018<br />cohesion_general: 4.178172<br />pais: Panama<br />pais: Panama","wave: 2022<br />cohesion_general: 4.150501<br />pais: Panama<br />pais: Panama"],"type":"scatter","mode":"markers+lines","marker":{"autocolorscale":false,"color":"rgba(172,136,255,1)","opacity":1,"size":5.6692913385826778,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(172,136,255,1)"}},"hoveron":"points","name":"Panama","legendgroup":"Panama","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","line":{"width":1.8897637795275593,"color":"rgba(172,136,255,1)","dash":"solid"},"frame":null},{"x":[2004,2006,2008,2010,2012,2014,2016,2018,2022],"y":[4.0537501571111481,4.0242891637918685,3.9819814764625585,4.4775275303549362,4.5615859464151418,4.5017870550855701,4.4032514714925437,4.5428857479341023,4.290493987822078],"text":["wave: 2004<br />cohesion_general: 4.053750<br />pais: Paraguay<br />pais: Paraguay","wave: 2006<br />cohesion_general: 4.024289<br />pais: Paraguay<br />pais: Paraguay","wave: 2008<br />cohesion_general: 3.981981<br />pais: Paraguay<br />pais: Paraguay","wave: 2010<br />cohesion_general: 4.477528<br />pais: Paraguay<br />pais: Paraguay","wave: 2012<br />cohesion_general: 4.561586<br />pais: Paraguay<br />pais: Paraguay","wave: 2014<br />cohesion_general: 4.501787<br />pais: Paraguay<br />pais: Paraguay","wave: 2016<br />cohesion_general: 4.403251<br />pais: Paraguay<br />pais: Paraguay","wave: 2018<br />cohesion_general: 4.542886<br />pais: Paraguay<br />pais: Paraguay","wave: 2022<br />cohesion_general: 4.290494<br />pais: Paraguay<br />pais: Paraguay"],"type":"scatter","mode":"markers+lines","marker":{"autocolorscale":false,"color":"rgba(207,120,255,1)","opacity":1,"size":5.6692913385826778,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(207,120,255,1)"}},"hoveron":"points","name":"Paraguay","legendgroup":"Paraguay","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","line":{"width":1.8897637795275593,"color":"rgba(207,120,255,1)","dash":"solid"},"frame":null},{"x":[2004,2006,2008,2010,2012,2014,2016,2018,2022],"y":[4.0118699970024423,4.7626081845884807,4.8315534961080804,4.9121278846443586,5.0954731713458941,4.9172718623359808,4.8946796875302141,4.7861747488777695,4.7792863091923508],"text":["wave: 2004<br />cohesion_general: 4.011870<br />pais: Peru<br />pais: Peru","wave: 2006<br />cohesion_general: 4.762608<br />pais: Peru<br />pais: Peru","wave: 2008<br />cohesion_general: 4.831553<br />pais: Peru<br />pais: Peru","wave: 2010<br />cohesion_general: 4.912128<br />pais: Peru<br />pais: Peru","wave: 2012<br />cohesion_general: 5.095473<br />pais: Peru<br />pais: Peru","wave: 2014<br />cohesion_general: 4.917272<br />pais: Peru<br />pais: Peru","wave: 2016<br />cohesion_general: 4.894680<br />pais: Peru<br />pais: Peru","wave: 2018<br />cohesion_general: 4.786175<br />pais: Peru<br />pais: Peru","wave: 2022<br />cohesion_general: 4.779286<br />pais: Peru<br />pais: Peru"],"type":"scatter","mode":"markers+lines","marker":{"autocolorscale":false,"color":"rgba(231,107,243,1)","opacity":1,"size":5.6692913385826778,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(231,107,243,1)"}},"hoveron":"points","name":"Peru","legendgroup":"Peru","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","line":{"width":1.8897637795275593,"color":"rgba(231,107,243,1)","dash":"solid"},"frame":null},{"x":[2004,2006,2008,2010,2012,2014,2016,2018,2022],"y":[5.4859751291059666,5.172097190981054,5.172097190981054,5.2586743509499438,5.4155627943089168,5.6228689917089145,5.6228689917089145,4.5796896194880965,4.2130227033793286],"text":["wave: 2004<br />cohesion_general: 5.485975<br />pais: Trinidad & Tobago<br />pais: Trinidad & Tobago","wave: 2006<br />cohesion_general: 5.172097<br />pais: Trinidad & Tobago<br />pais: Trinidad & Tobago","wave: 2008<br />cohesion_general: 5.172097<br />pais: Trinidad & Tobago<br />pais: Trinidad & Tobago","wave: 2010<br />cohesion_general: 5.258674<br />pais: Trinidad & Tobago<br />pais: Trinidad & Tobago","wave: 2012<br />cohesion_general: 5.415563<br />pais: Trinidad & Tobago<br />pais: Trinidad & Tobago","wave: 2014<br />cohesion_general: 5.622869<br />pais: Trinidad & Tobago<br />pais: Trinidad & Tobago","wave: 2016<br />cohesion_general: 5.622869<br />pais: Trinidad & Tobago<br />pais: Trinidad & Tobago","wave: 2018<br />cohesion_general: 4.579690<br />pais: Trinidad & Tobago<br />pais: Trinidad & Tobago","wave: 2022<br />cohesion_general: 4.213023<br />pais: Trinidad & Tobago<br />pais: Trinidad & Tobago"],"type":"scatter","mode":"markers+lines","marker":{"autocolorscale":false,"color":"rgba(247,99,224,1)","opacity":1,"size":5.6692913385826778,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(247,99,224,1)"}},"hoveron":"points","name":"Trinidad & Tobago","legendgroup":"Trinidad & Tobago","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","line":{"width":1.8897637795275593,"color":"rgba(247,99,224,1)","dash":"solid"},"frame":null},{"x":[2004,2006,2008,2010,2012,2014,2016,2018,2022],"y":[6.9796105170777043,6.9796105170777043,6.1707596314443673,6.0753678007658198,6.0177844193666239,5.8787814393088613,5.9418763402933612,6.0077557298199258,6.1873103759642998],"text":["wave: 2004<br />cohesion_general: 6.979611<br />pais: United States<br />pais: United States","wave: 2006<br />cohesion_general: 6.979611<br />pais: United States<br />pais: United States","wave: 2008<br />cohesion_general: 6.170760<br />pais: United States<br />pais: United States","wave: 2010<br />cohesion_general: 6.075368<br />pais: United States<br />pais: United States","wave: 2012<br />cohesion_general: 6.017784<br />pais: United States<br />pais: United States","wave: 2014<br />cohesion_general: 5.878781<br />pais: United States<br />pais: United States","wave: 2016<br />cohesion_general: 5.941876<br />pais: United States<br />pais: United States","wave: 2018<br />cohesion_general: 6.007756<br />pais: United States<br />pais: United States","wave: 2022<br />cohesion_general: 6.187310<br />pais: United States<br />pais: United States"],"type":"scatter","mode":"markers+lines","marker":{"autocolorscale":false,"color":"rgba(255,97,201,1)","opacity":1,"size":5.6692913385826778,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(255,97,201,1)"}},"hoveron":"points","name":"United States","legendgroup":"United States","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","line":{"width":1.8897637795275593,"color":"rgba(255,97,201,1)","dash":"solid"},"frame":null},{"x":[2004,2006,2008,2010,2012,2014,2016,2018,2022],"y":[5.8151606566496001,5.7660081716900162,5.7492601345407071,5.9585743573009644,5.711054795443455,5.6974623923733763,5.6256408791716979,5.6150664266684664,5.7726203815646961],"text":["wave: 2004<br />cohesion_general: 5.815161<br />pais: Uruguay<br />pais: Uruguay","wave: 2006<br />cohesion_general: 5.766008<br />pais: Uruguay<br />pais: Uruguay","wave: 2008<br />cohesion_general: 5.749260<br />pais: Uruguay<br />pais: Uruguay","wave: 2010<br />cohesion_general: 5.958574<br />pais: Uruguay<br />pais: Uruguay","wave: 2012<br />cohesion_general: 5.711055<br />pais: Uruguay<br />pais: Uruguay","wave: 2014<br />cohesion_general: 5.697462<br />pais: Uruguay<br />pais: Uruguay","wave: 2016<br />cohesion_general: 5.625641<br />pais: Uruguay<br />pais: Uruguay","wave: 2018<br />cohesion_general: 5.615066<br />pais: Uruguay<br />pais: Uruguay","wave: 2022<br />cohesion_general: 5.772620<br />pais: Uruguay<br />pais: Uruguay"],"type":"scatter","mode":"markers+lines","marker":{"autocolorscale":false,"color":"rgba(255,101,174,1)","opacity":1,"size":5.6692913385826778,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(255,101,174,1)"}},"hoveron":"points","name":"Uruguay","legendgroup":"Uruguay","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","line":{"width":1.8897637795275593,"color":"rgba(255,101,174,1)","dash":"solid"},"frame":null},{"x":[2004,2006,2008,2010,2012,2014,2016,2018,2022],"y":[4.8432018123840539,4.9207467475279998,4.9121409060806869,4.7744196497906817,5.0216742072728326,4.929906983737256,4.6052615886184958,4.5789921529456832,4.6679727425316564],"text":["wave: 2004<br />cohesion_general: 4.843202<br />pais: Venezuela<br />pais: Venezuela","wave: 2006<br />cohesion_general: 4.920747<br />pais: Venezuela<br />pais: Venezuela","wave: 2008<br />cohesion_general: 4.912141<br />pais: Venezuela<br />pais: Venezuela","wave: 2010<br />cohesion_general: 4.774420<br />pais: Venezuela<br />pais: Venezuela","wave: 2012<br />cohesion_general: 5.021674<br />pais: Venezuela<br />pais: Venezuela","wave: 2014<br />cohesion_general: 4.929907<br />pais: Venezuela<br />pais: Venezuela","wave: 2016<br />cohesion_general: 4.605262<br />pais: Venezuela<br />pais: Venezuela","wave: 2018<br />cohesion_general: 4.578992<br />pais: Venezuela<br />pais: Venezuela","wave: 2022<br />cohesion_general: 4.667973<br />pais: Venezuela<br />pais: Venezuela"],"type":"scatter","mode":"markers+lines","marker":{"autocolorscale":false,"color":"rgba(255,108,144,1)","opacity":1,"size":5.6692913385826778,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(255,108,144,1)"}},"hoveron":"points","name":"Venezuela","legendgroup":"Venezuela","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","line":{"width":1.8897637795275593,"color":"rgba(255,108,144,1)","dash":"solid"},"frame":null}],"layout":{"margin":{"t":43.762557077625573,"r":7.3059360730593621,"b":40.182648401826498,"l":31.415525114155255},"font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724},"title":{"text":"<b> Promedio indicadores disponibles <\/b>","font":{"color":"rgba(0,0,0,1)","family":"","size":17.534246575342465},"x":0,"xref":"paper"},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[2003.0999999999999,2022.9000000000001],"tickmode":"array","ticktext":["2005","2010","2015","2020"],"tickvals":[2005,2010,2015,2020],"categoryorder":"array","categoryarray":["2005","2010","2015","2020"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.6529680365296811,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.68949771689498},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"y","title":{"text":"Ola","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[3.7230891109778934,7.3120100822794454],"tickmode":"array","ticktext":["4","5","6","7"],"tickvals":[4,5,6,7],"categoryorder":"array","categoryarray":["4","5","6","7"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.6529680365296811,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.68949771689498},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"x","title":{"text":"Puntaje (0-10)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":true,"legend":{"bgcolor":null,"bordercolor":null,"borderwidth":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.68949771689498},"title":{"text":"pais","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"f236e8c392c":{"x":{},"y":{},"colour":{},"type":"scatter"},"f2337fdb067":{"x":{},"y":{},"colour":{}}},"cur_data":"f236e8c392c","visdat":{"f236e8c392c":["function (y) ","x"],"f2337fdb067":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

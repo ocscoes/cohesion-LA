@@ -21,7 +21,7 @@ Existen tres carpetas en el repositorio:
     encuesta, reflejando el problema de ausencia de las
     variables de interés en la última versión de la
     encuesta. [Link acceso al
-    análisis](https://ocscoes.github.io/cohesion-LA/IndicesLAPOP/Indices.html).\
+    análisis](https://ocscoes.github.io/cohesion-LA/IndicesLAPOP/Indices.html).\ [Propuesta y actualización de indicadores](https://gabcortes97.github.io/cohesion-LA/IndicesLAPOP/propuesta_indicadores.html)
 
 2.  ELSOC: contiene el trabajo relacionado a la construcción
     de índices a nivel chileno con los datos de ELSOC. El
